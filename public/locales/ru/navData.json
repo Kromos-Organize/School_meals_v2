@@ -1,0 +1,18 @@
+{
+  "L_calculation": "Расчет питания",
+  "L_schoolData": "Данные школы",
+  "L_profile": "Профиль",
+  "L_setting": "Настройки",
+  "L_schools": "Школы",
+  "L_moderation": "Модерация",
+  "L_logs": "Логи",
+  "L_auto_calc": "Автоподсчет",
+  "L_manual_calc": "Ручной подсчет",
+  "L_history_calc": "История подсчетов",
+  "L_school": "Школа",
+  "L_teachers": "Учителя",
+  "L_classes": "Классы",
+  "L_students": "Учащиеся",
+  "L_S_ADMIN": "Супер Админ",
+  "L_ADMIN": "Администратор"
+}

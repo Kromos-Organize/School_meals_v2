@@ -1,2 +1,2 @@
-import * as navModel from './model'
-import * as navType from './types'
+export * as navModel from './model'
+export type * from './types'

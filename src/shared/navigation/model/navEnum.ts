@@ -23,10 +23,10 @@ export enum ADMIN_ROUTE {
   meals_manualCalc = '/meals/calc/manual',
   meals_historyCalc = '/meals/calc/history',
 
-  data_school = '/meals/data/school',
-  data_teachers = '/meals/data/teachers',
-  data_classes = '/meals/data/classes',
-  data_students = '/meals/data/students',
+  data_school = '/data/school',
+  data_teachers = '/data/teachers',
+  data_classes = '/data/classes',
+  data_students = '/data/students',
 
   settings = '/profile/settings',
 }

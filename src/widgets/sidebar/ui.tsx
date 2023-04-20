@@ -1,5 +1,7 @@
 import { memo } from 'react'
 
+import { NavBar } from '@/features'
+
 import styles from './styles.module.scss'
 
 export const SideBar = memo(() => {
@@ -8,7 +10,7 @@ export const SideBar = memo(() => {
       <div className={styles.aside_inner}>
         <div className={styles.sidebar}>
           <div className={styles.user_box}>show user data</div>
-          navigation
+          <NavBar />
         </div>
       </div>
     </aside>

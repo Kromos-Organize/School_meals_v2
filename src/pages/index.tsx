@@ -17,7 +17,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={styles.main}>
-        <Link href={'http://localhost:3000/s_admin/logs'}>Logs</Link>
+        <Link href={'http://localhost:3000/admin/data/school'}>Logs</Link>
       </main>
     </>
   )

@@ -1,13 +1,14 @@
 import { NextPage } from 'next'
 import { PropsWithChildren } from 'react'
 
-import { Header } from '@/widgets'
+import { Header, SideBar, MainSection } from '@/widgets'
 
 export const Layout: NextPage<PropsWithChildren> = ({ children }) => {
   return (
     <>
       <Header />
-      {children}
+      <SideBar />
+      <MainSection>{children}</MainSection>
     </>
   )
 }

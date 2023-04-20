@@ -12,20 +12,29 @@ import RestaurantIcon from '@mui/icons-material/Restaurant'
 import SchoolIcon from '@mui/icons-material/School'
 import SignLanguageIcon from '@mui/icons-material/SignLanguage'
 
-import { NavigationDataType } from '@/shared/navigation'
-import { PATH, PREFIX } from '@/shared/navigation/model'
+import { NavigationDataType, navModel } from '@/shared/navigation'
 
 export const navigationData: NavigationDataType = {
   S_ADMIN: [
     // админ проекта
-    { id: '1', icon: <SchoolIcon />, title: 'schools', path: PREFIX.s_admin + PATH.schools },
+    {
+      id: '1',
+      icon: <SchoolIcon />,
+      title: 'schools',
+      path: navModel.MAIN_ROUTE.s_admin + navModel.S_ADMIN_ROUTE.schools,
+    },
     {
       id: '2',
       icon: <HowToRegIcon />,
       title: 'moderation',
-      path: PREFIX.s_admin + PATH.moderation,
+      path: navModel.MAIN_ROUTE.s_admin + navModel.S_ADMIN_ROUTE.moderation,
     },
-    { id: '3', icon: <NoteIcon />, title: 'logs', path: PREFIX.s_admin + PATH.logs },
+    {
+      id: '3',
+      icon: <NoteIcon />,
+      title: 'logs',
+      path: navModel.MAIN_ROUTE.s_admin + navModel.S_ADMIN_ROUTE.logs,
+    },
     {
       id: '4',
       icon: <AccountCircleIcon />,
@@ -35,7 +44,7 @@ export const navigationData: NavigationDataType = {
           id: '5',
           icon: <ManageAccountsIcon />,
           title: 'setting',
-          path: PREFIX.s_admin + PATH.profile + PATH.profileSettings,
+          path: navModel.MAIN_ROUTE.s_admin + navModel.S_ADMIN_ROUTE.settings,
         },
       ],
     },
@@ -52,19 +61,19 @@ export const navigationData: NavigationDataType = {
           id: '2',
           icon: <CalculateIcon />,
           title: 'auto_calc',
-          path: PREFIX.admin + PATH.meals + PATH.autoCalc,
+          path: navModel.MAIN_ROUTE.admin + navModel.ADMIN_ROUTE.meals_autoCalc,
         },
         {
           id: '3',
           icon: <SignLanguageIcon />,
           title: 'manual_calc',
-          path: PREFIX.admin + PATH.meals + PATH.manualCalc,
+          path: navModel.MAIN_ROUTE.admin + navModel.ADMIN_ROUTE.meals_manualCalc,
         },
         {
           id: '4',
           icon: <HistoryIcon />,
           title: 'history_calc',
-          path: PREFIX.admin + PATH.meals + PATH.historyCalc,
+          path: navModel.MAIN_ROUTE.admin + navModel.ADMIN_ROUTE.meals_historyCalc,
         },
       ],
     },
@@ -77,25 +86,25 @@ export const navigationData: NavigationDataType = {
           id: '6',
           icon: <DescriptionIcon />,
           title: 'schoolData',
-          path: PREFIX.admin + PATH.schoolData,
+          path: navModel.MAIN_ROUTE.admin + navModel.ADMIN_ROUTE.data_school,
         },
         {
           id: '7',
           icon: <AssignmentIndIcon />,
           title: 'teachers',
-          path: PREFIX.admin + PATH.schoolData + PATH.teachers,
+          path: navModel.MAIN_ROUTE.admin + navModel.ADMIN_ROUTE.data_teachers,
         },
         {
           id: '8',
           icon: <DashboardIcon />,
           title: 'classes',
-          path: PREFIX.admin + PATH.schoolData + PATH.classes,
+          path: navModel.MAIN_ROUTE.admin + navModel.ADMIN_ROUTE.data_classes,
         },
         {
           id: '9',
           icon: <EscalatorWarningIcon />,
           title: 'students',
-          path: PREFIX.admin + PATH.schoolData + PATH.students,
+          path: navModel.MAIN_ROUTE.admin + navModel.ADMIN_ROUTE.data_students,
         },
       ],
     },
@@ -108,7 +117,7 @@ export const navigationData: NavigationDataType = {
           id: '11',
           icon: <ManageAccountsIcon />,
           title: 'setting',
-          path: PREFIX.admin + PATH.profile + PATH.profileSettings,
+          path: navModel.MAIN_ROUTE.admin + navModel.ADMIN_ROUTE.settings,
         },
       ],
     },

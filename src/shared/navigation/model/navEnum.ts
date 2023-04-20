@@ -1,29 +1,32 @@
-export enum PREFIX {
+export enum MAIN_ROUTE {
   home = '/',
   s_admin = '/s_admin',
   admin = '/admin',
   auth = '/auth',
 }
 
-export enum PATH {
+export enum AUTH_ROUTE {
+  login = '/login',
+  registration = '/registration',
+  forgotPass = '/forgotPass',
+}
+
+export enum S_ADMIN_ROUTE {
   schools = '/schools',
   moderation = '/moderation',
   logs = '/logs',
+  settings = '/profile/settings',
+}
 
-  meals = '/meals',
-  autoCalc = '/auto-calc',
-  manualCalc = '/manual-calc',
-  historyCalc = '/history-calc',
+export enum ADMIN_ROUTE {
+  meals_autoCalc = '/meals/calc/auto',
+  meals_manualCalc = '/meals/calc/manual',
+  meals_historyCalc = '/meals/calc/history',
 
-  schoolData = '/school-data',
-  teachers = '/teachers',
-  classes = '/classes',
-  students = '/students',
+  data_school = '/meals/data/school',
+  data_teachers = '/meals/data/teachers',
+  data_classes = '/meals/data/classes',
+  data_students = '/meals/data/students',
 
-  profile = '/profile',
-  profileSettings = '/settings',
-
-  registration = '/registration',
-  login = '/login',
-  forgotPass = '/forgotPass',
+  settings = '/profile/settings',
 }

@@ -1,1 +1,1 @@
-export { getLayout } from './baseLayout'
+export { Header } from './header'

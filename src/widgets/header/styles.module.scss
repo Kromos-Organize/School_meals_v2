@@ -1,0 +1,15 @@
+@import '@/App/styles/variables';
+
+.header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 10;
+  background-color: $mainColor !important;
+
+  .toolBar {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
+}

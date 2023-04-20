@@ -1,6 +1,13 @@
 import { NextPage } from 'next'
 import { PropsWithChildren } from 'react'
 
+import { Header } from '@/widgets'
+
 export const Layout: NextPage<PropsWithChildren> = ({ children }) => {
-  return <div style={{ backgroundColor: 'red' }}>{children}</div>
+  return (
+    <>
+      <Header />
+      {children}
+    </>
+  )
 }

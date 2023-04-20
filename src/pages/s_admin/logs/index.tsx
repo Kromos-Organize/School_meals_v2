@@ -1,6 +1,5 @@
-import { NextPageWithLayout } from '@/App'
+import { NextPageWithLayout, getLayout } from '@/App'
 import { Logs } from '@/pagesLayer'
-import { getLayout } from '@/widgets'
 
 const LogsPage: NextPageWithLayout = () => {
   return <Logs />

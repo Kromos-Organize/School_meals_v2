@@ -45,36 +45,36 @@ module.exports = {
       {
         patterns: [
           {
-            message: 'Private imports are prohibited, use public imports instead',
+            message: 'Private imports are prohibited from @/pages, use public imports instead',
             group: ['@/pages/**'],
           },
           {
-            message: 'Private imports are prohibited, use public imports instead',
+            message: 'Private imports are prohibited from @/App, use public imports instead',
             group: ['@/App/**'],
           },
           {
-            message: 'Private imports are prohibited, use public imports instead',
+            message: 'Private imports are prohibited from @/processes, use public imports instead',
             group: ['@/processes/*/**'],
           },
           {
-            message: 'Private imports are prohibited, use public imports instead',
+            message: 'Private imports are prohibited from @/pagesLayer, use public imports instead',
             group: ['@/pagesLayer/*/**'],
           },
           {
-            message: 'Private imports are prohibited, use public imports instead',
+            message: 'Private imports are prohibited from @/widgets, use public imports instead',
             group: ['@/widgets/*/**'],
           },
           {
-            message: 'Private imports are prohibited, use public imports instead',
+            message: 'Private imports are prohibited from @/features, use public imports instead',
             group: ['@/features/*/**'],
           },
           {
-            message: 'Private imports are prohibited, use public imports instead',
+            message: 'Private imports are prohibited from @/entities, use public imports instead',
             group: ['@/entities/*/**'],
           },
           {
-            message: 'Private imports are prohibited, use public imports instead',
-            group: ['2/shared/*/*/**'],
+            message: 'Private imports are prohibited from @/shared, use public imports instead',
+            group: ['@/shared/*/*/**'],
           },
           {
             message: 'Prefer absolute imports instead of relatives (for root modules)',
@@ -134,5 +134,7 @@ module.exports = {
       },
     ],
   },
-  overrides: [{ files: ['**/*.test.*'], rules: { 'boundaries/element-types': 'off' } }],
+  overrides: [
+    { files: ['**/*.test.*', '**/*.scss'], rules: { 'boundaries/element-types': 'off' } },
+  ],
 }

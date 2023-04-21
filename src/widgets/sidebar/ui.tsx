@@ -2,6 +2,8 @@ import { memo } from 'react'
 
 import { NavBar } from '@/features'
 
+import { AvatarInfo } from '@/shared/avatarInfo'
+
 import styles from './styles.module.scss'
 
 export const SideBar = memo(() => {
@@ -9,7 +11,7 @@ export const SideBar = memo(() => {
     <aside className={styles.aside}>
       <div className={styles.aside_inner}>
         <div className={styles.sidebar}>
-          <div className={styles.user_box}>show user data</div>
+          <AvatarInfo fname="Шавлинский" name="Роман" role="S_ADMIN" />
           <NavBar />
         </div>
       </div>

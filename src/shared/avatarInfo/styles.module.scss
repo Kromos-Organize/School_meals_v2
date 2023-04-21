@@ -1,0 +1,18 @@
+.user_box {
+  display: flex;
+  align-items: center;
+  padding: 20px 10px;
+
+  .avatar {
+    margin-right: 10px;
+  }
+
+  .user_data {
+    font-size: 16px;
+
+    .role,
+    .name {
+      padding-bottom: 5px;
+    }
+  }
+}

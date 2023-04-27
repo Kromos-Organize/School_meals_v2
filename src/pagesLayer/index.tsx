@@ -1,1 +1,1 @@
-export { Registration } from './auth'
+export { RegistrationPage, LoginPage } from './auth'

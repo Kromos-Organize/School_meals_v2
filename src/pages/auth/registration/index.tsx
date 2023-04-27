@@ -1,8 +1,8 @@
 import { NextPageWithLayout, getLayout } from '@/App'
-import { Registration } from '@/pagesLayer'
+import { RegistrationPage } from '@/pagesLayer'
 
-const RegistrationPage: NextPageWithLayout = () => {
-  return <Registration />
+const Registration: NextPageWithLayout = () => {
+  return <RegistrationPage />
 }
 
-export default RegistrationPage
+export default Registration

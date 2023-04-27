@@ -23,6 +23,24 @@
     }
   }
 
+  .forgotPass {
+    height: 40px;
+		margin-bottom: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    label {
+      cursor: pointer;
+    }
+
+    .checkbox {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+    }
+  }
+
   .paragraph {
     text-align: center;
     font-size: 16px;

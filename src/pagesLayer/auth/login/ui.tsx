@@ -1,17 +1,17 @@
 import { memo } from 'react'
 
-import { FormRegister } from '@/entities'
+import { FormLogin } from '@/entities'
 import { Meta } from '@/shared'
 
 import styles from './styles.module.scss'
 
-export const RegistrationPage = memo(() => {
+export const LoginPage = memo(() => {
   return (
     <>
-      <Meta title={'Registration'} description={'Страница регистрации личного кабинета'} />
+      <Meta title={'Login'} description={'Страница входа в личный кабинет администратора школы'} />
       <div className={styles.mainClass}>
         <div className={styles.wrapper}>
-          <FormRegister />
+          <FormLogin />
         </div>
       </div>
     </>

@@ -1,7 +1,8 @@
-import { NextPageWithLayout, getLayout } from '@/App'
+import { NextPageWithLayout } from '@/App'
+import { LoginPage } from '@/pagesLayer'
 
-const LoginPage: NextPageWithLayout = () => {
-  return <>LoginPage</>
+const Login: NextPageWithLayout = () => {
+  return <LoginPage />
 }
 
-export default LoginPage
+export default Login

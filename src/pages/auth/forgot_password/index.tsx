@@ -4,6 +4,4 @@ const ForgotPasswordPage: NextPageWithLayout = () => {
   return <>ForgotPasswordPage</>
 }
 
-ForgotPasswordPage.getLayout = getLayout
-
 export default ForgotPasswordPage

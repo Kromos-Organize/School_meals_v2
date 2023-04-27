@@ -1,1 +1,1 @@
-export { Logs } from './logs'
+export { Registration } from './auth'

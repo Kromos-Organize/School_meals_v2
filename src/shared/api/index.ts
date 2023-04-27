@@ -1,1 +1,3 @@
-export { instance } from './base'
+export * from './admin'
+export * from './auth'
+export * from './s_admin'

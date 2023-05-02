@@ -1,3 +1,3 @@
 export { NavBar } from './navbar'
-export { FormLogin } from './formLogin'
-export { FormRegister } from './formRegistration'
+export { FormLogin } from './auth/login'
+export { FormRegister } from './auth/registration'

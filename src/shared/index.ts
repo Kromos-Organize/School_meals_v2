@@ -1,4 +1,5 @@
 export * from './navigation'
+export * from './info'
 export * from './LS'
 export * from './buttons'
 export * from './typography'

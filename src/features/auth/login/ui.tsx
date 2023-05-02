@@ -10,12 +10,14 @@ import {
   InputLabel,
   Link,
 } from '@mui/material'
+import { useRouter } from 'next/router'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { useTranslation } from 'react-i18next'
 
-import { BtnLink, HiddenBlock, InputRegister, navModel } from '@/shared'
+import { BtnLink, HiddenBlock, InputRegister, navModel, swalAlert } from '@/shared'
 
 import { LoginSchema } from './config'
+import { submitLogin } from './model'
 import styles from './styles.module.scss'
 import { LoginFieldsType } from './types'
 
@@ -34,10 +36,15 @@ export const FormLogin = () => {
   })
 
   const { t } = useTranslation('login')
+  const router = useRouter()
   const isLoading = false //! todo временно
 
   const onSubmit: SubmitHandler<LoginFieldsType> = data => {
-    console.log(data)
+    submitLogin(data)
+      .then(path => {
+        router.push(path)
+      })
+      .catch(message => swalAlert({ title: t('L_error_login'), html: message, icon: 'error' }))
   }
 
   return (

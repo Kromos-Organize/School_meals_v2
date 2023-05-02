@@ -1,10 +1,12 @@
-export const saveValue = (key: string, value: any) => {
+export const set = (key: string, value: any) => {
   if (key && value) {
-    localStorage.setItem(key, JSON.parse(value))
+    const stringValue = typeof value === 'string' ? value : JSON.parse(value)
+
+    localStorage.setItem(key, stringValue)
   }
 }
 
-export const getValue = (key: string) => {
+export const get = (key: string) => {
   const value = localStorage.getItem(key)
 
   return value ?? undefined

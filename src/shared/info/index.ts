@@ -1,0 +1,1 @@
+export { swalAlert } from './swal'

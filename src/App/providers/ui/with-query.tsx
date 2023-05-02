@@ -1,4 +1,5 @@
 import { QueryClient, QueryClientProvider, Hydrate } from 'react-query'
+import { ReactQueryDevtools } from 'react-query/devtools'
 
 import { AppPropsWithLayout } from '@/App'
 
@@ -10,5 +11,8 @@ export const withQuery = (component: ProviderPropsType) => (props: AppPropsWithL
   (
     <QueryClientProvider client={queryClient} contextSharing>
       <Hydrate state={props.pageProps.dehydrateState}>{component(props)}</Hydrate>
+      {process.env.NEXT_PUBLIC_NODE_ENV === 'development' && (
+        <ReactQueryDevtools initialIsOpen={false} />
+      )}
     </QueryClientProvider>
   )

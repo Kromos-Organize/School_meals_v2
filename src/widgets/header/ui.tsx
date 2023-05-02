@@ -7,13 +7,16 @@ import { memo, useCallback } from 'react'
 
 import { BtnIcon, CustomText, navModel } from '@/shared'
 
+import { requestLogout } from './api'
 import styles from './styles.module.scss'
 
 export const Header = memo(() => {
   const router = useRouter()
 
   const exit = useCallback(() => {
-    router.push(`${navModel.MAIN_ROUTE.auth}${navModel.AUTH_ROUTE.login}`)
+    requestLogout().then(() => {
+      router.push(`${navModel.MAIN_ROUTE.auth}${navModel.AUTH_ROUTE.login}`)
+    })
   }, [])
 
   return (

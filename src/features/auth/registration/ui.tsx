@@ -3,13 +3,15 @@ import LocalPhoneIcon from '@mui/icons-material/LocalPhone'
 import LockIcon from '@mui/icons-material/Lock'
 import MailIcon from '@mui/icons-material/Mail'
 import { Box, Button, CircularProgress, InputAdornment } from '@mui/material'
+import { useRouter } from 'next/router'
 import { memo } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { useTranslation } from 'react-i18next'
 
-import { BtnLink, InputRegister, navModel } from '@/shared'
+import { BtnLink, InputRegister, navModel, swalAlert } from '@/shared'
 
 import { registerSchema } from './config'
+import { submitRegister } from './model'
 import styles from './styles.module.scss'
 import { RegistrationFieldsType } from './types'
 
@@ -29,10 +31,19 @@ export const FormRegister = memo(() => {
   })
 
   const { t } = useTranslation('register')
-  const isLoading = false //! todo временно
+  const router = useRouter()
+  const isLoading = false // todo временно
 
   const onSubmit: SubmitHandler<RegistrationFieldsType> = data => {
-    console.log(data)
+    submitRegister(data).then(path => {
+      swalAlert({
+        title: t('L_register_success'),
+        html: t('L_register_info'),
+        icon: 'success',
+      }).then(() => {
+        router.push(path)
+      })
+    })
   }
 
   return (

@@ -7,9 +7,7 @@ import { memo } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { useTranslation } from 'react-i18next'
 
-import { BtnLink, InputRegister } from '@/shared'
-
-import { MAIN_ROUTE, AUTH_ROUTE } from '@/shared/navigation/model'
+import { BtnLink, InputRegister, navModel } from '@/shared'
 
 import { registerSchema } from './config'
 import styles from './styles.module.scss'
@@ -103,7 +101,10 @@ export const FormRegister = memo(() => {
             <p>{t('L_IsAcc')}</p>
           </div>
 
-          <BtnLink href={`${MAIN_ROUTE.auth}${AUTH_ROUTE.login}`} color={'secondary'}>
+          <BtnLink
+            href={`${navModel.MAIN_ROUTE.auth}${navModel.AUTH_ROUTE.login}`}
+            color={'secondary'}
+          >
             {isLoading ? (
               <CircularProgress size={20} style={{ color: 'white' }} />
             ) : (

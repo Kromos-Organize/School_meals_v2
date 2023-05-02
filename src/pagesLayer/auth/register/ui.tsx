@@ -1,6 +1,6 @@
 import { memo } from 'react'
 
-import { FormRegister } from '@/entities'
+import { FormRegister } from '@/features'
 import { Meta } from '@/shared'
 
 import styles from './styles.module.scss'

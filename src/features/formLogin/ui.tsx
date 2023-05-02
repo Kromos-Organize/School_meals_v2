@@ -13,9 +13,7 @@ import {
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { useTranslation } from 'react-i18next'
 
-import { BtnLink, HiddenBlock, InputRegister } from '@/shared'
-
-import { AUTH_ROUTE, MAIN_ROUTE } from '@/shared/navigation/model'
+import { BtnLink, HiddenBlock, InputRegister, navModel } from '@/shared'
 
 import { LoginSchema } from './config'
 import styles from './styles.module.scss'
@@ -83,7 +81,7 @@ export const FormLogin = () => {
             </InputLabel>
           </HiddenBlock>
 
-          <Link href={`${MAIN_ROUTE.auth}${AUTH_ROUTE.forgotPass}`}>
+          <Link href={`${navModel.MAIN_ROUTE.auth}${navModel.AUTH_ROUTE.forgotPass}`}>
             <p>{t('L_forgotPass')}</p>
           </Link>
         </div>
@@ -97,7 +95,10 @@ export const FormLogin = () => {
             <p>{t('L_isLogIn')}</p>
           </div>
 
-          <BtnLink href={`${MAIN_ROUTE.auth}${AUTH_ROUTE.registration}`} color={'secondary'}>
+          <BtnLink
+            href={`${navModel.MAIN_ROUTE.auth}${navModel.AUTH_ROUTE.registration}`}
+            color={'secondary'}
+          >
             {isLoading ? (
               <CircularProgress size={20} style={{ color: 'white' }} />
             ) : (

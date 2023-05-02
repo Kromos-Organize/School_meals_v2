@@ -1,6 +1,6 @@
 import { memo } from 'react'
 
-import { FormLogin } from '@/entities'
+import { FormLogin } from '@/features'
 import { Meta } from '@/shared'
 
 import styles from './styles.module.scss'

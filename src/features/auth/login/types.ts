@@ -4,7 +4,9 @@ export type LoginFieldsType = {
   isAdminDev: boolean
 }
 
-export type SuccessRespLoginType = {
+export type SuccessRespLoginType = AdminType | SAdminType
+
+type AdminType = {
   id: number
   school_id: null | number
   role: 'S_ADMIN' | 'ADMIN'
@@ -15,5 +17,16 @@ export type SuccessRespLoginType = {
   lname: null | string
   birthday: null | string
   isActive: boolean
+  accessToken: string
+}
+
+type SAdminType = {
+  id: number
+  email: string
+  role: 'S_ADMIN'
+  fname: string
+  name: string
+  position: string
+  chat_number: string
   accessToken: string
 }

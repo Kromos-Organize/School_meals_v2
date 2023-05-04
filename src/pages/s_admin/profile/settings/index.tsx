@@ -1,9 +1,10 @@
 import { NextPageWithLayout, getLayout } from '@/App'
+import { SettingsPage } from '@/pagesLayer'
 
-const SAdminSettingsPage: NextPageWithLayout = () => {
-  return <>SAdminSettingsPage</>
+const SAdminSettings: NextPageWithLayout = () => {
+  return <SettingsPage />
 }
 
-SAdminSettingsPage.getLayout = getLayout
+SAdminSettings.getLayout = getLayout
 
-export default SAdminSettingsPage
+export default SAdminSettings

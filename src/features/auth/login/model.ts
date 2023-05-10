@@ -6,7 +6,7 @@ import { useTranslation } from 'react-i18next'
 import { useMutation } from 'react-query'
 
 import { setCurrentUser, useCurrentUser } from '@/entities'
-import { LS, noRetryQuery, swalAlert } from '@/shared'
+import { LS, checkErrorResponse, noRetryQuery, swalAlert } from '@/shared'
 
 import { requestLogin } from './api'
 import { LoginSchema } from './config'
@@ -27,11 +27,9 @@ export const useLoginMutate = () => {
       push(checkIsRoleSaveUser(res.data))
     },
     onError: error => {
-      if (error && axios.isAxiosError(error) && 'response' in error && error?.response) {
-        const message = error.response.data.message
+      const message = checkErrorResponse(error)
 
-        swalAlert({ title: t('L_error_login'), html: message, icon: 'error' })
-      }
+      swalAlert({ title: t('L_error_login'), html: message, icon: 'error' })
     },
   })
 }

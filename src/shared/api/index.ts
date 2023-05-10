@@ -1,2 +1,2 @@
 export { instance } from './base'
-export { noRetryQuery } from './lib'
+export { noRetryQuery, checkErrorResponse } from './lib'

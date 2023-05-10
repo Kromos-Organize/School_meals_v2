@@ -1,17 +1,14 @@
-import { yupResolver } from '@hookform/resolvers/yup'
 import LocalPhoneIcon from '@mui/icons-material/LocalPhone'
 import LockIcon from '@mui/icons-material/Lock'
 import MailIcon from '@mui/icons-material/Mail'
 import { Box, Button, CircularProgress, InputAdornment } from '@mui/material'
-import { useRouter } from 'next/router'
 import { memo } from 'react'
-import { SubmitHandler, useForm } from 'react-hook-form'
+import { SubmitHandler } from 'react-hook-form'
 import { useTranslation } from 'react-i18next'
 
-import { BtnLink, InputRegister, navModel, swalAlert } from '@/shared'
+import { BtnLink, InputRegister, navModel } from '@/shared'
 
-import { registerSchema } from './config'
-import { submitRegister } from './model'
+import { useRegisterForm, useRegisterMutate } from './model'
 import styles from './styles.module.scss'
 import { RegistrationFieldsType } from './types'
 
@@ -20,31 +17,12 @@ export const FormRegister = memo(() => {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<RegistrationFieldsType>({
-    defaultValues: {
-      email: '',
-      password: '',
-      confirmPassword: '',
-      phone: '',
-    },
-    resolver: yupResolver(registerSchema),
-  })
+  } = useRegisterForm()
 
+  const { mutate: registration, isLoading } = useRegisterMutate()
   const { t } = useTranslation('register')
-  const router = useRouter()
-  const isLoading = false // todo временно
 
-  const onSubmit: SubmitHandler<RegistrationFieldsType> = data => {
-    submitRegister(data).then(path => {
-      swalAlert({
-        title: t('L_register_success'),
-        html: t('L_register_info'),
-        icon: 'success',
-      }).then(() => {
-        router.push(path)
-      })
-    })
-  }
+  const onSubmit: SubmitHandler<RegistrationFieldsType> = data => registration(data)
 
   return (
     <div className={styles.window}>
@@ -105,7 +83,11 @@ export const FormRegister = memo(() => {
 
         <Box>
           <Button fullWidth size={'medium'} color={'secondary'} type="submit" variant={'contained'}>
-            {t('L_createAcc')}
+            {isLoading ? (
+              <CircularProgress size={26} style={{ color: 'white' }} />
+            ) : (
+              t('L_createAcc')
+            )}
           </Button>
 
           <div className={styles.paragraph}>
@@ -116,11 +98,7 @@ export const FormRegister = memo(() => {
             href={`${navModel.MAIN_ROUTE.auth}${navModel.AUTH_ROUTE.login}`}
             color={'secondary'}
           >
-            {isLoading ? (
-              <CircularProgress size={20} style={{ color: 'white' }} />
-            ) : (
-              t('L_enterAcc')
-            )}
+            {t('L_enterAcc')}
           </BtnLink>
         </Box>
       </form>

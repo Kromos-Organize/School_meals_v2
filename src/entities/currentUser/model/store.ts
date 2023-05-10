@@ -2,7 +2,7 @@ import { create } from 'zustand'
 
 type CurrentUserType = {
   id: number
-  role: 'ADMIN' | 'S_admin'
+  role: 'ADMIN' | 'S_ADMIN'
 }
 
 export type CurrentUserStoreType = {

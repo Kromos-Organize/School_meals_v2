@@ -1,4 +1,3 @@
-import { yupResolver } from '@hookform/resolvers/yup'
 import LockIcon from '@mui/icons-material/Lock'
 import MailIcon from '@mui/icons-material/Mail'
 import {
@@ -10,16 +9,12 @@ import {
   InputLabel,
   Link,
 } from '@mui/material'
-import { useRouter } from 'next/router'
-import { SubmitHandler, useForm } from 'react-hook-form'
+import { SubmitHandler } from 'react-hook-form'
 import { useTranslation } from 'react-i18next'
 
-import { setCurrentUser, useCurrentUser } from '@/entities'
-import { BtnLink, HiddenBlock, InputRegister, navModel, swalAlert } from '@/shared'
+import { BtnLink, HiddenBlock, InputRegister, navModel } from '@/shared'
 
-import { LoginSchema } from './config'
-import { checkIsRoleSaveUser } from './lib'
-import { submitLogin } from './model'
+import { useLoginForm, useLoginMutate } from './model'
 import styles from './styles.module.scss'
 import { LoginFieldsType } from './types'
 
@@ -28,29 +23,12 @@ export const FormLogin = () => {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<LoginFieldsType>({
-    defaultValues: {
-      email: '',
-      password: '',
-      isAdminDev: false,
-    },
-    resolver: yupResolver(LoginSchema),
-  })
+  } = useLoginForm()
 
+  const { mutate: login, isLoading } = useLoginMutate()
   const { t } = useTranslation('login')
-  const router = useRouter()
-  const setCurrent = useCurrentUser(setCurrentUser)
-  const isLoading = false //! todo временно
 
-  const onSubmit: SubmitHandler<LoginFieldsType> = data => {
-    submitLogin(data)
-      .then(response => {
-        setCurrent({ id: response.id, role: response.role })
-
-        router.push(checkIsRoleSaveUser(response))
-      })
-      .catch(message => swalAlert({ title: t('L_error_login'), html: message, icon: 'error' }))
-  }
+  const onSubmit: SubmitHandler<LoginFieldsType> = data => login(data)
 
   return (
     <div className={styles.window}>
@@ -100,7 +78,7 @@ export const FormLogin = () => {
 
         <Box>
           <Button fullWidth size={'medium'} color={'secondary'} type="submit" variant={'contained'}>
-            {t('L_enter')}
+            {isLoading ? <CircularProgress size={26} style={{ color: 'white' }} /> : t('L_enter')}
           </Button>
 
           <div className={styles.paragraph}>
@@ -111,11 +89,7 @@ export const FormLogin = () => {
             href={`${navModel.MAIN_ROUTE.auth}${navModel.AUTH_ROUTE.registration}`}
             color={'secondary'}
           >
-            {isLoading ? (
-              <CircularProgress size={20} style={{ color: 'white' }} />
-            ) : (
-              t('L_registered')
-            )}
+            {t('L_registered')}
           </BtnLink>
         </Box>
       </form>

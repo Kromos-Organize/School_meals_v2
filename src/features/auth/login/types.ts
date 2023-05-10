@@ -9,7 +9,7 @@ export type SuccessRespLoginType = AdminType | SAdminType
 type AdminType = {
   id: number
   school_id: null | number
-  role: 'S_ADMIN' | 'ADMIN'
+  role: 'ADMIN'
   email: string
   phone: string
   fname: null | string

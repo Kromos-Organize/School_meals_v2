@@ -1,16 +1,48 @@
-import { LS } from '@/shared'
+import { yupResolver } from '@hookform/resolvers/yup'
+import axios from 'axios'
+import { useRouter } from 'next/router'
+import { useForm } from 'react-hook-form'
+import { useTranslation } from 'react-i18next'
+import { useMutation } from 'react-query'
+
+import { setCurrentUser, useCurrentUser } from '@/entities'
+import { LS, noRetryQuery, swalAlert } from '@/shared'
 
 import { requestLogin } from './api'
+import { LoginSchema } from './config'
+import { checkIsRoleSaveUser } from './lib'
 import { LoginFieldsType } from './types'
 
-export const submitLogin = async (data: LoginFieldsType) => {
-  try {
-    const response = await requestLogin(data)
+export const useLoginMutate = () => {
+  const setCurrent = useCurrentUser(setCurrentUser)
+  const { push } = useRouter()
+  const { t } = useTranslation('login')
 
-    LS.set('accessToken', response.accessToken)
+  return useMutation({
+    mutationFn: requestLogin,
+    ...noRetryQuery,
+    onSuccess: res => {
+      LS.set('accessToken', res.data.accessToken)
+      setCurrent({ id: res.data.id, role: res.data.role })
+      push(checkIsRoleSaveUser(res.data))
+    },
+    onError: error => {
+      if (error && axios.isAxiosError(error) && 'response' in error && error?.response) {
+        const message = error.response.data.message
 
-    return response
-  } catch (e: any) {
-    return e.response.data.message
-  }
+        swalAlert({ title: t('L_error_login'), html: message, icon: 'error' })
+      }
+    },
+  })
+}
+
+export const useLoginForm = () => {
+  return useForm<LoginFieldsType>({
+    defaultValues: {
+      email: '',
+      password: '',
+      isAdminDev: false,
+    },
+    resolver: yupResolver(LoginSchema),
+  })
 }

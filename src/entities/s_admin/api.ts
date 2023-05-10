@@ -1,10 +1,10 @@
-import { instance } from '../base'
+import { instance } from '@/shared'
 
-import { ActivateResType, SAdminUserType, UserModerationType } from './types'
+import { ActivateResType, SAdminType, UserModerationType } from './types'
 
 export const s_adminApi = {
   getSAdminUser: (id: number) => {
-    return instance.get<SAdminUserType>(`/admin/${id}`).then(res => res.data)
+    return instance.get<SAdminType>(`/admin/${id}`).then(res => res.data)
   },
   getListModeration: () => {
     return instance.get<UserModerationType[]>('/user/moderation').then(res => res.data)

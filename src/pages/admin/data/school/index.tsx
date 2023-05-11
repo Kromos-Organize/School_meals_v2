@@ -1,9 +1,10 @@
 import { NextPageWithLayout, getLayout } from '@/App'
+import { SchoolPage } from '@/pagesLayer'
 
-const SchoolPage: NextPageWithLayout = () => {
-  return <>SchoolPage</>
+const AdminSchoolPage: NextPageWithLayout = () => {
+  return <SchoolPage />
 }
 
-SchoolPage.getLayout = getLayout
+AdminSchoolPage.getLayout = getLayout
 
-export default SchoolPage
+export default AdminSchoolPage

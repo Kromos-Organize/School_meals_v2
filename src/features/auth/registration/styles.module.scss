@@ -1,31 +1,30 @@
-@import '@/shared/styles/index.module.scss';
 
 .window {
-  @include window();
+  // @include window();
 
-  .header {
-    @include windowHeader($textWhite);
-  }
+  // .header {
+  //   @include windowHeader($textWhite);
+  // }
 
-  .main {
-    @include windowMain($textBlack);
+  // .main {
+  //   @include windowMain($textBlack);
 
-    .input {
-      margin-bottom: 35px;
+  //   .input {
+  //     margin-bottom: 35px;
 
-      p {
-        color: $textError;
-        font-size: 16px;
-        position: absolute;
-        padding-top: 5px;
-        z-index: 100;
-      }
-    }
-  }
+  //     p {
+  //       color: $textError;
+  //       font-size: 16px;
+  //       position: absolute;
+  //       padding-top: 5px;
+  //       z-index: 100;
+  //     }
+  //   }
+  // }
 
-  .paragraph {
+  // .paragraph {
     text-align: center;
     font-size: 16px;
     padding: 10px 0;
-  }
+  // }
 }

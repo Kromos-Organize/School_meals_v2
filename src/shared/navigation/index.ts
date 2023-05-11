@@ -1,2 +1,2 @@
-export * as navModel from './model'
+export * as navModel from './navEnum'
 export type * from './types'

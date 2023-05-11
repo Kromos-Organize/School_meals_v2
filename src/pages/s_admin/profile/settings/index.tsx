@@ -5,6 +5,4 @@ const SAdminSettings: NextPageWithLayout = () => {
   return <SettingsPage />
 }
 
-SAdminSettings.getLayout = getLayout
-
 export default SAdminSettings

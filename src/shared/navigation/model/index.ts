@@ -1,1 +1,0 @@
-export { MAIN_ROUTE, AUTH_ROUTE, S_ADMIN_ROUTE, ADMIN_ROUTE } from './navEnum'

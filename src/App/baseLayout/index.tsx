@@ -1,1 +1,0 @@
-export { getLayout } from './ui'

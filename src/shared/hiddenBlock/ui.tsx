@@ -9,17 +9,14 @@ type PropsType = {
 }
 
 export const HiddenBlock: FC<PropsWithChildren<PropsType>> = memo(({ className, children }) => {
-  const { isVisible, onDoubleClickHandler } = useHiddenBlock()
+  const { isVisible, onClickHandler } = useHiddenBlock()
 
   return (
     <>
       {isVisible ? (
         <>{children}</>
       ) : (
-        <div
-          onDoubleClick={onDoubleClickHandler}
-          className={`${className} ${styles.hiddenBlock}`}
-        />
+        <div onClick={onClickHandler} className={`${className} ${styles.hiddenBlock}`} />
       )}
     </>
   )

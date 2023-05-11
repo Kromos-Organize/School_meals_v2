@@ -6,7 +6,7 @@ import { memo } from 'react'
 import { SubmitHandler } from 'react-hook-form'
 import { useTranslation } from 'react-i18next'
 
-import { BtnLink, InputRegister, navModel } from '@/shared'
+import { InputRegister, navModel } from '@/shared'
 
 import { useRegisterForm, useRegisterMutate } from './model'
 import styles from './styles.module.scss'
@@ -94,12 +94,12 @@ export const FormRegister = memo(() => {
             <p>{t('L_IsAcc')}</p>
           </div>
 
-          <BtnLink
+          {/* <BtnLink
             href={`${navModel.MAIN_ROUTE.auth}${navModel.AUTH_ROUTE.login}`}
             color={'secondary'}
           >
             {t('L_enterAcc')}
-          </BtnLink>
+          </BtnLink> */}
         </Box>
       </form>
     </div>

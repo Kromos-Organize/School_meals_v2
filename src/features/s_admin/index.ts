@@ -1,0 +1,1 @@
+export { FormSettingSAdmin } from './settings'

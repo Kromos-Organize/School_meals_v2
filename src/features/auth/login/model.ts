@@ -6,7 +6,7 @@ import { useTranslation } from 'react-i18next'
 import { useMutation } from 'react-query'
 
 import { setCurrentUser, useCurrentUser } from '@/entities'
-import { LS, checkErrorResponse, noRetryQuery, swalAlert } from '@/shared'
+import { LS, checkErrorResponse, noRefetch, swalAlert } from '@/shared'
 
 import { requestLogin } from './api'
 import { LoginSchema } from './config'
@@ -20,7 +20,7 @@ export const useLoginMutate = () => {
 
   return useMutation({
     mutationFn: requestLogin,
-    ...noRetryQuery,
+    ...noRefetch,
     onSuccess: res => {
       LS.set('accessToken', res.data.accessToken)
       setCurrent({ id: res.data.id, role: res.data.role })

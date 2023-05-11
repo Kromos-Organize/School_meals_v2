@@ -2,12 +2,14 @@ import '@/styles/globals.css'
 
 import { appWithI18Next } from 'ni18n'
 
-import { withProviders, AppPropsWithLayout, i18nConfig } from '@/App/'
+import { WithAuth, withProviders, AppPropsWithLayout, i18nConfig } from '@/App'
 
 function App({ Component, pageProps }: AppPropsWithLayout) {
   return (
     <div className="wrapper">
-      <Component {...pageProps} />
+      <WithAuth>
+        <Component {...pageProps} />
+      </WithAuth>
     </div>
   )
 }

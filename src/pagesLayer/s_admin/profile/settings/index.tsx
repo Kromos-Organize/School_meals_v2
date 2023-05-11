@@ -1,8 +1,9 @@
+import { FormSettingSAdmin } from '@/features'
+
 export const SettingsPage = () => {
   return (
     <>
-      httlo
-      {/* {s_admin.fname} {s_admin.name} */}
+      <FormSettingSAdmin />
     </>
   )
 }

@@ -4,7 +4,7 @@ import { useForm } from 'react-hook-form'
 import { useTranslation } from 'react-i18next'
 import { useMutation } from 'react-query'
 
-import { checkErrorResponse, navModel, noRetryQuery, swalAlert } from '@/shared'
+import { checkErrorResponse, navModel, noRefetch, swalAlert } from '@/shared'
 
 import { requestRegister } from './api'
 import { registerSchema } from './config'
@@ -26,7 +26,7 @@ export const useRegisterMutate = () => {
 
   return useMutation({
     mutationFn: requestRegister,
-    ...noRetryQuery,
+    ...noRefetch,
     onSuccess: res => {
       swalAlert({
         title: t('L_register_success'),

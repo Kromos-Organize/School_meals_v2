@@ -1,2 +1,3 @@
 export { instance } from './base'
-export { noRetryQuery, checkErrorResponse } from './lib'
+export { noRefetch, checkErrorResponse } from './lib'
+export { useRefreshToken } from './refresh'

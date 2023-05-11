@@ -1,11 +1,12 @@
 import axios from 'axios'
 
-export const noRetryQuery = {
+export const noRefetch = {
   refetchInterval: false,
   refetchIntervalInBackground: false,
-  refetchOnWindowFocus: false,
   refetchOnMount: false,
   refetchOnReconnect: false,
+  refetchOnWindowFocus: false,
+  retryOnMount: false,
 }
 
 export const checkErrorResponse = (error: any): string => {

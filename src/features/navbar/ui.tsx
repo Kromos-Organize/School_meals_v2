@@ -1,11 +1,13 @@
 import { memo } from 'react'
 
-import { navigationData, useNavTranslate } from '@/entities'
+import { getCurrentUser, navigationData, useCurrentUser, useNavTranslate } from '@/entities'
 
 import { TreeNav } from '@/shared/treeNav'
-//! добавить получение роли пользователя
+
 export const NavBar = memo(() => {
-  const translateNav = useNavTranslate(navigationData['ADMIN'])
+  const { role } = useCurrentUser(getCurrentUser)
+
+  const translateNav = useNavTranslate(navigationData[role])
 
   return <TreeNav navigation={translateNav} />
 })

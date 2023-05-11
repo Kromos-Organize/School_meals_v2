@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { QueryClient, QueryClientProvider, Hydrate } from 'react-query'
 import { ReactQueryDevtools } from 'react-query/devtools'
 
@@ -5,10 +6,10 @@ import { AppPropsWithLayout } from '@/App'
 
 import { ProviderPropsType } from '../types'
 
-const queryClient = new QueryClient()
+export const withQuery = (component: ProviderPropsType) => (props: AppPropsWithLayout) => {
+  const [queryClient] = useState(() => new QueryClient())
 
-export const withQuery = (component: ProviderPropsType) => (props: AppPropsWithLayout) =>
-  (
+  return (
     <QueryClientProvider client={queryClient} contextSharing>
       <Hydrate state={props.pageProps.dehydrateState}>{component(props)}</Hydrate>
       {process.env.NEXT_PUBLIC_NODE_ENV === 'development' && (
@@ -16,3 +17,4 @@ export const withQuery = (component: ProviderPropsType) => (props: AppPropsWithL
       )}
     </QueryClientProvider>
   )
+}

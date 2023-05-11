@@ -1,14 +1,14 @@
 import { CircularProgress } from '@mui/material'
 import { memo } from 'react'
 
-import { NavBar, useGetSAdmin } from '@/features'
+import { NavBar, useGetSAdminQuery } from '@/features'
 
 import { AvatarInfo } from '@/shared/avatarInfo'
 
 import styles from './styles.module.scss'
 
 export const SideBar = memo(() => {
-  const { user } = useGetSAdmin()
+  const { user } = useGetSAdminQuery()
 
   if (!user) {
     return <CircularProgress />

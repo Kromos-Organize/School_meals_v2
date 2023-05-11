@@ -1,7 +1,7 @@
-import { useGetSAdmin } from './model'
+import { useGetSAdminQuery } from './model'
 
 export const FormSettingSAdmin = () => {
-  const { user } = useGetSAdmin()
+  const { user } = useGetSAdminQuery()
 
   return <>Form</>
 }

@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 export const noRefetch = {
-  refetchInterval: false,
+  // refetchInterval: false,
   refetchIntervalInBackground: false,
   refetchOnMount: false,
   refetchOnReconnect: false,

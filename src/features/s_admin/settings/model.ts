@@ -4,7 +4,7 @@ import { getCurrentUser, useCurrentUser } from '@/entities'
 
 import { getSAdminUser } from './api'
 
-export const useGetSAdmin = () => {
+export const useGetSAdminQuery = () => {
   const { id } = useCurrentUser(getCurrentUser)
 
   const { data } = useQuery({

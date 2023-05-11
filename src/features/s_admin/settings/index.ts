@@ -1,2 +1,2 @@
 export { FormSettingSAdmin } from './ui'
-export { useGetSAdmin } from './model'
+export { useGetSAdminQuery } from './model'

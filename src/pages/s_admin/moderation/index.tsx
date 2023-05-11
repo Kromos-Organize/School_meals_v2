@@ -1,9 +1,10 @@
 import { NextPageWithLayout, getLayout } from '@/App'
+import { ModerationPage } from '@/pagesLayer'
 
-const ModerationPage: NextPageWithLayout = () => {
-  return <>Moderation</>
+const Moderation: NextPageWithLayout = () => {
+  return <ModerationPage />
 }
 
-ModerationPage.getLayout = getLayout
+Moderation.getLayout = getLayout
 
-export default ModerationPage
+export default Moderation

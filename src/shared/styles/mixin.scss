@@ -1,16 +1,5 @@
 @import './variables.scss';
 
-@mixin headTitle {
-  display: flex;
-  align-items: center;
-  font-size: 1.7rem;
-  line-height: 1.1;
-  color: $secondColor;
-  font-weight: normal;
-  background-color: #fff;
-  border-bottom: 1px solid #cfdbe2;
-}
-
 @mixin window {
   width: 450px;
   min-height: $minHeightAuth;

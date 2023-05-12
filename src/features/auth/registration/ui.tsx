@@ -1,7 +1,5 @@
-import LocalPhoneIcon from '@mui/icons-material/LocalPhone'
-import LockIcon from '@mui/icons-material/Lock'
-import MailIcon from '@mui/icons-material/Mail'
-import { Box, Button, CircularProgress, InputAdornment, Stack } from '@mui/material'
+import { EnvelopeIcon, LockClosedIcon, PhoneIcon } from '@heroicons/react/24/solid'
+import { Box, Button, CircularProgress, InputAdornment, Stack, SvgIcon } from '@mui/material'
 import { memo } from 'react'
 import { SubmitHandler } from 'react-hook-form'
 import { useTranslation } from 'react-i18next'
@@ -9,7 +7,6 @@ import { useTranslation } from 'react-i18next'
 import { InputRegister } from '@/shared'
 
 import { useRegisterForm, useRegisterMutate } from './model'
-import styles from './styles.module.scss'
 import { RegistrationFieldsType } from './types'
 
 export const FormRegister = memo(() => {
@@ -25,7 +22,7 @@ export const FormRegister = memo(() => {
   const onSubmit: SubmitHandler<RegistrationFieldsType> = data => registration(data)
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className={styles.main}>
+    <form onSubmit={handleSubmit(onSubmit)}>
       <Stack spacing={3}>
         <InputRegister
           label={t('L_enterEmail')}
@@ -34,7 +31,9 @@ export const FormRegister = memo(() => {
           InputProps={{
             endAdornment: (
               <InputAdornment position={'end'}>
-                <MailIcon />
+                <SvgIcon>
+                  <EnvelopeIcon />
+                </SvgIcon>
               </InputAdornment>
             ),
           }}
@@ -46,7 +45,9 @@ export const FormRegister = memo(() => {
           InputProps={{
             endAdornment: (
               <InputAdornment position={'end'}>
-                <LockIcon />
+                <SvgIcon>
+                  <LockClosedIcon />
+                </SvgIcon>
               </InputAdornment>
             ),
           }}
@@ -58,7 +59,9 @@ export const FormRegister = memo(() => {
           InputProps={{
             endAdornment: (
               <InputAdornment position={'end'}>
-                <LockIcon />
+                <SvgIcon>
+                  <LockClosedIcon />
+                </SvgIcon>
               </InputAdornment>
             ),
           }}
@@ -70,7 +73,9 @@ export const FormRegister = memo(() => {
           InputProps={{
             endAdornment: (
               <InputAdornment position={'end'}>
-                <LocalPhoneIcon />
+                <SvgIcon>
+                  <PhoneIcon />
+                </SvgIcon>
               </InputAdornment>
             ),
           }}

@@ -1,11 +1,9 @@
 import { Box, Typography, Unstable_Grid2 as Grid } from '@mui/material'
-import Image from 'next/image'
 import NextLink from 'next/link'
 import { FC, PropsWithChildren } from 'react'
 import { useTranslation } from 'react-i18next'
 
-/*eslint import/no-unresolved: 0*/
-import Logo from '~/icons_logo_svg.svg'
+import { Logo } from '@/shared'
 
 export const Layout: FC<PropsWithChildren> = ({ children }) => {
   const { t } = useTranslation('providers')
@@ -50,7 +48,7 @@ export const Layout: FC<PropsWithChildren> = ({ children }) => {
               }}
             >
               <div style={{ left: 0, padding: '24px', position: 'fixed', top: 0, width: '100%' }}>
-                <Image src={Logo} width={64} height={64} alt="Picture of the author" />
+                <Logo w={64} h={64} />
               </div>
             </Box>
           </Box>

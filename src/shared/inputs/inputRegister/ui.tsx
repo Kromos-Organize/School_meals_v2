@@ -4,6 +4,7 @@ import { FieldErrors, UseFormRegisterReturn } from 'react-hook-form'
 
 type PropsType = {
   register: UseFormRegisterReturn<string>
+  type?: string
   label: string
   messageError?: string
   color?: 'primary' | 'secondary'

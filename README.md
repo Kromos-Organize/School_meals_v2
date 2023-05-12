@@ -17,6 +17,8 @@
 
 
 [макет](https://github.com/devias-io/material-kit-react)
+[иконки](https://heroicons.com/)
+
 
 
 для использования запросов в компоненте можно использовать useQuery, а для серверного рендеринга надо 

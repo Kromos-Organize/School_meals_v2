@@ -1,5 +1,3 @@
-import HowToRegIcon from '@mui/icons-material/HowToReg'
-import PersonRemoveIcon from '@mui/icons-material/PersonRemove'
 import { Button, Tooltip } from '@mui/material'
 import { FC } from 'react'
 import { useTranslation } from 'react-i18next'
@@ -23,12 +21,12 @@ export const ButtonsAction: FC<PropsType> = ({ id }) => {
     <>
       <Tooltip key="one" title={t('L_activate')}>
         <Button color={'success'} onClick={activate}>
-          <HowToRegIcon />
+          {/* <HowToRegIcon /> */}
         </Button>
       </Tooltip>
       <Tooltip key="two" title={t('L_remove_user')}>
         <Button color={'error'} onClick={remove}>
-          <PersonRemoveIcon />
+          {/* <PersonRemoveIcon /> */}
         </Button>
       </Tooltip>
     </>

@@ -12,8 +12,7 @@ export enum AUTH_ROUTE {
 }
 
 export enum S_ADMIN_ROUTE {
-  schools = '/schools',
-  moderation = '/moderation',
+  users = '/users',
   logs = '/logs',
   settings = '/profile/settings',
 }

@@ -1,5 +1,4 @@
-import LockIcon from '@mui/icons-material/Lock'
-import MailIcon from '@mui/icons-material/Mail'
+import { EnvelopeIcon, LockClosedIcon } from '@heroicons/react/24/solid'
 import {
   Alert,
   Box,
@@ -10,6 +9,7 @@ import {
   InputLabel,
   Link,
   Stack,
+  SvgIcon,
 } from '@mui/material'
 import { SubmitHandler } from 'react-hook-form'
 import { useTranslation } from 'react-i18next'
@@ -41,19 +41,24 @@ export const FormLogin = () => {
           InputProps={{
             endAdornment: (
               <InputAdornment position={'end'}>
-                <MailIcon />
+                <SvgIcon>
+                  <EnvelopeIcon />
+                </SvgIcon>
               </InputAdornment>
             ),
           }}
         />
         <InputRegister
           label={t('L_enterPass')}
+          type={'password'}
           register={register('password')}
           messageError={errors.password && errors.password.message}
           InputProps={{
             endAdornment: (
               <InputAdornment position={'end'}>
-                <LockIcon />
+                <SvgIcon>
+                  <LockClosedIcon />
+                </SvgIcon>
               </InputAdornment>
             ),
           }}

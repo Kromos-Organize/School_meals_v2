@@ -16,7 +16,7 @@
 [наброски по паттернам архитектур](https://www.figma.com/file/M8Y98RdKR1cEqUbt20lWXk/front-end-application-architecture-design?node-id=0-1&t=PaAFkV6QrAAhjj5w-0)
 
 
-[макет](https://github.com/devias-io/material-kit-react)
+[макет](https://github.com/devias-io/material-kit-react) основной
 [иконки](https://heroicons.com/)
 
 

@@ -23,7 +23,7 @@ export const adminItems = [
     ),
   },
   {
-    title: 'settings',
+    title: 'profile',
     path: navModel.MAIN_ROUTE.s_admin + navModel.S_ADMIN_ROUTE.settings,
     icon: (
       <SvgIcon fontSize="small">

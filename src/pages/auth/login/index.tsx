@@ -6,4 +6,5 @@ const Login: NextPageWithLayout = () => {
 }
 
 Login.getLayout = AuthLayout
+
 export default Login

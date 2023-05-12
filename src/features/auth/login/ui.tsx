@@ -14,7 +14,7 @@ import {
 import { SubmitHandler } from 'react-hook-form'
 import { useTranslation } from 'react-i18next'
 
-import { HiddenBlock, InputRegister, navModel } from '@/shared';
+import { HiddenBlock, InputRegister, navModel } from '@/shared'
 
 import { useLoginForm, useLoginMutate } from './model'
 import { LoginFieldsType } from './types'
@@ -85,7 +85,7 @@ export const FormLogin = () => {
 
       <Box>
         <Button fullWidth size="large" sx={{ mt: 3 }} type="submit" variant="contained">
-          {isLoading ? <CircularProgress size={26} style={{ color: 'white' }} /> : t('L_enter')}
+          {isLoading ? <CircularProgress size={26} style={{ color: 'white' }} /> : t('L_continue')}
         </Button>
         <Alert color="info" severity="info" sx={{ mt: 3 }}>
           <div>

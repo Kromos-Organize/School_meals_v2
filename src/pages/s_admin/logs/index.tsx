@@ -1,10 +1,9 @@
-import { NextPageWithLayout, getLayout } from '@/App'
-import { Logs } from '@/pagesLayer'
+import { DashLayout, NextPageWithLayout } from '@/App'
 
-const LogsPage: NextPageWithLayout = () => {
-  return <Logs />
+const Logs: NextPageWithLayout = () => {
+  return <>Logs</>
 }
 
-LogsPage.getLayout = getLayout
+Logs.getLayout = DashLayout
 
-export default LogsPage
+export default Logs

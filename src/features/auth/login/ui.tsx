@@ -1,6 +1,6 @@
-import LockIcon from '@mui/icons-material/Lock'
-import MailIcon from '@mui/icons-material/Mail'
+import { EnvelopeIcon, LockClosedIcon } from '@heroicons/react/24/solid'
 import {
+  Alert,
   Box,
   Button,
   Checkbox,
@@ -8,14 +8,15 @@ import {
   InputAdornment,
   InputLabel,
   Link,
+  Stack,
+  SvgIcon,
 } from '@mui/material'
 import { SubmitHandler } from 'react-hook-form'
 import { useTranslation } from 'react-i18next'
 
-import { BtnLink, HiddenBlock, InputRegister, navModel } from '@/shared'
+import { HiddenBlock, InputRegister, navModel } from '@/shared'
 
 import { useLoginForm, useLoginMutate } from './model'
-import styles from './styles.module.scss'
 import { LoginFieldsType } from './types'
 
 export const FormLogin = () => {
@@ -31,68 +32,72 @@ export const FormLogin = () => {
   const onSubmit: SubmitHandler<LoginFieldsType> = data => login(data)
 
   return (
-    <div className={styles.window}>
-      <div className={styles.header}>{t('L_enter_data')}</div>
-      <form onSubmit={handleSubmit(onSubmit)} className={styles.main}>
+    <form onSubmit={handleSubmit(onSubmit)}>
+      <Stack spacing={3}>
         <InputRegister
           label={t('L_enterEmail')}
           register={register('email')}
           messageError={errors.email && errors.email.message}
-          className={styles.input}
           InputProps={{
             endAdornment: (
               <InputAdornment position={'end'}>
-                <MailIcon />
+                <SvgIcon>
+                  <EnvelopeIcon />
+                </SvgIcon>
               </InputAdornment>
             ),
           }}
         />
         <InputRegister
           label={t('L_enterPass')}
+          type={'password'}
           register={register('password')}
           messageError={errors.password && errors.password.message}
-          className={styles.input}
           InputProps={{
             endAdornment: (
               <InputAdornment position={'end'}>
-                <LockIcon />
+                <SvgIcon>
+                  <LockClosedIcon />
+                </SvgIcon>
               </InputAdornment>
             ),
           }}
         />
+      </Stack>
 
-        <div className={styles.forgotPass}>
-          <HiddenBlock>
-            <InputLabel>
-              <div className={styles.checkbox}>
-                <Checkbox {...register('isAdminDev')} />
-                <p tabIndex={-1}>Разработчик</p>
-              </div>
-            </InputLabel>
-          </HiddenBlock>
+      <Stack
+        spacing={1}
+        direction="row"
+        sx={{ mb: 3, display: 'flex', justifyContent: 'space-between' }}
+      >
+        <HiddenBlock>
+          <InputLabel>
+            <Stack direction="row">
+              <Checkbox {...register('isAdminDev')} />
+              <p tabIndex={-1}>Разработчик</p>
+            </Stack>
+          </InputLabel>
+        </HiddenBlock>
 
-          <Link href={`${navModel.MAIN_ROUTE.auth}${navModel.AUTH_ROUTE.forgotPass}`}>
-            <p>{t('L_forgotPass')}</p>
-          </Link>
-        </div>
+        <Link
+          href={`${navModel.MAIN_ROUTE.auth}${navModel.AUTH_ROUTE.forgotPass}`}
+          underline="hover"
+          variant="subtitle2"
+        >
+          <p>{t('L_forgotPass')}</p>
+        </Link>
+      </Stack>
 
-        <Box>
-          <Button fullWidth size={'medium'} color={'secondary'} type="submit" variant={'contained'}>
-            {isLoading ? <CircularProgress size={26} style={{ color: 'white' }} /> : t('L_enter')}
-          </Button>
-
-          <div className={styles.paragraph}>
-            <p>{t('L_isLogIn')}</p>
+      <Box>
+        <Button fullWidth size="large" sx={{ mt: 3 }} type="submit" variant="contained">
+          {isLoading ? <CircularProgress size={26} style={{ color: 'white' }} /> : t('L_continue')}
+        </Button>
+        <Alert color="info" severity="info" sx={{ mt: 3 }}>
+          <div>
+            {t('L_helper')} - <b>krakenHRI@gmail.com</b>
           </div>
-
-          <BtnLink
-            href={`${navModel.MAIN_ROUTE.auth}${navModel.AUTH_ROUTE.registration}`}
-            color={'secondary'}
-          >
-            {t('L_registered')}
-          </BtnLink>
-        </Box>
-      </form>
-    </div>
+        </Alert>
+      </Box>
+    </form>
   )
 }

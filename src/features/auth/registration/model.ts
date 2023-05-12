@@ -10,16 +10,6 @@ import { requestRegister } from './api'
 import { registerSchema } from './config'
 import { RegistrationFieldsType } from './types'
 
-export const submitRegister = async (data: RegistrationFieldsType) => {
-  try {
-    await requestRegister(data)
-
-    return `${navModel.MAIN_ROUTE.auth}${navModel.AUTH_ROUTE.login}`
-  } catch (e: any) {
-    return e.response.data.message
-  }
-}
-
 export const useRegisterMutate = () => {
   const { push } = useRouter()
   const { t } = useTranslation('register')

@@ -6,7 +6,7 @@ import { ChangeEvent } from './types'
 export const useHiddenBlock = () => {
   const [isVisible, setIsVisible] = useState(false)
 
-  const onDoubleClickHandler = (e: ChangeEvent): void => {
+  const onClickHandler = (e: ChangeEvent): void => {
     if (isKeyboardEvent(e)) {
       if (e.altKey && e.ctrlKey) {
         setIsVisible(true)
@@ -16,6 +16,6 @@ export const useHiddenBlock = () => {
 
   return {
     isVisible,
-    onDoubleClickHandler,
+    onClickHandler,
   }
 }

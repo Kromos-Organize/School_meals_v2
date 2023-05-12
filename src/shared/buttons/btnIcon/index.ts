@@ -1,1 +1,0 @@
-export { BtnIcon } from './ui'

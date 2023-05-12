@@ -1,4 +1,4 @@
-import { QueryClient, useMutation, useQuery, useQueryClient } from 'react-query'
+import { useMutation, useQuery, useQueryClient } from 'react-query'
 
 import { noRefetch, swalAlert } from '@/shared'
 
@@ -31,6 +31,7 @@ export const useRemoveUserModerationMutate = () => {
 
   return useMutation({
     mutationFn: moderationApi.removeUser,
+    ...noRefetch,
     onSuccess: res => {
       swalAlert({
         title: 'Выполнено',

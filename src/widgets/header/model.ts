@@ -3,16 +3,16 @@ import { useMutation } from 'react-query'
 
 import { navModel, noRefetch } from '@/shared'
 
-import { requestLogout } from './api'
+import { logOut } from './api'
 
-export const useLogout = () => {
+export const useLogOutMutate = () => {
   const { push } = useRouter()
 
   return useMutation({
-    mutationFn: requestLogout,
+    mutationFn: logOut,
     ...noRefetch,
     onSuccess: res => {
-      push(`${navModel.MAIN_ROUTE.auth}${navModel.AUTH_ROUTE.login}`)
+      push(navModel.MAIN_ROUTE.auth + navModel.AUTH_ROUTE.login)
     },
   })
 }

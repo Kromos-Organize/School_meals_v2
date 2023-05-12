@@ -16,6 +16,9 @@
 [наброски по паттернам архитектур](https://www.figma.com/file/M8Y98RdKR1cEqUbt20lWXk/front-end-application-architecture-design?node-id=0-1&t=PaAFkV6QrAAhjj5w-0)
 
 
+[макет](https://github.com/devias-io/material-kit-react)
+
+
 для использования запросов в компоненте можно использовать useQuery, а для серверного рендеринга надо 
 `const queryClient = new QueryClient()
 queryClient.fetchQuery(

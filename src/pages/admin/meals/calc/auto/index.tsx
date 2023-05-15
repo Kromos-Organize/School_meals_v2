@@ -1,9 +1,9 @@
-import { NextPageWithLayout, getLayout } from '@/App'
+import { NextPageWithLayout, DashLayout } from '@/App'
 
 const AutoCalcPage: NextPageWithLayout = () => {
   return <>AutoCalcPage</>
 }
 
-AutoCalcPage.getLayout = getLayout
+AutoCalcPage.getLayout = DashLayout
 
 export default AutoCalcPage

@@ -1,2 +1,2 @@
 export { FormSettingSAdmin, useGetSAdminQuery } from './settings'
-export { TableModeration } from './moderation'
+export { TableModeration } from '../../widgets/table/users'

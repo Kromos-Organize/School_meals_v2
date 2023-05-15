@@ -1,9 +1,7 @@
 import { Box } from '@mui/material'
-import { styled } from '@mui/material/styles'
 import { FC, PropsWithChildren } from 'react'
-import SimpleBar from 'simplebar-react'
 
-const Scrollbar = styled(SimpleBar)``
+import { Scrollbar } from '@/shared'
 
 export const SideWrapper: FC<PropsWithChildren> = ({ children }) => (
   <Scrollbar

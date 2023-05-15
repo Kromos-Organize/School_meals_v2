@@ -1,9 +1,9 @@
-import { NextPageWithLayout, getLayout } from '@/App'
+import { NextPageWithLayout, DashLayout } from '@/App'
 
 const StudentsPage: NextPageWithLayout = () => {
   return <>StudentsPage</>
 }
 
-StudentsPage.getLayout = getLayout
+StudentsPage.getLayout = DashLayout
 
 export default StudentsPage

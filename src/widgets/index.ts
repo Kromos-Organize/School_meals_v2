@@ -1,6 +1,6 @@
-export { ModerationTable } from './tables/moderation'
 export { LoginWidget } from './login'
 export { RegisterWidget } from './register'
 export { LayoutContent } from './layoutContent'
 export { Header } from './header'
 export { SideBar } from './sidebar'
+export { ShowTableUsers } from './table/users'

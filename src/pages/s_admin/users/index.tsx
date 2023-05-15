@@ -1,7 +1,8 @@
 import { DashLayout, NextPageWithLayout } from '@/App'
+import { UsersPage } from '@/pagesLayer'
 
 const Users: NextPageWithLayout = () => {
-  return <>Users</>
+  return <UsersPage />
 }
 
 Users.getLayout = DashLayout

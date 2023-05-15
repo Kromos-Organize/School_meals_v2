@@ -1,4 +1,4 @@
-export type UserModerationType = {
+export type UserType = {
   id: number
   school_id: number
   role: 'ADMIN'
@@ -9,6 +9,7 @@ export type UserModerationType = {
   lname?: string
   birthday?: string
   isActive: boolean
+  is_block: boolean
 }
 
 export type ActivateResType = {

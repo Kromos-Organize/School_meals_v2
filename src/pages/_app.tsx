@@ -1,12 +1,13 @@
+import { SessionProvider } from 'next-auth/react'
 import { appWithI18Next } from 'ni18n'
 
-import { WithAuth, withProviders, AppPropsWithLayout, i18nConfig } from '@/App'
+import { withProviders, AppPropsWithLayout, i18nConfig } from '@/App'
 
-function App({ Component, pageProps }: AppPropsWithLayout) {
+function App({ Component, pageProps: { session, ...pageProps } }: AppPropsWithLayout) {
   return (
-    <WithAuth>
+    <SessionProvider session={session}>
       <Component {...pageProps} />
-    </WithAuth>
+    </SessionProvider>
   )
 }
 

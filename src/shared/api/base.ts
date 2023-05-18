@@ -3,6 +3,9 @@ import axios, { AxiosError } from 'axios'
 export type AuthResponse = {
   id: number
   role: 'ADMIN' | 'S_ADMIN'
+  fname: string
+  name: string
+  lname: string
   accessToken: string
 }
 
@@ -34,7 +37,7 @@ instance.interceptors.response.use(
 
         return instance.request(originalRequest)
       } catch (err: any | AxiosError) {
-        console.log(err)
+        // console.log(err)
       }
     }
     throw error

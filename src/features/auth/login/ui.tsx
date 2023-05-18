@@ -11,6 +11,8 @@ import {
   Stack,
   SvgIcon,
 } from '@mui/material'
+import { useRouter } from 'next/router'
+import { signIn } from 'next-auth/react'
 import { SubmitHandler } from 'react-hook-form'
 import { useTranslation } from 'react-i18next'
 
@@ -26,10 +28,20 @@ export const FormLogin = () => {
     formState: { errors },
   } = useLoginForm()
 
+  const { push } = useRouter()
   const { mutate: login, isLoading } = useLoginMutate()
   const { t } = useTranslation('login')
 
-  const onSubmit: SubmitHandler<LoginFieldsType> = data => login(data)
+  // const onSubmit: SubmitHandler<LoginFieldsType> = data => login(data)
+  const onSubmit: SubmitHandler<LoginFieldsType> = async data => {
+    const res = await signIn('credentials', {
+      ...data,
+      redirect: false,
+      // callbackUrl: '/s_admin/users',
+    })
+
+    if (res?.ok) push('/s_admin/users')
+  }
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>

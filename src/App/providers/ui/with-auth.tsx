@@ -7,16 +7,16 @@ import { LS, useRefreshToken } from '@/shared'
 export const WithAuth: FC<PropsWithChildren> = ({ children }) => {
   const setCurrent = useCurrentUser(setCurrentUser)
 
-  const { data, isSuccess } = useRefreshToken()
+  // const { data, isSuccess } = useRefreshToken()
 
-  useEffect(() => {
-    if (isSuccess) {
-      const { accessToken, ...user } = data.data
+  // useEffect(() => {
+  //   if (isSuccess) {
+  //     const { accessToken, ...user } = data.data
 
-      setCurrent(user)
-      LS.set('accessToken', accessToken)
-    }
-  }, [isSuccess])
+  //     setCurrent(user)
+  //     LS.set('accessToken', accessToken)
+  //   }
+  // }, [isSuccess])
 
   return <>{children}</>
 }

@@ -1,8 +1,11 @@
 import { create } from 'zustand'
 
-type CurrentUserType = {
+export type CurrentUserType = {
   id: number
   role: 'ADMIN' | 'S_ADMIN'
+  fname: string
+  name: string
+  lname: string
 }
 
 export type CurrentUserStoreType = {
@@ -14,6 +17,9 @@ export const useCurrentUser = create<CurrentUserStoreType>()(set => ({
   user: {
     id: 0,
     role: 'ADMIN',
+    fname: '',
+    name: '',
+    lname: '',
   },
   setCurrentUser: (user: CurrentUserType) => set(state => ({ ...state, user: { ...user } })),
 }))

@@ -1,14 +1,20 @@
-import { Box, Stack, Typography } from '@mui/material'
+import { ChevronDownIcon } from '@heroicons/react/24/solid'
+import { Box, Stack, Typography, SvgIcon } from '@mui/material'
 import { usePathname } from 'next/navigation'
 import { useTranslation } from 'react-i18next'
 
-import { NavItem } from '@/shared'
+import { getRole, useCurrentUser } from '@/entities'
+import { Accordion, AccordionDetails, AccordionSummary, NavItem } from '@/shared'
 
-import { adminItems } from './model'
+import { checkRoleUserGetItem } from './lib'
 
 export const Navbar = () => {
   const { t } = useTranslation('navData')
   const pathname = usePathname()
+
+  const currentRole = useCurrentUser(getRole)
+
+  const items = checkRoleUserGetItem(currentRole)
 
   return (
     <Box
@@ -29,34 +35,37 @@ export const Navbar = () => {
         }}
       >
         <Typography variant="subtitle2" color="textSecondary"></Typography>
-        {adminItems.map(item => {
+
+        {items.map(item => {
           const active = item.path ? pathname === item.path : false
 
-          // debugger
-          // let subPath = []
-
-          // if (item.subPath) {
-          //   subPath = item.subPath.map(sub => {
-          //     const active = sub.path ? pathname === sub.path : false
-
-          //     return (
-          //       <NavItem
-          //         active={active}
-          //         icon={sub.icon}
-          //         key={sub.title}
-          //         path={sub.path}
-          //         title={t(`L_${sub.title}`)}
-          //       />
-          //     )
-          //   })
-
-          //   return (
-          //     <>
-          //       <Typography variant="subtitle2" color="textSecondary"></Typography>
-          //       {subPath}
-          //     </>
-          //   )
-          // }
+          if (item.children.length) {
+            return (
+              <Accordion key={item.title}>
+                <AccordionSummary
+                  id="panel1a-header"
+                  expandIcon={
+                    <SvgIcon>
+                      <ChevronDownIcon />
+                    </SvgIcon>
+                  }
+                >
+                  <Typography>{item.title}</Typography>
+                </AccordionSummary>
+                {item.children.map(childItem => (
+                  <AccordionDetails key={childItem.title}>
+                    <NavItem
+                      active={active}
+                      icon={childItem.icon}
+                      key={childItem.title}
+                      path={childItem.path}
+                      title={t(`L_${childItem.title}`)}
+                    />
+                  </AccordionDetails>
+                ))}
+              </Accordion>
+            )
+          }
 
           return (
             <NavItem

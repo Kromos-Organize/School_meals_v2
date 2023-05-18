@@ -1,11 +1,14 @@
 import { Drawer, useMediaQuery, Box, Typography, Divider } from '@mui/material'
 
+import { getRole, useCurrentUser } from '@/entities'
 import { LogoSide, Navbar, SideWrapper } from '@/features'
 import { useBoolean } from '@/hooks'
 import { InfoCabinet } from '@/shared'
 
 export const SideBar = () => {
   const { value, setFalse } = useBoolean()
+
+  const currentRole = useCurrentUser(getRole)
 
   //@ts-ignore
   const lgUp = useMediaQuery(theme => theme.breakpoints.up('lg'))
@@ -14,7 +17,7 @@ export const SideBar = () => {
     <SideWrapper>
       <Box sx={{ p: 3 }}>
         <LogoSide />
-        <InfoCabinet />
+        <InfoCabinet role={currentRole} />
       </Box>
       <Divider sx={{ borderColor: 'neutral.600' }} />
       <Navbar />

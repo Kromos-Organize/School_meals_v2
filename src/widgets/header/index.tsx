@@ -1,7 +1,7 @@
 import { Box, Stack, useMediaQuery } from '@mui/material'
 import { alpha } from '@mui/material/styles'
 
-import { useGetSAdminQuery } from '@/features'
+import { getCurrentUser, getFullNameUser, useCurrentUser } from '@/entities'
 import { DataUser } from '@/shared'
 
 import { useLogOutMutate } from './model'
@@ -13,10 +13,8 @@ export const Header = () => {
   //@ts-ignore
   const lgUp = useMediaQuery(theme => theme.breakpoints.up('lg'))
 
-  const { user } = useGetSAdminQuery()
+  const fullName = useCurrentUser(getFullNameUser)
   const { mutate: logoutCabinet } = useLogOutMutate()
-
-  const info = user ? `${user.fname} ${user.name}` : ''
 
   return (
     <>
@@ -47,7 +45,7 @@ export const Header = () => {
           }}
         >
           <Stack alignItems="center" direction="row" spacing={2}>
-            <DataUser info={info} logout={logoutCabinet} />
+            <DataUser info={fullName} logout={logoutCabinet} />
           </Stack>
         </Stack>
       </Box>

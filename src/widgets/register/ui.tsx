@@ -1,4 +1,5 @@
-import { Box } from '@mui/material'
+import { Box, Button } from '@mui/material'
+import { signIn } from 'next-auth/react'
 import { useTranslation } from 'react-i18next'
 
 import { FormRegister } from '@/features'

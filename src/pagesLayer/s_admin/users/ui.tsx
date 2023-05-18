@@ -1,5 +1,4 @@
 import { Box, Container, Stack } from '@mui/material'
-import { useSession } from 'next-auth/react'
 import { memo, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 
@@ -9,9 +8,6 @@ import { ShowTableUsers } from '@/widgets'
 export const UsersPage = memo(() => {
   const { t } = useTranslation('users')
   const [searchValue, setSearchValue] = useState<string>('')
-  const { data: session } = useSession()
-
-  console.log(session?.user)
 
   return (
     <>

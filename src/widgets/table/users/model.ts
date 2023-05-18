@@ -1,17 +1,24 @@
 import { useMutation, useQuery, useQueryClient } from 'react-query'
 
-import { noRefetch, swalAlert } from '@/shared'
+import { UserType } from '@/features'
+import { noRefetch, swalAlert, useAxiosAuth } from '@/shared'
 
 import { moderationApi } from './api'
 
-export const useListUsersQuery = () =>
-  useQuery({
-    queryKey: ['users_list'],
-    queryFn: moderationApi.getUsersList,
+export const useListUsersQuery = () => {
+  const authInstance = useAxiosAuth()
+
+  const getUsersList = () => authInstance.get<UserType[]>('/user/list').then(res => res.data)
+
+  return useQuery({
+    queryKey: ['users_list', authInstance],
+    queryFn: getUsersList,
+    enabled: !!authInstance,
     ...noRefetch,
     refetchInterval: false,
     refetchOnMount: true,
   })
+}
 
 export const useActivateUserMutate = () => {
   const queryClient = useQueryClient()

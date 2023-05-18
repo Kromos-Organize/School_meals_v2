@@ -1,20 +1,24 @@
-import type { NextRequest } from 'next/server'
 import { NextResponse } from 'next/server'
+import { withAuth } from 'next-auth/middleware'
 
-export async function middleware(req: NextRequest) {
-  // const jwt = req.cookies.get('refreshToken')
-  // const { pathname } = req.nextUrl
+export default withAuth(
+  function middleware(req) {
+    if (req.nextUrl.pathname.startsWith('/s_admin') && req.nextauth.token?.role !== 'S_ADMIN') {
+      req.nextUrl.pathname = '/auth/login'
 
-  // if (jwt || pathname.includes('/auth/login')) {
-  //   return NextResponse.next()
-  // }
-  // if (
-  //   !jwt &&
-  //   (pathname.startsWith('/admin') || pathname.startsWith('/s_admin') || pathname.length === 1)
-  // ) {
-  //   req.nextUrl.pathname = '/auth/login'
+      return NextResponse.redirect(req.nextUrl)
+    }
+    if (req.nextUrl.pathname.startsWith('/admin') && req.nextauth.token?.role !== 'ADMIN') {
+      req.nextUrl.pathname = '/auth/login'
 
-  //   return NextResponse.redirect(req.nextUrl)
-  // }
-  return NextResponse.next()
-}
+      return NextResponse.redirect(req.nextUrl)
+    }
+  },
+  {
+    callbacks: {
+      authorized: ({ token }) => !!token,
+    },
+  }
+)
+
+export const config = { matcher: ['/s_admin/:path*', '/admin/:path*'] }

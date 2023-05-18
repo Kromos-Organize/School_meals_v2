@@ -3,11 +3,13 @@ import { FC } from 'react'
 import { useTranslation } from 'react-i18next'
 
 type PropsType = {
-  role: 'ADMIN' | 'S_ADMIN'
+  role: 'ADMIN' | 'S_ADMIN' | undefined
 }
 
 export const InfoCabinet: FC<PropsType> = ({ role }) => {
   const { t } = useTranslation('navData')
+
+  const roleCurrent = role ?? 'ADMIN'
 
   return (
     <Box
@@ -27,7 +29,7 @@ export const InfoCabinet: FC<PropsType> = ({ role }) => {
           School Meals
         </Typography>
         <Typography color="neutral.400" variant="body2">
-          {t(`L_${role}`)}
+          {t(`L_${roleCurrent}`)}
         </Typography>
       </div>
     </Box>

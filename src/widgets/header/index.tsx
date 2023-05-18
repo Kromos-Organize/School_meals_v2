@@ -1,7 +1,8 @@
 import { Box, Stack, useMediaQuery } from '@mui/material'
 import { alpha } from '@mui/material/styles'
+import { useSession } from 'next-auth/react'
 
-import { getCurrentUser, getFullNameUser, useCurrentUser } from '@/entities'
+import { useCurrentUser } from '@/hooks'
 import { DataUser } from '@/shared'
 
 import { useLogOutMutate } from './model'
@@ -13,7 +14,9 @@ export const Header = () => {
   //@ts-ignore
   const lgUp = useMediaQuery(theme => theme.breakpoints.up('lg'))
 
-  const fullName = useCurrentUser(getFullNameUser)
+  const user = useCurrentUser()
+
+  const fullName = user ? `${user.fname} ${user.name}` : ''
   const { mutate: logoutCabinet } = useLogOutMutate()
 
   return (

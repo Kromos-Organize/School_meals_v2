@@ -3,7 +3,7 @@ import { Box, Stack, Typography, SvgIcon } from '@mui/material'
 import { usePathname } from 'next/navigation'
 import { useTranslation } from 'react-i18next'
 
-import { getRole, useCurrentUser } from '@/entities'
+import { useCurrentUser } from '@/hooks'
 import { Accordion, AccordionDetails, AccordionSummary, NavItem } from '@/shared'
 
 import { checkRoleUserGetItem } from './lib'
@@ -12,9 +12,9 @@ export const Navbar = () => {
   const { t } = useTranslation('navData')
   const pathname = usePathname()
 
-  const currentRole = useCurrentUser(getRole)
+  const user = useCurrentUser()
 
-  const items = checkRoleUserGetItem(currentRole)
+  const items = checkRoleUserGetItem(user?.role ?? 'ADMIN')
 
   return (
     <Box

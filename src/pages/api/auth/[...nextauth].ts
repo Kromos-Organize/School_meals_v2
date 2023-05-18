@@ -8,8 +8,6 @@ import { instance } from '@/shared'
 const authOptions: NextAuthOptions = {
   callbacks: {
     async jwt({ token, user, account }) {
-      console.log(account)
-
       return { ...token, ...user }
     },
     async session({ session, token, user }) {
@@ -25,7 +23,7 @@ const authOptions: NextAuthOptions = {
     CredentialsProvider({
       // id: 'auth_login_back',
       name: 'Credentials',
-      // type: 'credentials',
+      type: 'credentials',
       credentials: {
         email: { label: 'Email', type: 'text' },
         password: { label: 'Password', type: 'password' },
@@ -54,30 +52,6 @@ const authOptions: NextAuthOptions = {
             }) || null
         )
       },
-      // async authorize(credentials, req) {
-      // const res = await axios.post('http://localhost:5001/auth/login', {
-      //   email: credentials?.email,
-      //   password: credentials?.password,
-      //   isAdminDev: credentials?.isAdminDev,
-      // })
-
-      // console.log(res)
-      // const user = res.data
-
-      // const res = await fetch('http://localhost:5001/auth/login', {
-      //   method: 'POST',
-      //   headers: { 'Content-Type': 'application/json' },
-      //   body: JSON.stringify(credentials),
-      // })
-
-      // const user = await res.json()
-
-      // if (res.ok && user) {
-      //   return user
-      // }
-
-      // return null
-      // },
     }),
   ],
 }

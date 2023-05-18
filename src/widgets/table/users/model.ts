@@ -1,8 +1,6 @@
-import { useRouter } from 'next/router'
 import { useMutation, useQuery, useQueryClient } from 'react-query'
 
-import { setCurrentUser, useCurrentUser } from '@/entities'
-import { LS, navModel, noRefetch, swalAlert } from '@/shared'
+import { noRefetch, swalAlert } from '@/shared'
 
 import { moderationApi } from './api'
 
@@ -55,19 +53,17 @@ export const useUnlockUserMutate = () => {
 }
 
 export const useLoginCabinetMutate = () => {
-  const { push } = useRouter()
-
-  const setCurrent = useCurrentUser(setCurrentUser)
-
-  return useMutation({
-    mutationFn: moderationApi.signInCabinet,
-    ...noRefetch,
-    onSuccess: res => {
-      LS.set('accessToken', res.data.accessToken)
-      setCurrent({ id: res.data.id, role: res.data.role })
-      push(navModel.MAIN_ROUTE.admin + navModel.ADMIN_ROUTE.settings)
-    },
-  })
+  // const { push } = useRouter()
+  // const setCurrent = useCurrentUser(setCurrentUser)
+  // return useMutation({
+  //   mutationFn: moderationApi.signInCabinet,
+  //   ...noRefetch,
+  //   onSuccess: res => {
+  //     LS.set('accessToken', res.data.accessToken)
+  //     setCurrent({ id: res.data.id, role: res.data.role })
+  //     push(navModel.MAIN_ROUTE.admin + navModel.ADMIN_ROUTE.settings)
+  //   },
+  // })
 }
 
 // export const useRemoveUserModerationMutate = () => {

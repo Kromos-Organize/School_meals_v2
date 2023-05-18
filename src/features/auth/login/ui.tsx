@@ -12,13 +12,14 @@ import {
   SvgIcon,
 } from '@mui/material'
 import { useRouter } from 'next/router'
-import { signIn } from 'next-auth/react'
+import { signIn, useSession } from 'next-auth/react'
+import { useEffect } from 'react'
 import { SubmitHandler } from 'react-hook-form'
 import { useTranslation } from 'react-i18next'
 
-import { HiddenBlock, InputRegister, navModel } from '@/shared'
+import { HiddenBlock, InputRegister, navModel, swalAlert } from '@/shared'
 
-import { useLoginForm, useLoginMutate } from './model'
+import { useLoginForm } from './model'
 import { LoginFieldsType } from './types'
 
 export const FormLogin = () => {
@@ -29,18 +30,27 @@ export const FormLogin = () => {
   } = useLoginForm()
 
   const { push } = useRouter()
-  const { mutate: login, isLoading } = useLoginMutate()
   const { t } = useTranslation('login')
 
-  // const onSubmit: SubmitHandler<LoginFieldsType> = data => login(data)
+  const { data: session } = useSession()
+
+  useEffect(() => {
+    if (session?.user.role) {
+      const path = `/${session.user.role.toLowerCase()}/profile/settings`
+
+      push(path)
+    }
+  }, [session?.user])
+
   const onSubmit: SubmitHandler<LoginFieldsType> = async data => {
     const res = await signIn('credentials', {
       ...data,
       redirect: false,
-      // callbackUrl: '/s_admin/users',
     })
 
-    if (res?.ok) push('/s_admin/users')
+    if (res?.error) {
+      swalAlert({ title: t('L_error_login'), html: res?.error, icon: 'error' })
+    }
   }
 
   return (
@@ -102,7 +112,7 @@ export const FormLogin = () => {
 
       <Box>
         <Button fullWidth size="large" sx={{ mt: 3 }} type="submit" variant="contained">
-          {isLoading ? <CircularProgress size={26} style={{ color: 'white' }} /> : t('L_continue')}
+          {t('L_continue')}
         </Button>
         <Alert color="info" severity="info" sx={{ mt: 3 }}>
           <div>

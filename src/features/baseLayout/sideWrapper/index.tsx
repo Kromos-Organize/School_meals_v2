@@ -13,6 +13,7 @@ export const SideWrapper: FC<PropsWithChildren> = ({ children }) => (
       '& .simplebar-scrollbar:before': {
         background: 'neutral.400',
       },
+      overflowY: 'hidden',
     }}
   >
     <Box

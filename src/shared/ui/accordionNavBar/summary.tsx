@@ -13,13 +13,21 @@ export const AccordionSummary = styled((props: AccordionSummaryProps) => (
     {...props}
   />
 ))(({ theme }) => ({
-  backgroundColor:
-    theme.palette.mode === 'dark' ? 'rgba(255, 255, 255, .05)' : 'rgba(0, 0, 0, .03)',
-  flexDirection: 'row-reverse',
-  '& .MuiAccordionSummary-expandIconWrapper.Mui-expanded': {
-    transform: 'rotate(90deg)',
+  color: '#aab5c4',
+  flexGrow: 1,
+  fontFamily: theme.typography.fontFamily,
+  fontSize: 14,
+  fontWeight: 600,
+  lineHeight: '24px',
+  whiteSpace: 'nowrap',
+  borderRadius: 15,
+  '&:hover': {
+    backgroundColor: 'rgba(255, 255, 255, 0.04)',
   },
-  '& .MuiAccordionSummary-content': {
-    marginLeft: theme.spacing(1),
+  '&:active': {
+    color: 'common.white',
+  },
+  '&:disabled': {
+    color: 'neutral.500',
   },
 }))

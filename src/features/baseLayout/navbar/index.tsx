@@ -1,20 +1,80 @@
-import { ChevronDownIcon } from '@heroicons/react/24/solid'
-import { Box, Stack, Typography, SvgIcon } from '@mui/material'
+import { Box, Stack, Typography } from '@mui/material'
 import { usePathname } from 'next/navigation'
+import { SyntheticEvent, useMemo, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 
 import { useCurrentUser } from '@/hooks'
-import { Accordion, AccordionDetails, AccordionSummary, NavItem } from '@/shared'
+import { Accordion, AccordionSummary, NavItem } from '@/shared'
 
 import { checkRoleUserGetItem } from './lib'
+import { Details } from './ui/details'
 
 export const Navbar = () => {
   const { t } = useTranslation('navData')
   const pathname = usePathname()
-
   const user = useCurrentUser()
 
+  const [expanded, setExpanded] = useState<string | false>(false)
+
+  const handleChange = (id: string) => (event: SyntheticEvent, isExpanded: boolean) => {
+    setExpanded(isExpanded ? id : false)
+  }
+
   const items = checkRoleUserGetItem(user?.role ?? 'ADMIN')
+
+  const drawItems = items.map(item => {
+    const active = item.path ? pathname === item.path : false
+
+    if (item.children.length) {
+      const detailsDraw = useMemo(() => {
+        return item.children.map(childItem => {
+          const active = childItem.path ? pathname === childItem.path : false
+
+          if (active) setExpanded(item.title)
+
+          return <Details key={childItem.title} active={active} childItem={childItem} />
+        })
+      }, [item, pathname])
+
+      return (
+        <Accordion
+          key={item.title}
+          expanded={expanded === item.title}
+          onChange={handleChange(item.title)}
+        >
+          <AccordionSummary id={item.title}>
+            <Box
+              component="span"
+              sx={{
+                alignItems: 'center',
+                color: '#aab5c4',
+                display: 'inline-flex',
+                justifyContent: 'center',
+                mr: 2,
+                ...(active && {
+                  color: 'primary.main',
+                }),
+              }}
+            >
+              {item.icon}
+            </Box>
+            <Typography>{t(`${item.title}`)}</Typography>
+          </AccordionSummary>
+          {detailsDraw}
+        </Accordion>
+      )
+    }
+
+    return (
+      <NavItem
+        active={active}
+        icon={item.icon}
+        key={item.title}
+        path={item.path}
+        title={t(`${item.title}`)}
+      />
+    )
+  })
 
   return (
     <Box
@@ -34,49 +94,7 @@ export const Navbar = () => {
           m: 0,
         }}
       >
-        <Typography variant="subtitle2" color="textSecondary"></Typography>
-
-        {items.map(item => {
-          const active = item.path ? pathname === item.path : false
-
-          if (item.children.length) {
-            return (
-              <Accordion key={item.title}>
-                <AccordionSummary
-                  id="panel1a-header"
-                  expandIcon={
-                    <SvgIcon>
-                      <ChevronDownIcon />
-                    </SvgIcon>
-                  }
-                >
-                  <Typography>{item.title}</Typography>
-                </AccordionSummary>
-                {item.children.map(childItem => (
-                  <AccordionDetails key={childItem.title}>
-                    <NavItem
-                      active={active}
-                      icon={childItem.icon}
-                      key={childItem.title}
-                      path={childItem.path}
-                      title={t(`L_${childItem.title}`)}
-                    />
-                  </AccordionDetails>
-                ))}
-              </Accordion>
-            )
-          }
-
-          return (
-            <NavItem
-              active={active}
-              icon={item.icon}
-              key={item.title}
-              path={item.path}
-              title={t(`L_${item.title}`)}
-            />
-          )
-        })}
+        {drawItems}
       </Stack>
     </Box>
   )

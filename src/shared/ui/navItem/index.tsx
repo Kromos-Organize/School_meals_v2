@@ -49,7 +49,7 @@ export const NavItem: FC<PropsType> = ({
             component="span"
             sx={{
               alignItems: 'center',
-              color: 'neutral.400',
+              color: '#aab5c4',
               display: 'inline-flex',
               justifyContent: 'center',
               mr: 2,
@@ -64,7 +64,7 @@ export const NavItem: FC<PropsType> = ({
         <Box
           component="span"
           sx={{
-            color: 'neutral.400',
+            color: '#aab5c4',
             flexGrow: 1,
             fontFamily: theme => theme.typography.fontFamily,
             fontSize: 14,

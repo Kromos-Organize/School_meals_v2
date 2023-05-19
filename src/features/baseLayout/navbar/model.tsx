@@ -1,21 +1,35 @@
-import { UsersIcon, CogIcon, CodeBracketIcon } from '@heroicons/react/24/solid'
+import {
+  UsersIcon,
+  CodeBracketIcon,
+  CalculatorIcon,
+  CommandLineIcon,
+  ClockIcon,
+  HandRaisedIcon,
+  ArchiveBoxIcon,
+  BuildingLibraryIcon,
+  AcademicCapIcon,
+  BriefcaseIcon,
+  WindowIcon,
+  Cog8ToothIcon,
+  UserCircleIcon,
+} from '@heroicons/react/24/solid'
 import { SvgIcon } from '@mui/material'
 
 import { navModel } from '@/shared'
 
-type ItemType = {
+export type ItemType = {
   title: string
   path: string
   icon: JSX.Element
 }
 
-type NavItemsType = ItemType & {
+export type NavItemsType = ItemType & {
   children: ItemType[]
 }
 
 export const s_adminItems: NavItemsType[] = [
   {
-    title: 'users',
+    title: 'L_users',
     path: navModel.MAIN_ROUTE.s_admin + navModel.S_ADMIN_ROUTE.users,
     children: [],
     icon: (
@@ -25,7 +39,7 @@ export const s_adminItems: NavItemsType[] = [
     ),
   },
   {
-    title: 'logs',
+    title: 'L_logs',
     path: navModel.MAIN_ROUTE.s_admin + navModel.S_ADMIN_ROUTE.logs,
     children: [],
     icon: (
@@ -35,33 +49,128 @@ export const s_adminItems: NavItemsType[] = [
     ),
   },
   {
-    title: 'profile',
-    path: navModel.MAIN_ROUTE.s_admin + navModel.S_ADMIN_ROUTE.settings,
-    children: [],
+    title: 'L_setting',
+    path: '',
     icon: (
       <SvgIcon fontSize="small">
-        <CogIcon />
+        <Cog8ToothIcon />
       </SvgIcon>
     ),
+    children: [
+      {
+        title: 'L_profile',
+        path: navModel.MAIN_ROUTE.s_admin + navModel.S_ADMIN_ROUTE.settings,
+        icon: (
+          <SvgIcon fontSize="small">
+            <UserCircleIcon />
+          </SvgIcon>
+        ),
+      },
+    ],
   },
 ]
 
 export const adminItems: NavItemsType[] = [
   {
-    title: 'calculate',
+    title: 'L_calculation',
     path: '',
     icon: (
       <SvgIcon fontSize="small">
-        <UsersIcon />
+        <CalculatorIcon />
       </SvgIcon>
     ),
     children: [
       {
-        title: 'users',
-        path: navModel.MAIN_ROUTE.s_admin + navModel.S_ADMIN_ROUTE.users,
+        title: 'L_auto_calc',
+        path: navModel.MAIN_ROUTE.admin + navModel.ADMIN_ROUTE.meals_autoCalc,
         icon: (
           <SvgIcon fontSize="small">
-            <UsersIcon />
+            <CommandLineIcon />
+          </SvgIcon>
+        ),
+      },
+      {
+        title: 'L_manual_calc',
+        path: navModel.MAIN_ROUTE.admin + navModel.ADMIN_ROUTE.meals_manualCalc,
+        icon: (
+          <SvgIcon fontSize="small">
+            <HandRaisedIcon />
+          </SvgIcon>
+        ),
+      },
+      {
+        title: 'L_history_calc',
+        path: navModel.MAIN_ROUTE.admin + navModel.ADMIN_ROUTE.meals_historyCalc,
+        icon: (
+          <SvgIcon fontSize="small">
+            <ClockIcon />
+          </SvgIcon>
+        ),
+      },
+    ],
+  },
+  {
+    title: 'L_schoolData',
+    path: '',
+    icon: (
+      <SvgIcon fontSize="small">
+        <ArchiveBoxIcon />
+      </SvgIcon>
+    ),
+    children: [
+      {
+        title: 'L_school',
+        path: navModel.MAIN_ROUTE.admin + navModel.ADMIN_ROUTE.data_school,
+        icon: (
+          <SvgIcon fontSize="small">
+            <BuildingLibraryIcon />
+          </SvgIcon>
+        ),
+      },
+      {
+        title: 'L_teachers',
+        path: navModel.MAIN_ROUTE.admin + navModel.ADMIN_ROUTE.data_teachers,
+        icon: (
+          <SvgIcon fontSize="small">
+            <AcademicCapIcon />
+          </SvgIcon>
+        ),
+      },
+      {
+        title: 'L_classes',
+        path: navModel.MAIN_ROUTE.admin + navModel.ADMIN_ROUTE.data_classes,
+        icon: (
+          <SvgIcon fontSize="small">
+            <WindowIcon />
+          </SvgIcon>
+        ),
+      },
+      {
+        title: 'L_students',
+        path: navModel.MAIN_ROUTE.admin + navModel.ADMIN_ROUTE.data_students,
+        icon: (
+          <SvgIcon fontSize="small">
+            <BriefcaseIcon />
+          </SvgIcon>
+        ),
+      },
+    ],
+  },
+  {
+    title: 'L_setting',
+    path: '',
+    icon: (
+      <SvgIcon fontSize="small">
+        <Cog8ToothIcon />
+      </SvgIcon>
+    ),
+    children: [
+      {
+        title: 'L_profile',
+        path: navModel.MAIN_ROUTE.admin + navModel.ADMIN_ROUTE.settings,
+        icon: (
+          <SvgIcon fontSize="small">
+            <UserCircleIcon />
           </SvgIcon>
         ),
       },

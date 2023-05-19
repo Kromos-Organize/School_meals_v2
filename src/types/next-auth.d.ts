@@ -9,6 +9,7 @@ declare module 'next-auth'{
 			name: string,
 			lname: string
 			accessToken: strings
+			refreshToken: string
 		}
 	}
 }

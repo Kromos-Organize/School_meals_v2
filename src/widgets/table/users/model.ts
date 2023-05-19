@@ -1,18 +1,17 @@
+import { useRouter } from 'next/router'
+import { signIn } from 'next-auth/react'
 import { useMutation, useQuery, useQueryClient } from 'react-query'
 
-import { UserType } from '@/features'
-import { noRefetch, swalAlert, useAxiosAuth } from '@/shared'
-
-import { moderationApi } from './api'
+import { ActivateResType, UserType } from '@/features'
+import { useCurrentUser } from '@/hooks'
+import { navModel, noRefetch, swalAlert, useAxiosAuth } from '@/shared'
 
 export const useListUsersQuery = () => {
   const authInstance = useAxiosAuth()
 
-  const getUsersList = () => authInstance.get<UserType[]>('/user/list').then(res => res.data)
-
   return useQuery({
     queryKey: ['users_list', authInstance],
-    queryFn: getUsersList,
+    queryFn: () => authInstance.get<UserType[]>('/user/list').then(res => res.data),
     enabled: !!authInstance,
     ...noRefetch,
     refetchInterval: false,
@@ -22,9 +21,16 @@ export const useListUsersQuery = () => {
 
 export const useActivateUserMutate = () => {
   const queryClient = useQueryClient()
+  const authInstance = useAxiosAuth()
 
   return useMutation({
-    mutationFn: moderationApi.activateUser,
+    mutationFn: (data: { user_id: number; isActive: boolean }) => {
+      return authInstance
+        .put<ActivateResType>(`/user/activate/${data.user_id}`, {
+          isActive: data.isActive,
+        })
+        .then(res => res.data)
+    },
     ...noRefetch,
     onSuccess: res => {
       swalAlert({ title: 'Выполнено', html: res.message, icon: 'success' }, 'noBtn')
@@ -35,9 +41,12 @@ export const useActivateUserMutate = () => {
 
 export const useBlockUserMutate = () => {
   const queryClient = useQueryClient()
+  const authInstance = useAxiosAuth()
 
   return useMutation({
-    mutationFn: moderationApi.blockUser,
+    mutationFn: (data: { user_id: number; school_id: number }) => {
+      return authInstance.post('/block_cabinet', data).then(res => res.data)
+    },
     ...noRefetch,
     onSuccess: res => {
       swalAlert({ title: 'Выполнено', html: res.message, icon: 'success' }, 'noBtn')
@@ -48,9 +57,12 @@ export const useBlockUserMutate = () => {
 
 export const useUnlockUserMutate = () => {
   const queryClient = useQueryClient()
+  const authInstance = useAxiosAuth()
 
   return useMutation({
-    mutationFn: moderationApi.unlockUser,
+    mutationFn: (data: { id: number }) => {
+      return authInstance.delete(`/block_cabinet/${data.id}`).then(res => res.data)
+    },
     ...noRefetch,
     onSuccess: res => {
       swalAlert({ title: 'Выполнено', html: res.message, icon: 'success' }, 'noBtn')
@@ -60,24 +72,27 @@ export const useUnlockUserMutate = () => {
 }
 
 export const useLoginCabinetMutate = () => {
-  // const { push } = useRouter()
-  // const setCurrent = useCurrentUser(setCurrentUser)
-  // return useMutation({
-  //   mutationFn: moderationApi.signInCabinet,
-  //   ...noRefetch,
-  //   onSuccess: res => {
-  //     LS.set('accessToken', res.data.accessToken)
-  //     setCurrent({ id: res.data.id, role: res.data.role })
-  //     push(navModel.MAIN_ROUTE.admin + navModel.ADMIN_ROUTE.settings)
-  //   },
-  // })
+  const { push } = useRouter()
+  const user = useCurrentUser()
+
+  return (email: string) => {
+    signIn('auth_login_cabinet', {
+      email,
+      accessToken: user?.accessToken,
+    }).then(res => {
+      push(navModel.MAIN_ROUTE.admin + navModel.ADMIN_ROUTE.settings)
+    })
+  }
 }
 
 // export const useRemoveUserModerationMutate = () => {
 //   const queryClient = useQueryClient()
+//   const authInstance = useAxiosAuth()
 
 //   return useMutation({
-//     mutationFn: moderationApi.removeUser,
+//     mutationFn: (user_id: number) => {
+//       return authInstance.delete<{ id: number }>(`/user/${user_id}`).then(res => res.data)
+//     },
 //     ...noRefetch,
 //     onSuccess: res => {
 //       swalAlert({

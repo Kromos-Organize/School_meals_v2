@@ -10,7 +10,7 @@ type PropsType = {
   activated: (data: { user_id: number; isActive: boolean }) => void
   blockUser: (data: { user_id: number; school_id: number }) => void
   unlockUser: (data: { id: number }) => void
-  signCabinet: (data: { email: string }) => void
+  signCabinet: (email: string) => void
 }
 
 export const UsersTableBody: FC<PropsType> = ({

@@ -43,7 +43,7 @@ export const FormLogin = () => {
   }, [session?.user])
 
   const onSubmit: SubmitHandler<LoginFieldsType> = async data => {
-    const res = await signIn('credentials', {
+    const res = await signIn('auth_login_user', {
       ...data,
       redirect: false,
     })

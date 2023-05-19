@@ -21,8 +21,8 @@ const authOptions: NextAuthOptions = {
   },
   providers: [
     CredentialsProvider({
-      // id: 'auth_login_back',
-      name: 'Credentials',
+      id: 'auth_login_user',
+      name: 'Credentials_User',
       type: 'credentials',
       credentials: {
         email: { label: 'Email', type: 'text' },
@@ -41,6 +41,39 @@ const authOptions: NextAuthOptions = {
               },
               {
                 withCredentials: true,
+              }
+            )
+            .then(response => {
+              return response.data
+            })
+            .catch(error => {
+              console.log(error.response)
+              throw new Error(error.response.data.message)
+            }) || null
+        )
+      },
+    }),
+    CredentialsProvider({
+      id: 'auth_login_cabinet',
+      name: 'Credentials_Cabinet',
+      type: 'credentials',
+      credentials: {
+        email: { label: 'Email', type: 'text' },
+        accessToken: { type: 'text' },
+      },
+      async authorize(credentials, req) {
+        return (
+          axios
+            .post(
+              `${process.env.NEXT_PUBLIC_BASE_URL}/auth/login/cabinet`,
+              {
+                email: credentials?.email,
+              },
+              {
+                withCredentials: true,
+                headers: {
+                  Authorization: `Bearer ${credentials?.accessToken}`,
+                },
               }
             )
             .then(response => {

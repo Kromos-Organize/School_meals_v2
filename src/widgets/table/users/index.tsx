@@ -14,7 +14,7 @@ export const ShowTableUsers = () => {
   const { mutate: activated, isLoading: isActivated } = useActivateUserMutate()
   const { mutate: blockUser, isLoading: isBlocked } = useBlockUserMutate()
   const { mutate: unlockUser, isLoading: isUnlocked } = useUnlockUserMutate()
-  // const { mutate: signCabinet, isLoading: isSign } = useLoginCabinetMutate()
+  const signCabinet = useLoginCabinetMutate()
 
   const isLoading = isActivated || isBlocked || isUnlocked
 
@@ -24,7 +24,7 @@ export const ShowTableUsers = () => {
       activated={activated}
       blockUser={blockUser}
       unlockUser={unlockUser}
-      signCabinet={() => {}}
+      signCabinet={signCabinet}
       isLoading={isLoading}
     />
   )

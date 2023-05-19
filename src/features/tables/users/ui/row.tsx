@@ -13,7 +13,7 @@ type PropsType = {
   activated: (data: { user_id: number; isActive: boolean }) => void
   blockUser: (data: { user_id: number; school_id: number }) => void
   unlockUser: (data: { id: number }) => void
-  signCabinet: (data: { email: string }) => void
+  signCabinet: (email: string) => void
 }
 
 export const UserTableRow: FC<PropsType> = ({
@@ -32,7 +32,7 @@ export const UserTableRow: FC<PropsType> = ({
   const blocked = () => blockUser({ user_id: user.id, school_id: user.school_id })
   const unlocked = () => unlockUser({ id: user.id })
 
-  const sign = () => signCabinet({ email: user.email })
+  const sign = () => signCabinet(user.email)
 
   return (
     <TableRow hover key={user.id}>

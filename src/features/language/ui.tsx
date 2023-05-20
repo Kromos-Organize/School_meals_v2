@@ -4,12 +4,15 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { useState } from 'react'
 
-import { LANGS } from './model'
+import { LANGS } from './const'
+import { LangVariableType, useLocale } from './model'
 
 export const LanguagePopover = () => {
   const router = useRouter()
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
-  const [selectedIndex, setSelectedIndex] = useState(router.locale === 'ru' ? 0 : 1)
+  const currentLocale = useLocale(state => state.locale)
+  const setLocale = useLocale(state => state.setLocale)
+  const [selectedIndex, setSelectedIndex] = useState(currentLocale === 'ru' ? 0 : 1)
   const open = Boolean(anchorEl)
 
   const handleList = (event: React.MouseEvent<HTMLElement>) => {
@@ -21,6 +24,7 @@ export const LanguagePopover = () => {
   }
 
   const handleItem = (index: number) => {
+    setLocale(LANGS[index].value as LangVariableType)
     setSelectedIndex(index)
     handleClose()
   }

@@ -2,6 +2,7 @@ import { Box, Stack, useMediaQuery } from '@mui/material'
 import { alpha } from '@mui/material/styles'
 import { signOut, useSession } from 'next-auth/react'
 
+import { LanguagePopover } from '@/features'
 import { useCurrentUser } from '@/hooks'
 import { DataUser } from '@/shared'
 
@@ -46,6 +47,7 @@ export const Header = () => {
             px: 2,
           }}
         >
+          <LanguagePopover />
           <Stack alignItems="center" direction="row" spacing={2}>
             <DataUser info={fullName} logout={logoutCabinet} />
           </Stack>

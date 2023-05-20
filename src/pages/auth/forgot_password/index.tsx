@@ -1,4 +1,4 @@
-import { NextPageWithLayout, getLayout } from '@/App'
+import { NextPageWithLayout, AuthLayout } from '@/App'
 
 const ForgotPasswordPage: NextPageWithLayout = () => {
   return <>ForgotPasswordPage</>

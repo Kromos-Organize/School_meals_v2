@@ -25,17 +25,17 @@ export const Navbar = () => {
   const drawItems = items.map(item => {
     const active = item.path ? pathname === item.path : false
 
+    const detailsDraw = useMemo(() => {
+      return item.children.map(childItem => {
+        const active = childItem.path ? pathname === childItem.path : false
+
+        if (active) setExpanded(item.title)
+
+        return <Details key={childItem.title} active={active} childItem={childItem} />
+      })
+    }, [item, pathname])
+
     if (item.children.length) {
-      const detailsDraw = useMemo(() => {
-        return item.children.map(childItem => {
-          const active = childItem.path ? pathname === childItem.path : false
-
-          if (active) setExpanded(item.title)
-
-          return <Details key={childItem.title} active={active} childItem={childItem} />
-        })
-      }, [item, pathname])
-
       return (
         <Accordion
           key={item.title}

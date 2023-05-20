@@ -2,7 +2,7 @@ import { Box, MenuItem, Stack, IconButton, Popover } from '@mui/material'
 import { alpha } from '@mui/material/styles'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 import { LANGS } from './const'
 import { LangVariableType, useLocale } from './model'
@@ -12,7 +12,7 @@ export const LanguagePopover = () => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
   const currentLocale = useLocale(state => state.locale)
   const setLocale = useLocale(state => state.setLocale)
-  const [selectedIndex, setSelectedIndex] = useState(currentLocale === 'ru' ? 0 : 1)
+  const [selectedIndex, setSelectedIndex] = useState(0)
   const open = Boolean(anchorEl)
 
   const handleList = (event: React.MouseEvent<HTMLElement>) => {
@@ -28,6 +28,10 @@ export const LanguagePopover = () => {
     setSelectedIndex(index)
     handleClose()
   }
+
+  useEffect(() => {
+    currentLocale && setSelectedIndex(currentLocale === 'ru' ? 0 : 1)
+  }, [currentLocale])
 
   const drawLanguages = LANGS.map((option, index) => {
     const click = () => handleItem(index)

@@ -35,7 +35,7 @@ export const UserTableRow: FC<PropsType> = ({
   const sign = () => signCabinet(user.email)
 
   return (
-    <TableRow hover key={user.id}>
+    <TableRow hover>
       <TableCell align="center">
         <Typography variant="subtitle2">{user.id}</Typography>
       </TableCell>

@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 
 import { AppPropsWithLayout } from '@/App'
-import { useLocale } from '@/features'
+import { useLocale } from '@/entities'
 
 import { ProviderPropsType } from '../types'
 

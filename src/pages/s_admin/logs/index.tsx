@@ -1,7 +1,8 @@
 import { DashLayout, NextPageWithLayout } from '@/App'
+import { LogsPage } from '@/pagesLayer'
 
 const Logs: NextPageWithLayout = () => {
-  return <>Logs</>
+  return <LogsPage />
 }
 
 Logs.getLayout = DashLayout

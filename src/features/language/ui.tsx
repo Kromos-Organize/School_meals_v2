@@ -4,8 +4,9 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
 
+import { LangVariableType, useLocale } from '@/entities'
+
 import { LANGS } from './const'
-import { LangVariableType, useLocale } from './model'
 
 export const LanguagePopover = () => {
   const router = useRouter()

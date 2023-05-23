@@ -4,10 +4,10 @@ import { useMutation, useQuery, useQueryClient } from 'react-query'
 
 import { ActivateResType, UserType } from '@/features'
 import { useCurrentUser } from '@/hooks'
-import { navModel, noRefetch, swalAlert, useAxiosAuth } from '@/shared'
+import { navModel, noRefetch, swalAlert, useAxiosAuthClient } from '@/shared'
 
 export const useListUsersQuery = () => {
-  const authInstance = useAxiosAuth()
+  const authInstance = useAxiosAuthClient()
 
   return useQuery({
     queryKey: ['users_list', authInstance],
@@ -21,7 +21,7 @@ export const useListUsersQuery = () => {
 
 export const useActivateUserMutate = () => {
   const queryClient = useQueryClient()
-  const authInstance = useAxiosAuth()
+  const authInstance = useAxiosAuthClient()
 
   return useMutation({
     mutationFn: (data: { user_id: number; isActive: boolean }) => {
@@ -41,7 +41,7 @@ export const useActivateUserMutate = () => {
 
 export const useBlockUserMutate = () => {
   const queryClient = useQueryClient()
-  const authInstance = useAxiosAuth()
+  const authInstance = useAxiosAuthClient()
 
   return useMutation({
     mutationFn: (data: { user_id: number; school_id: number }) => {
@@ -57,7 +57,7 @@ export const useBlockUserMutate = () => {
 
 export const useUnlockUserMutate = () => {
   const queryClient = useQueryClient()
-  const authInstance = useAxiosAuth()
+  const authInstance = useAxiosAuthClient()
 
   return useMutation({
     mutationFn: (data: { id: number }) => {
@@ -87,7 +87,7 @@ export const useLoginCabinetMutate = () => {
 
 // export const useRemoveUserModerationMutate = () => {
 //   const queryClient = useQueryClient()
-//   const authInstance = useAxiosAuth()
+//   const authInstance = useAxiosAuthClient()
 
 //   return useMutation({
 //     mutationFn: (user_id: number) => {

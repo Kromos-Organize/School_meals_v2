@@ -60,6 +60,7 @@ export const FormLogin = () => {
           label={t('L_enterEmail')}
           register={register('email')}
           messageError={errors.email && errors.email.message}
+          fullWidth={true}
           InputProps={{
             endAdornment: (
               <InputAdornment position={'end'}>
@@ -74,6 +75,7 @@ export const FormLogin = () => {
           label={t('L_enterPass')}
           type={'password'}
           register={register('password')}
+          fullWidth={true}
           messageError={errors.password && errors.password.message}
           InputProps={{
             endAdornment: (

@@ -4,12 +4,12 @@ import { useEffect } from 'react'
 import { useMutation } from 'react-query'
 
 import { useCurrentUser } from '@/hooks'
-import { navModel, noRefetch, useAxiosAuth } from '@/shared'
+import { navModel, noRefetch, useAxiosAuthClient } from '@/shared'
 
 export const useLogOutMutate = () => {
   const { push, prefetch } = useRouter()
   const currentUser = useCurrentUser()
-  const axiosAuth = useAxiosAuth()
+  const axiosAuth = useAxiosAuthClient()
 
   const logOut = () => {
     return axiosAuth

@@ -8,6 +8,7 @@ export const UsersTableHead = () => {
     <TableHead>
       <TableRow>
         <TableCell align="center">ID</TableCell>
+        <TableCell align="center">{t('L_id_school')}</TableCell>
         <TableCell align="center">{t('L_full_name')}</TableCell>
         <TableCell align="center">{t('L_email')}</TableCell>
         <TableCell align="center">{t('L_phone')}</TableCell>

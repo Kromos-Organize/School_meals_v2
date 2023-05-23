@@ -1,10 +1,10 @@
 import { useMutation, useQuery } from 'react-query'
 
 import { ListLogsType } from '@/features'
-import { noRefetch, useAxiosAuth } from '@/shared'
+import { noRefetch, useAxiosAuthClient } from '@/shared'
 
 export const useListLogsQuery = () => {
-  const authInstance = useAxiosAuth()
+  const authInstance = useAxiosAuthClient()
 
   return useQuery({
     queryKey: ['logs_list', authInstance],
@@ -17,7 +17,7 @@ export const useListLogsQuery = () => {
 }
 
 export const useLogMutate = () => {
-  const authInstance = useAxiosAuth()
+  const authInstance = useAxiosAuthClient()
 
   return useMutation({
     mutationFn: (date: string) => authInstance.get(`/logs/log?date=${date}`).then(res => res.data),

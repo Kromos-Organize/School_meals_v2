@@ -1,9 +1,11 @@
 import { TextField } from '@mui/material'
 import { FC } from 'react'
-import { FieldErrors, UseFormRegisterReturn } from 'react-hook-form'
+import { UseFormRegisterReturn } from 'react-hook-form'
 
 type PropsType = {
   register: UseFormRegisterReturn<string>
+  defaultValue?: string
+  required?: boolean
   type?: string
   label: string
   messageError?: string
@@ -11,6 +13,8 @@ type PropsType = {
   disabled?: boolean
   error?: boolean
   fullWidth?: boolean
+  margin?: 'dense' | 'none' | 'normal'
+  size?: 'medium' | 'small'
   variant?: 'outlined' | 'filled' | 'standard'
   InputProps?: any //! todo изменить на тип
   className?: string

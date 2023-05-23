@@ -28,6 +28,7 @@ export const FormRegister = memo(() => {
           label={t('L_enterEmail')}
           register={register('email')}
           messageError={errors.email && errors.email.message}
+          fullWidth={true}
           InputProps={{
             endAdornment: (
               <InputAdornment position={'end'}>
@@ -42,6 +43,7 @@ export const FormRegister = memo(() => {
           label={t('L_pass')}
           register={register('password')}
           messageError={errors.password && errors.password.message}
+          fullWidth={true}
           InputProps={{
             endAdornment: (
               <InputAdornment position={'end'}>
@@ -56,6 +58,7 @@ export const FormRegister = memo(() => {
           label={t('L_confPass')}
           register={register('confirmPassword')}
           messageError={errors.confirmPassword && errors.confirmPassword.message}
+          fullWidth={true}
           InputProps={{
             endAdornment: (
               <InputAdornment position={'end'}>
@@ -70,6 +73,7 @@ export const FormRegister = memo(() => {
           label={t('L_enterPhone')}
           register={register('phone')}
           messageError={errors.phone && errors.phone.message}
+          fullWidth={true}
           InputProps={{
             endAdornment: (
               <InputAdornment position={'end'}>

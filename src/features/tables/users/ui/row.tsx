@@ -40,6 +40,9 @@ export const UserTableRow: FC<PropsType> = ({
         <Typography variant="subtitle2">{user.id}</Typography>
       </TableCell>
       <TableCell align="center">
+        <Typography variant="subtitle2">{user.school_id}</Typography>
+      </TableCell>
+      <TableCell align="center">
         <Typography variant="subtitle2">
           {user.fname}
           {user.name}

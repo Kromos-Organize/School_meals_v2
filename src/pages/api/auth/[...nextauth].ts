@@ -3,14 +3,12 @@ import { NextAuthOptions } from 'next-auth'
 import NextAuth from 'next-auth/next'
 import CredentialsProvider from 'next-auth/providers/credentials'
 
-import { instance } from '@/shared'
-
-const authOptions: NextAuthOptions = {
+export const authOptions: NextAuthOptions = {
   callbacks: {
-    async jwt({ token, user, account }) {
+    async jwt({ token, user }) {
       return { ...token, ...user }
     },
-    async session({ session, token, user }) {
+    async session({ session, token }) {
       session.user = token as any
 
       return session
@@ -66,6 +64,39 @@ const authOptions: NextAuthOptions = {
           axios
             .post(
               `${process.env.NEXT_PUBLIC_BASE_URL}/auth/login/cabinet`,
+              {
+                email: credentials?.email,
+              },
+              {
+                withCredentials: true,
+                headers: {
+                  Authorization: `Bearer ${credentials?.accessToken}`,
+                },
+              }
+            )
+            .then(response => {
+              return response.data
+            })
+            .catch(error => {
+              console.log(error.response)
+              throw new Error(error.response.data.message)
+            }) || null
+        )
+      },
+    }),
+    CredentialsProvider({
+      id: 'auth_update_session',
+      name: 'Credentials_Session',
+      type: 'credentials',
+      credentials: {
+        email: { label: 'Email', type: 'text' },
+        accessToken: { type: 'text' },
+      },
+      async authorize(credentials, req) {
+        return (
+          axios
+            .post(
+              `${process.env.NEXT_PUBLIC_BASE_URL}/auth/update_session`,
               {
                 email: credentials?.email,
               },

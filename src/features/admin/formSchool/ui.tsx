@@ -18,7 +18,7 @@ import { useCreateSchoolMutate, useSchoolForm, useUpdateSchoolMutate } from './m
 import { SchoolFieldsType } from './types'
 
 type PropsType = {
-  school: SchoolFieldsType
+  school: SchoolFieldsType | null
 }
 
 export const FormSchool: FC<PropsType> = ({ school }) => {

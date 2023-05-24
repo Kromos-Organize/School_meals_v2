@@ -6,7 +6,7 @@ import { FormSchool, SchoolFieldsType } from '@/features'
 import { ContentHeader, MainContainerPage, Meta } from '@/shared'
 
 type PropsType = {
-  school: SchoolFieldsType
+  school: SchoolFieldsType | null
 }
 
 export const SchoolPage: FC<PropsType> = memo(({ school }) => {

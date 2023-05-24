@@ -8,25 +8,27 @@ import { SchoolFieldsType } from '@/features'
 export const getServerSideProps = async (context: any) => {
   const {instanceServer, user} = await useAxiosAuthServer(context, authOptions)
 
-  const response = await instanceServer.get(`/api/school/${user?.school_id}`).then(res => res.data)
+  if(user?.school_id) {
+    const response = await instanceServer
+      .get(`/api/school/${user?.school_id}`)
+      .then(res => res.data)
 
-  if(response.status === 400) {
-    return {
-      props: {
-        school:{},
-      },
-    }
+      return {
+        props: {
+          school: response,
+        },
+      }
   }
 
   return {
     props: {
-      school: response
+      school: null
     },
   }
 }
 
 type PropsType = {
-  school: SchoolFieldsType
+  school: SchoolFieldsType | null
 }
 
 const AdminSchoolPage: NextPageWithLayout<PropsType> = ({ school }) => {

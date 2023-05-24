@@ -1,0 +1,1 @@
+export { TeachersPages } from './ui'

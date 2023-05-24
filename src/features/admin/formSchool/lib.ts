@@ -17,7 +17,7 @@ export const updateValuesForm = (
   )
 }
 
-export const initFieldForm = (school: SchoolFieldsType) => {
+export const initFieldForm = (school: SchoolFieldsType | null) => {
   if (school) {
     return {
       name: school.name,

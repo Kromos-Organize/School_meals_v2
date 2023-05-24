@@ -11,7 +11,7 @@ export const useListUsersQuery = () => {
 
   return useQuery({
     queryKey: ['users_list', authInstance],
-    queryFn: () => authInstance.get<UserType[]>('/user/list').then(res => res.data),
+    queryFn: () => authInstance.get<UserType[]>('/user').then(res => res.data),
     enabled: !!authInstance,
     ...noRefetch,
     refetchInterval: false,

@@ -11,7 +11,7 @@ import { SchoolDataSchema } from './config'
 import { initFieldForm } from './lib'
 import { SchoolFieldsType } from './types'
 
-export const useSchoolForm = (school: SchoolFieldsType) => {
+export const useSchoolForm = (school: SchoolFieldsType | null) => {
   return useForm<SchoolFieldsType>({
     defaultValues: initFieldForm(school),
     resolver: yupResolver(SchoolDataSchema),

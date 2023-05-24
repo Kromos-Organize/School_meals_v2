@@ -8,7 +8,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
       .then(res => res.data)
 
     res.status(200).json(school)
-  } catch (error) {
-    res.send(error)
+  } catch (error: any) {
+    res.status(error.response.status).send(error)
   }
 }

@@ -1,4 +1,5 @@
 import {
+  Alert,
   Box,
   Button,
   Card,
@@ -40,7 +41,14 @@ export const FormSchool: FC<PropsType> = ({ school }) => {
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <Card>
-        <CardHeader subheader={t('L_school_info_action')} title={t('L_school_data')} />
+        <CardHeader
+          subheader={
+            <Alert color="info" severity="info">
+              {t('L_school_info_action')}
+            </Alert>
+          }
+          title={t('L_school_data')}
+        />
         <CardContent sx={{ pt: 0 }}>
           <Box sx={{ m: -1.5 }}>
             <Grid container spacing={3}>
@@ -57,7 +65,7 @@ export const FormSchool: FC<PropsType> = ({ school }) => {
                   label={t('L_region')}
                   register={register('region')}
                   required
-                  messageError={errors.name && errors.name.message}
+                  messageError={errors.region && errors.region.message}
                 />
               </Grid>
               <Grid xs={12} md={6}>
@@ -65,7 +73,7 @@ export const FormSchool: FC<PropsType> = ({ school }) => {
                   label={t('L_area')}
                   register={register('area')}
                   required
-                  messageError={errors.name && errors.name.message}
+                  messageError={errors.area && errors.area.message}
                 />
               </Grid>
               <Grid xs={12} md={6}>
@@ -73,7 +81,7 @@ export const FormSchool: FC<PropsType> = ({ school }) => {
                   label={t('L_city')}
                   register={register('city')}
                   required
-                  messageError={errors.name && errors.name.message}
+                  messageError={errors.city && errors.city.message}
                 />
               </Grid>
               <Grid xs={12} md={6}>
@@ -81,7 +89,7 @@ export const FormSchool: FC<PropsType> = ({ school }) => {
                   label={t('L_street')}
                   register={register('street')}
                   required
-                  messageError={errors.name && errors.name.message}
+                  messageError={errors.street && errors.street.message}
                 />
               </Grid>
               <Grid xs={12} md={6}>
@@ -90,7 +98,7 @@ export const FormSchool: FC<PropsType> = ({ school }) => {
                   type={'number'}
                   register={register('homeNumber')}
                   required
-                  messageError={errors.name && errors.name.message}
+                  messageError={errors.homeNumber && errors.homeNumber.message}
                 />
               </Grid>
             </Grid>

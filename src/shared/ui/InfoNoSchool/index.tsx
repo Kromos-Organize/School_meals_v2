@@ -7,7 +7,7 @@ export const InfoNoSchool = () => {
   const { t } = useTranslation('info_no_school')
 
   return (
-    <Alert variant="filled" color={'warning'} severity="warning" sx={{ mt: 10, color: '#fff' }}>
+    <Alert color={'warning'} severity="warning" sx={{ mt: 10 }}>
       <AlertTitle>{t('L_warning')}</AlertTitle>
       <Typography>
         {t('L_before_work')}

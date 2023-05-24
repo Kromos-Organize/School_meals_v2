@@ -1,1 +1,2 @@
-export * from './formSchool'
+export * from './form/school'
+export * from './form/teacher'

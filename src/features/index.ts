@@ -1,5 +1,5 @@
-export { FormLogin } from './auth/login'
-export { FormRegister } from './auth/registration'
+export { FormLogin } from './auth/form/login'
+export { FormRegister } from './auth/form/registration'
 export * from './s_admin/settings'
 export * from './baseLayout'
 export * from './tables'

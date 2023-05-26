@@ -1,7 +1,7 @@
 import { Dialog } from '@mui/material'
 import { useTranslation } from 'react-i18next'
 
-import { FormTeacher } from '@/features'
+import { FormAddTeacher } from '@/features'
 import { useBoolean } from '@/hooks'
 import { ButtonAdd } from '@/shared'
 
@@ -16,7 +16,7 @@ export const AddTeacher = () => {
     <>
       <ButtonAdd title={t('L_add_teacher')} callback={isOpen.setTrue} />
       <Dialog open={isOpen.value} onClose={isOpen.setFalse}>
-        <FormTeacher addTeacher={addTeacher} />
+        <FormAddTeacher addTeacher={addTeacher} />
       </Dialog>
     </>
   )

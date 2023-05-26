@@ -22,7 +22,7 @@ type PropsType = {
   addTeacher: (data: TeacherFieldsType) => void
 }
 
-export const FormTeacher: FC<PropsType> = ({ addTeacher }) => {
+export const FormAddTeacher: FC<PropsType> = ({ addTeacher }) => {
   const {
     register,
     handleSubmit,

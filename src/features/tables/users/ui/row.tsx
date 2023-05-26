@@ -6,7 +6,10 @@ import { Label } from '@/shared'
 import { checkStatus } from '../lib'
 import { UserType } from '../types'
 
+import { ActivatedButton } from './buttons/activated'
+import { BlockedButton } from './buttons/blocked'
 import { ButtonsAction } from './buttons/buttonsAction'
+import { SignInCabinet } from './buttons/signInCabinet'
 
 type PropsType = {
   user: UserType
@@ -58,13 +61,9 @@ export const UserTableRow: FC<PropsType> = ({
         <Label color={userStatus.color}>{userStatus.status}</Label>
       </TableCell>
       <TableCell align="center">
-        <ButtonsAction
-          user={user}
-          userActivated={userActivated}
-          blocked={blocked}
-          unlocked={unlocked}
-          sign={sign}
-        />
+        <ActivatedButton isActive={user.isActive} userActivated={userActivated} />
+        <BlockedButton isBlock={user.is_block} blocked={blocked} unlocked={unlocked} />
+        <SignInCabinet sign={sign} />
       </TableCell>
     </TableRow>
   )

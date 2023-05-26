@@ -4,6 +4,8 @@ import { FC } from 'react'
 import { classToString, glueFullName } from '../lib'
 import { TeacherType } from '../types'
 
+import { ChangeTeacher } from './buttons/change'
+
 type PropsType = {
   teacher: TeacherType
 }
@@ -23,7 +25,9 @@ export const TeacherTableRow: FC<PropsType> = ({ teacher }) => {
       <TableCell align="center">
         <Typography variant="subtitle2">{classToString(teacher.class)}</Typography>
       </TableCell>
-      <TableCell align="center"></TableCell>
+      <TableCell align="center">
+        <ChangeTeacher />
+      </TableCell>
     </TableRow>
   )
 }

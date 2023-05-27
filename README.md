@@ -22,10 +22,4 @@
 [все макеты](https://mui.com/store/?utm_source=docs&utm_medium=referral&utm_campaign=templates-store)
 [иконки](https://heroicons.com/)
 
-
-
-для использования запросов в компоненте можно использовать useQuery, а для серверного рендеринга надо 
-`const queryClient = new QueryClient()
-queryClient.fetchQuery(
-
-`
+import icon '@heroicons/react/24/solid'

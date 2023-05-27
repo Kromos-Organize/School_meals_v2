@@ -1,0 +1,1 @@
+export { AddTeacher } from './ui'

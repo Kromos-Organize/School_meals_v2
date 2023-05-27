@@ -1,7 +1,4 @@
-export { FormLogin } from './auth/login'
-export { FormRegister } from './auth/registration'
-export * from './s_admin/settings'
 export * from './baseLayout'
 export * from './tables'
 export * from './language'
-export * from './admin'
+export * from './form'

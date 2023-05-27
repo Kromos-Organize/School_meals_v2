@@ -33,7 +33,10 @@ export const useRefreshToken = (user: CurrentUserType | undefined) => {
   return refreshToken
 }
 
-export const updateRequestIntercept = (instance: AxiosInstance, user: CurrentUserType) => {
+export const updateRequestIntercept = (
+  instance: AxiosInstance,
+  user: CurrentUserType | undefined
+) => {
   return instance.interceptors.request.use(
     config => {
       if (!config.headers['Authorization']) {
@@ -48,7 +51,7 @@ export const updateRequestIntercept = (instance: AxiosInstance, user: CurrentUse
 
 export const updateResponseIntercept = (
   instance: AxiosInstance,
-  user: CurrentUserType,
+  user: CurrentUserType | undefined,
   refreshToken: () => Promise<void>
 ) => {
   return instance.interceptors.response.use(

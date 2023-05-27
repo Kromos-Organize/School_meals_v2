@@ -1,1 +1,0 @@
-export { InputRegister } from './ui'

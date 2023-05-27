@@ -24,9 +24,8 @@ export const useCreateSchoolMutate = () => {
   const { t } = useTranslation('school')
 
   return useMutation({
-    mutationFn: (data: SchoolFieldsType) => {
-      return authInstance.post<SchoolFieldsType>(`/school`, data).then(res => res.data)
-    },
+    mutationFn: (data: SchoolFieldsType) =>
+      authInstance.post<SchoolFieldsType>(`/school`, data).then(res => res.data),
     ...noRefetch,
     onSuccess: res => {
       signIn('auth_update_session', {

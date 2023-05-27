@@ -17,16 +17,19 @@ export const TeacherTableRow: FC<PropsType> = ({ teacher }) => {
         <Typography variant="subtitle2">{teacher.id}</Typography>
       </TableCell>
       <TableCell align="center">
+        <Typography variant="subtitle2">{teacher.email}</Typography>
+      </TableCell>
+      <TableCell align="center">
         <Typography variant="subtitle2">{glueFullName(teacher)}</Typography>
       </TableCell>
       <TableCell align="center">
-        <Typography variant="subtitle2">{teacher.email}</Typography>
+        <Typography variant="subtitle2">{teacher.birthday}</Typography>
       </TableCell>
       <TableCell align="center">
         <Typography variant="subtitle2">{classToString(teacher.class)}</Typography>
       </TableCell>
       <TableCell align="center">
-        <ChangeTeacher />
+        <ChangeTeacher teacher_id={teacher.id} />
       </TableCell>
     </TableRow>
   )

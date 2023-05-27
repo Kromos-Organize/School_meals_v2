@@ -8,8 +8,9 @@ export const TeachersTableHead = () => {
     <TableHead>
       <TableRow>
         <TableCell align="center">ID</TableCell>
-        <TableCell align="center">{t('L_teacher')}</TableCell>
         <TableCell align="center">{t('L_email')}</TableCell>
+        <TableCell align="center">{t('L_teacher')}</TableCell>
+        <TableCell align="center">{t('L_birthday')}</TableCell>
         <TableCell align="center">{t('L_class')}</TableCell>
         <TableCell align="center">{t('L_actions')}</TableCell>
       </TableRow>

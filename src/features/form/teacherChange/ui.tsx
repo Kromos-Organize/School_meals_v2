@@ -1,47 +1,37 @@
-import {
-  Alert,
-  Box,
-  Button,
-  Card,
-  CardActions,
-  CardContent,
-  CardHeader,
-  Unstable_Grid2 as Grid,
-} from '@mui/material'
+import { Alert, Box, Button, Card, CardActions, CardContent, CardHeader } from '@mui/material'
+import Grid from '@mui/system/Unstable_Grid'
 import { FC } from 'react'
 import { SubmitHandler } from 'react-hook-form'
 import { useTranslation } from 'react-i18next'
 
-import { InputRegister } from '@/shared'
+import { InputDates, InputRegister } from '@/shared'
 
-import { useTeacherForm } from './model'
-import { TeacherFieldsType } from './types'
+import { useChangeTeacherMutate, useTeacherChangeForm } from './model'
+import { TeacherChangeFieldType, TeacherType } from './types'
 
 type PropsType = {
-  addTeacher: (data: TeacherFieldsType) => void
+  teacher: TeacherType
 }
 
-export const FormAddTeacher: FC<PropsType> = ({ addTeacher }) => {
+export const FormChangeTeacher: FC<PropsType> = ({ teacher }) => {
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useTeacherForm()
+  } = useTeacherChangeForm(teacher)
 
   const { t } = useTranslation('teachers')
+  const { mutate: saveChanged } = useChangeTeacherMutate(teacher.id)
 
-  const onSubmit: SubmitHandler<TeacherFieldsType> = data => {
-    addTeacher(data)
-  }
+  const onSubmit: SubmitHandler<TeacherChangeFieldType> = data => saveChanged(data)
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <Card>
         <CardHeader
-          title={t('L_create_teacher')}
           subheader={
             <Alert severity="info" color="info">
-              {t('L_create_teacher_info')}
+              {t('L_change_data_teacher')}
             </Alert>
           }
         />
@@ -50,17 +40,8 @@ export const FormAddTeacher: FC<PropsType> = ({ addTeacher }) => {
             <Grid container spacing={3}>
               <Grid xs={12} md={6}>
                 <InputRegister
-                  label={t('L_email')}
-                  register={register('email')}
-                  required
-                  messageError={errors.email && errors.email.message}
-                />
-              </Grid>
-              <Grid xs={12} md={6}>
-                <InputRegister
                   label={t('L_fname')}
                   register={register('fname')}
-                  required
                   messageError={errors.fname && errors.fname.message}
                 />
               </Grid>
@@ -68,7 +49,6 @@ export const FormAddTeacher: FC<PropsType> = ({ addTeacher }) => {
                 <InputRegister
                   label={t('L_name')}
                   register={register('name')}
-                  required
                   messageError={errors.name && errors.name.message}
                 />
               </Grid>
@@ -83,16 +63,23 @@ export const FormAddTeacher: FC<PropsType> = ({ addTeacher }) => {
                 <InputRegister
                   label={t('L_phone')}
                   register={register('phone')}
-                  required
                   messageError={errors.phone && errors.phone.message}
                 />
+              </Grid>
+              <Grid xs={12} md={6}>
+                <InputDates />
+                {/* <InputRegister
+                  label={t('L_birthday')}
+                  register={register('birthday')}
+                  messageError={errors.birthday && errors.birthday.message}
+                /> */}
               </Grid>
             </Grid>
           </Box>
         </CardContent>
         <CardActions sx={{ justifyContent: 'flex-end' }}>
           <Button type={'submit'} variant="contained">
-            {t('L_add')}
+            {t('L_save')}
           </Button>
         </CardActions>
       </Card>

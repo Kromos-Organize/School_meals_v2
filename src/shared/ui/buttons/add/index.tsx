@@ -9,18 +9,16 @@ type PropsType = {
 
 export const ButtonAdd: FC<PropsType> = ({ title, callback }) => {
   return (
-    <div>
-      <Button
-        onClick={callback}
-        startIcon={
-          <SvgIcon>
-            <UserPlusIcon />
-          </SvgIcon>
-        }
-        variant="contained"
-      >
-        {title}
-      </Button>
-    </div>
+    <Button
+      onClick={callback}
+      startIcon={
+        <SvgIcon>
+          <UserPlusIcon />
+        </SvgIcon>
+      }
+      variant="contained"
+    >
+      {title}
+    </Button>
   )
 }

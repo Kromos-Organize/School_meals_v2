@@ -4,8 +4,9 @@ import { authOptions } from '@/pages/api/auth/[...nextauth]'
 import { SchoolPage } from '@/pagesLayer'
 import { useAxiosAuthServer } from '@/shared';
 import { SchoolFieldsType } from '@/features'
+import { GetServerSideProps } from 'next';
 
-export const getServerSideProps = async (context: any) => {
+export const getServerSideProps: GetServerSideProps = async (context) => {
   const {instanceServer, user} = await useAxiosAuthServer(context, authOptions)
 
   if(user?.school_id) {

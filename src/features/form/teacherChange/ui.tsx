@@ -4,7 +4,7 @@ import { FC } from 'react'
 import { SubmitHandler } from 'react-hook-form'
 import { useTranslation } from 'react-i18next'
 
-import { InputDates, InputRegister } from '@/shared'
+import { InputDates, InputPhone, InputRegister } from '@/shared'
 
 import { useChangeTeacherMutate, useTeacherChangeForm } from './model'
 import { TeacherChangeFieldType, TeacherType } from './types'

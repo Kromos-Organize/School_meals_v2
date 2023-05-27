@@ -41,6 +41,7 @@ export const FormRegister = memo(() => {
         />
         <InputRegister
           label={t('L_pass')}
+          type={'password'}
           register={register('password')}
           messageError={errors.password && errors.password.message}
           fullWidth={true}
@@ -56,6 +57,7 @@ export const FormRegister = memo(() => {
         />
         <InputRegister
           label={t('L_confPass')}
+          type={'password'}
           register={register('confirmPassword')}
           messageError={errors.confirmPassword && errors.confirmPassword.message}
           fullWidth={true}

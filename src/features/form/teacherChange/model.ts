@@ -32,11 +32,14 @@ export const useChangeTeacherMutate = (teacher_id: number) => {
       authInstance.put<TeacherType>(`/user/${teacher_id}`, data).then(res => res.data),
     ...noRefetch,
     onSuccess: res => {
-      swalAlert({
-        title: t('L_success_save'),
-        html: '',
-        icon: 'success',
-      }).then(res => back())
+      swalAlert(
+        {
+          title: t('L_success_save'),
+          html: '',
+          icon: 'success',
+        },
+        'noBtn'
+      ).then(res => back())
     },
   })
 }

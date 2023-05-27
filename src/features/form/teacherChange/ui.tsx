@@ -16,8 +16,9 @@ type PropsType = {
 export const FormChangeTeacher: FC<PropsType> = ({ teacher }) => {
   const {
     register,
+    control,
     handleSubmit,
-    formState: { errors },
+    formState: { errors, defaultValues },
   } = useTeacherChangeForm(teacher)
 
   const { t } = useTranslation('teachers')
@@ -67,12 +68,12 @@ export const FormChangeTeacher: FC<PropsType> = ({ teacher }) => {
                 />
               </Grid>
               <Grid xs={12} md={6}>
-                <InputDates />
-                {/* <InputRegister
-                  label={t('L_birthday')}
-                  register={register('birthday')}
-                  messageError={errors.birthday && errors.birthday.message}
-                /> */}
+                <InputDates
+                  name={'birthday'}
+                  control={control}
+                  defaultValue={defaultValues?.birthday}
+                  messageError={errors.phone && errors.phone.message}
+                />
               </Grid>
             </Grid>
           </Box>

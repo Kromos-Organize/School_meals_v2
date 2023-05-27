@@ -22,5 +22,5 @@ export type TeacherChangeFieldType = {
   name?: string
   lname?: string
   phone?: string
-  birthday?: string
+  birthday: string | null
 }

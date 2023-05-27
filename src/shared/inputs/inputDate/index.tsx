@@ -1,16 +1,40 @@
-import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
+import { TextField } from '@mui/material'
 import { DatePicker } from '@mui/x-date-pickers/DatePicker'
-// import { DemoContainer } from '@mui/x-date-pickers/internals/demo'
-import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider'
 import { FC } from 'react'
+import { Controller } from 'react-hook-form'
 
-export const InputDates: FC = () => {
+type PropsType = {
+  control: any
+  name: string
+  defaultValue: string | null | undefined
+  required?: boolean
+  messageError?: string
+}
+
+export const InputDates: FC<PropsType> = ({
+  control,
+  name,
+  messageError,
+  defaultValue,
+  required,
+}) => {
   return (
-    <></>
-    // <LocalizationProvider dateAdapter={AdapterDayjs}>
-    //   {/* <DemoContainer components={['DatePicker']}> */}
-    //   <DatePicker label="Basic date picker" />
-    //   {/* </DemoContainer> */}
-    // </LocalizationProvider>
+    <Controller
+      name={name}
+      defaultValue={defaultValue}
+      rules={{ required: !!required }}
+      control={control}
+      render={({ field }) => (
+        <>
+          <DatePicker
+            label={'Выберите дату'}
+            views={['day', 'month', 'year']}
+            renderInput={params => <TextField {...params} />}
+            {...field}
+          />
+          {messageError && <p>{messageError}</p>}
+        </>
+      )}
+    />
   )
 }

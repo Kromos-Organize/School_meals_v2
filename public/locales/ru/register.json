@@ -4,7 +4,7 @@
   "L_register": " Регистрация",
   "L_pass": "Пароль",
   "L_confPass": "Подтвердите пароль",
-  "L_enterEmail": "Введите email",
+  "L_enterEmail": "Введите Email",
   "L_enterPhone": "Введите номер телефона",
   "L_error_register": "Ошибка при регистрации",
   "L_register_success": "Вы успешно зарегистрировались",

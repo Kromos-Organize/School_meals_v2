@@ -61,7 +61,7 @@ export const FormChangeTeacher: FC<PropsType> = ({ teacher }) => {
                 />
               </Grid>
               <Grid xs={12} md={6}>
-                <InputRegister
+                <InputPhone
                   label={t('L_phone')}
                   register={register('phone')}
                   messageError={errors.phone && errors.phone.message}

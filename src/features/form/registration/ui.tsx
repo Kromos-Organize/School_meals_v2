@@ -27,6 +27,7 @@ export const FormRegister = memo(() => {
         <InputRegister
           label={t('L_enterEmail')}
           register={register('email')}
+          required
           messageError={errors.email && errors.email.message}
           fullWidth={true}
           InputProps={{
@@ -42,6 +43,7 @@ export const FormRegister = memo(() => {
         <InputRegister
           label={t('L_pass')}
           type={'password'}
+          required
           register={register('password')}
           messageError={errors.password && errors.password.message}
           fullWidth={true}
@@ -58,6 +60,7 @@ export const FormRegister = memo(() => {
         <InputRegister
           label={t('L_confPass')}
           type={'password'}
+          required
           register={register('confirmPassword')}
           messageError={errors.confirmPassword && errors.confirmPassword.message}
           fullWidth={true}
@@ -74,6 +77,7 @@ export const FormRegister = memo(() => {
         <InputPhone
           label={t('L_enterPhone')}
           register={register('phone')}
+          required
           messageError={errors.phone && errors.phone.message}
           fullWidth={true}
           InputProps={{

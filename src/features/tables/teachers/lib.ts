@@ -1,3 +1,5 @@
+import { swalAlert, swalAlertQuestion } from '@/shared'
+
 import { TeacherType, ClassTeacherType } from './types'
 
 export const glueFullName = (teacher: TeacherType) => {

@@ -10,9 +10,10 @@ import { TeachersTableHead } from './head'
 
 type PropsType = {
   teachers: TeacherType[] | undefined
+  remove: (teacher_id: number) => void
 }
 
-export const TeachersTable: FC<PropsType> = ({ teachers }) => {
+export const TeachersTable: FC<PropsType> = ({ teachers, remove }) => {
   const isLoading = false
 
   return (
@@ -28,7 +29,7 @@ export const TeachersTable: FC<PropsType> = ({ teachers }) => {
               )}
               <Table>
                 <TeachersTableHead />
-                <TeachersTableBody teachers={teachers} />
+                <TeachersTableBody teachers={teachers} remove={remove} />
               </Table>
             </>
           ) : (

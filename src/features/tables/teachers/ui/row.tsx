@@ -1,16 +1,22 @@
 import { TableCell, TableRow, Typography } from '@mui/material'
-import { FC } from 'react'
+import { FC, useCallback } from 'react'
 
 import { classToString, glueFullName, reverseBirthday } from '../lib'
 import { TeacherType } from '../types'
 
 import { ChangeTeacher } from './buttons/change'
+import { RemoveTeacher } from './buttons/remove'
 
 type PropsType = {
   teacher: TeacherType
+  remove: (teacher_id: number) => void
 }
 
-export const TeacherTableRow: FC<PropsType> = ({ teacher }) => {
+export const TeacherTableRow: FC<PropsType> = ({ teacher, remove }) => {
+  const removeTeacher = useCallback(() => {
+    remove(teacher.id)
+  }, [])
+
   return (
     <TableRow hover>
       <TableCell align="center">
@@ -30,6 +36,7 @@ export const TeacherTableRow: FC<PropsType> = ({ teacher }) => {
       </TableCell>
       <TableCell align="center">
         <ChangeTeacher teacher_id={teacher.id} />
+        <RemoveTeacher teacher_id={teacher.id} remove={removeTeacher} />
       </TableCell>
     </TableRow>
   )

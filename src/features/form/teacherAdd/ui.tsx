@@ -12,7 +12,7 @@ import { FC } from 'react'
 import { SubmitHandler } from 'react-hook-form'
 import { useTranslation } from 'react-i18next'
 
-import { InputRegister } from '@/shared'
+import { InputPhone, InputRegister } from '@/shared'
 
 import { useTeacherForm } from './model'
 import { TeacherFieldsType } from './types'
@@ -80,7 +80,7 @@ export const FormAddTeacher: FC<PropsType> = ({ addTeacher }) => {
                 />
               </Grid>
               <Grid xs={12} md={6}>
-                <InputRegister
+                <InputPhone
                   label={t('L_phone')}
                   register={register('phone')}
                   required

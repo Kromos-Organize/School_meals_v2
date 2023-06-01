@@ -18,6 +18,7 @@ type PropsType = {
   margin?: 'dense' | 'none' | 'normal'
   size?: 'medium' | 'small'
   variant?: 'outlined' | 'filled' | 'standard'
+  InputProps?: any //! todo изменить на тип
   className?: string
 }
 
@@ -30,18 +31,14 @@ export const InputPhone: FC<PropsType> = ({
 }) => {
   const { onChange, ...restRegister } = register
 
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    onChange(event)
-  }
-
   return (
     <div className={className}>
       <TextField
         {...restRegister}
         {...props}
-        onChange={handleChange}
         fullWidth={fullWidth}
         InputProps={{
+          ...props.InputProps,
           inputComponent: PhoneMask as any,
         }}
       />

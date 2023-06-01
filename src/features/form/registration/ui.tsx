@@ -4,7 +4,7 @@ import { memo } from 'react'
 import { SubmitHandler } from 'react-hook-form'
 import { useTranslation } from 'react-i18next'
 
-import { InputRegister } from '@/shared'
+import { InputPhone, InputRegister } from '@/shared'
 
 import { useRegisterForm, useRegisterMutate } from './model'
 import { RegistrationFieldsType } from './types'
@@ -71,7 +71,7 @@ export const FormRegister = memo(() => {
             ),
           }}
         />
-        <InputRegister
+        <InputPhone
           label={t('L_enterPhone')}
           register={register('phone')}
           messageError={errors.phone && errors.phone.message}

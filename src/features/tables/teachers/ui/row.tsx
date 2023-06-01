@@ -1,7 +1,7 @@
 import { TableCell, TableRow, Typography } from '@mui/material'
 import { FC } from 'react'
 
-import { classToString, glueFullName } from '../lib'
+import { classToString, glueFullName, reverseBirthday } from '../lib'
 import { TeacherType } from '../types'
 
 import { ChangeTeacher } from './buttons/change'
@@ -23,7 +23,7 @@ export const TeacherTableRow: FC<PropsType> = ({ teacher }) => {
         <Typography variant="subtitle2">{glueFullName(teacher)}</Typography>
       </TableCell>
       <TableCell align="center">
-        <Typography variant="subtitle2">{teacher.birthday}</Typography>
+        <Typography variant="subtitle2">{reverseBirthday(teacher.birthday)}</Typography>
       </TableCell>
       <TableCell align="center">
         <Typography variant="subtitle2">{classToString(teacher.class)}</Typography>

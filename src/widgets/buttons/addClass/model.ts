@@ -3,7 +3,7 @@ import { useMutation, useQueryClient } from 'react-query'
 
 import { ClassFieldsType, ClassType } from '@/features'
 import { useCurrentUser } from '@/hooks'
-import { noRefetch, swalAlert, useAxiosAuthClient } from '@/shared'
+import { noRefetch, swalAlert, swalAlertError, useAxiosAuthClient } from '@/shared'
 
 export const useCreateClassMutate = (closeModal: () => void) => {
   const authInstance = useAxiosAuthClient()
@@ -21,6 +21,10 @@ export const useCreateClassMutate = (closeModal: () => void) => {
       closeModal()
       swalAlert({ title: t('L_success_save'), html: t('L_class_added'), icon: 'success' }, 'noBtn')
       queryClient.invalidateQueries({ queryKey: ['classes_list'] })
+    },
+    onError: res => {
+      closeModal()
+      swalAlertError('Учитель может отвечать только за один класс')
     },
   })
 }

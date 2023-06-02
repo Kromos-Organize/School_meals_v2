@@ -12,16 +12,18 @@ import { FC } from 'react'
 import { SubmitHandler } from 'react-hook-form'
 import { useTranslation } from 'react-i18next'
 
-import { InputRegister } from '@/shared'
+import { InputRegister, InputSelect, ValueSelectType } from '@/shared'
 
+import { generateAlphabet, generateNumberClass } from './lib'
 import { useClassForm } from './model'
 import { ClassFieldsType } from './types'
 
 type PropsType = {
+  teachers: ValueSelectType[]
   addClass: (data: ClassFieldsType) => void
 }
 
-export const FormAddClass: FC<PropsType> = ({ addClass }) => {
+export const FormAddClass: FC<PropsType> = ({ teachers, addClass }) => {
   const {
     register,
     handleSubmit,
@@ -29,6 +31,9 @@ export const FormAddClass: FC<PropsType> = ({ addClass }) => {
   } = useClassForm()
 
   const { t } = useTranslation('classes')
+
+  const dataChar = generateAlphabet()
+  const dataNumber = generateNumberClass()
 
   const onSubmit: SubmitHandler<ClassFieldsType> = data => {
     addClass(data)
@@ -48,8 +53,18 @@ export const FormAddClass: FC<PropsType> = ({ addClass }) => {
         <CardContent sx={{ pt: 0 }}>
           <Box sx={{ pr: 2, pl: 2 }}>
             <Grid container spacing={3}>
+              <Grid xs={12} md={12} lg={12} xl={12}>
+                <InputSelect
+                  list={teachers}
+                  label={t('L_teacher')}
+                  register={register('user_id')}
+                  required
+                  messageError={errors.user_id && errors.user_id.message}
+                />
+              </Grid>
               <Grid xs={12} md={6}>
-                <InputRegister
+                <InputSelect
+                  list={dataNumber}
                   label={t('L_number')}
                   register={register('number')}
                   required
@@ -57,7 +72,8 @@ export const FormAddClass: FC<PropsType> = ({ addClass }) => {
                 />
               </Grid>
               <Grid xs={12} md={6}>
-                <InputRegister
+                <InputSelect
+                  list={dataChar}
                   label={t('L_type')}
                   register={register('type')}
                   required

@@ -14,7 +14,7 @@ export const TeachersPages: FC<PropsType> = memo(({ isSchoolAdded }) => {
 
   return (
     <>
-      <Meta title={'Teachers'} />
+      <Meta title={'Учителя'} />
       <MainContainerPage>
         <Stack direction="row" justifyContent="space-between" spacing={4}>
           <ContentHeader title={t('L_title')} />

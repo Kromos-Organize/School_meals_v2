@@ -10,19 +10,21 @@ export const PhoneMask: FC<MaskProps> = forwardRef<HTMLElement, MaskProps>((prop
   const { onChange, ...other } = props
 
   const change = (value: string, mask: any) => {
-    debugger
     mask.updateValue(value)
-    onChange({ target: { name: props.name, value } })
   }
 
   return (
     <IMaskInput
       {...other}
-      mask="(#00) 000-0000"
-      definitions={{
-        '#': /[1-9]/,
+      mask={'+{375}-(00)-000-00-00'}
+      blocks={{
+        '00': {
+          mask: '00',
+          validate: (value: string) => /[1-9]/.test(value),
+        },
       }}
       inputRef={ref}
+      unmask={'typed'}
       onAccept={change}
       overwrite
     />

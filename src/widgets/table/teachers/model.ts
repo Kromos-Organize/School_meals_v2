@@ -1,8 +1,10 @@
-import { useQuery } from 'react-query'
+import { useTranslation } from 'react-i18next'
+import { useMutation, useQuery, useQueryClient } from 'react-query'
 
 import { TeacherType } from '@/features'
 import { useCurrentUser } from '@/hooks'
-import { noRefetch, useAxiosAuthClient } from '@/shared'
+import { useConfirm } from '@/hooks/useConfirm'
+import { noRefetch, swalAlert, useAxiosAuthClient } from '@/shared'
 
 export const useListTeachersQuery = () => {
   const authInstance = useAxiosAuthClient()
@@ -18,5 +20,33 @@ export const useListTeachersQuery = () => {
     ...noRefetch,
     refetchInterval: false,
     refetchOnMount: true,
+  })
+}
+
+export const useRemoveTeacherMutate = () => {
+  const queryClient = useQueryClient()
+  const authInstance = useAxiosAuthClient()
+  const { t } = useTranslation('teachers')
+  const confirm = useConfirm(t('L_req_remove'))
+
+  return useMutation({
+    mutationFn: (teacher_id: number) => {
+      return confirm().then(res => {
+        if (res) {
+          return authInstance.delete<{ id: number }>(`/user/${teacher_id}`).then(res => res.data)
+        }
+      })
+    },
+    ...noRefetch,
+    onSuccess: res => {
+      if (res) {
+        swalAlert({
+          title: t('L_success_save'),
+          html: t('L_remove_success'),
+          icon: 'success',
+        })
+        queryClient.invalidateQueries({ queryKey: ['teachers_list'] })
+      }
+    },
   })
 }

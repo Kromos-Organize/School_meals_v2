@@ -1,3 +1,5 @@
+import { swalAlert, swalAlertQuestion } from '@/shared'
+
 import { TeacherType, ClassTeacherType } from './types'
 
 export const glueFullName = (teacher: TeacherType) => {
@@ -13,3 +15,6 @@ export const classToString = (teacherClass: ClassTeacherType | undefined) => {
 
   return `${teacherClass.number}${teacherClass.type}`
 }
+
+export const reverseBirthday = (birthday: string | undefined) =>
+  birthday ? birthday.split('-').reverse().join('-') : ''

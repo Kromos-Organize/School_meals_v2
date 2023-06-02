@@ -1,9 +1,19 @@
 import Swal from 'sweetalert2'
 
+type SwalIconType = 'success' | 'error' | 'warning'
+
 type SwalType = {
   title: string
   html: string
-  icon: 'success' | 'error'
+  icon: SwalIconType
+}
+
+export type SwalQuestionType = {
+  title?: string
+  text: string
+  icon: SwalIconType
+  cancelButtonText: string
+  confirmButtonText: string
 }
 
 export const swalAlert = async (data: SwalType, type: 'withBtn' | 'noBtn' = 'withBtn') => {
@@ -20,3 +30,15 @@ export const swalAlert = async (data: SwalType, type: 'withBtn' | 'noBtn' = 'wit
       })
   }
 }
+
+export const swalAlertQuestion = async (data: SwalQuestionType) =>
+  Swal.fire({
+    title: data.title ?? '',
+    text: data.text,
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#6366F1',
+    cancelButtonColor: '#F04438',
+    cancelButtonText: data.cancelButtonText,
+    confirmButtonText: data.confirmButtonText,
+  })

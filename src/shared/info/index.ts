@@ -1,1 +1,1 @@
-export { swalAlert } from './swal'
+export * from './swal'

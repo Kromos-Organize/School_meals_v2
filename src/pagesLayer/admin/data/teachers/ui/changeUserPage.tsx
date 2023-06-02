@@ -3,14 +3,14 @@ import Grid from '@mui/system/Unstable_Grid'
 import { FC } from 'react'
 import { useTranslation } from 'react-i18next'
 
-import { FormChangeTeacher, TeacherType } from '@/features'
+import { FormChangeUser, TeacherType } from '@/features'
 import { ComeBack, ContentHeader, MainContainerPage, Meta } from '@/shared'
 
 type PropsType = {
   teacher: TeacherType
 }
 
-export const ChangeTeacherPage: FC<PropsType> = ({ teacher }) => {
+export const ChangeUserPage: FC<PropsType> = ({ teacher }) => {
   const { t } = useTranslation('teachers')
 
   return (
@@ -23,7 +23,7 @@ export const ChangeTeacherPage: FC<PropsType> = ({ teacher }) => {
         </Stack>
         <Grid container spacing={3}>
           <Grid xs={12} md={6} lg={8}>
-            <FormChangeTeacher teacher={teacher} />
+            <FormChangeUser teacher={teacher} />
           </Grid>
         </Grid>
       </MainContainerPage>

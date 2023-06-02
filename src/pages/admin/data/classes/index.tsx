@@ -1,9 +1,10 @@
 import { DashLayout, NextPageWithLayout } from '@/App'
+import { ClassesPage } from '@/pagesLayer'
 
-const ClassesPage: NextPageWithLayout = () => {
-  return <>ClassesPage</>
+const Classes: NextPageWithLayout = () => {
+  return <ClassesPage />
 }
 
-ClassesPage.getLayout = DashLayout
+Classes.getLayout = DashLayout
 
-export default ClassesPage
+export default Classes

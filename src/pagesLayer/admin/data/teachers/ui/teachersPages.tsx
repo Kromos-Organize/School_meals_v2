@@ -2,7 +2,7 @@ import { Stack } from '@mui/material'
 import { FC, memo } from 'react'
 import { useTranslation } from 'react-i18next'
 
-import { ContentHeader, InfoNoSchool, MainContainerPage, Meta } from '@/shared'
+import { ContentHeader, InfoNoData, MainContainerPage, Meta, navModel } from '@/shared'
 import { AddTeacher, ShowTableTeachers } from '@/widgets'
 
 type PropsType = {
@@ -20,7 +20,11 @@ export const TeachersPages: FC<PropsType> = memo(({ isSchoolAdded }) => {
           <ContentHeader title={t('L_title')} />
           {isSchoolAdded && <AddTeacher />}
         </Stack>
-        {isSchoolAdded ? <ShowTableTeachers /> : <InfoNoSchool />}
+        {isSchoolAdded ? (
+          <ShowTableTeachers />
+        ) : (
+          <InfoNoData action={'add_school'} link={navModel.ADMIN_ROUTE.data_school} />
+        )}
       </MainContainerPage>
     </>
   )

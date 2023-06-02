@@ -14,7 +14,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 
   const id = context.query.id;
 
-  const response = await instanceServer.get(`/api/teacher/${id}`).then(res => res.data)
+  const response = await instanceServer.get(`/api/user/${id}`).then(res => res.data)
   
   if(!response) {
     return {

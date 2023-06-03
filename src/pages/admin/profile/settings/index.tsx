@@ -1,5 +1,3 @@
-import { getServerSession } from 'next-auth'
-
 import { NextPageWithLayout, DashLayout } from '@/App'
 /* eslint-disable */
 import { authOptions } from '@/pages/api/auth/[...nextauth]'

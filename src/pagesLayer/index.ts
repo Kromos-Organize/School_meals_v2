@@ -1,3 +1,4 @@
 export { RegistrationPage, LoginPage } from './auth'
-export { SettingsPage, UsersPage, LogsPage } from './s_admin'
+export { UsersPage, LogsPage } from './s_admin'
 export { SchoolPage, TeachersPages, ChangeUserPage } from './admin'
+export { ChangeSAdminPage } from './s_admin'

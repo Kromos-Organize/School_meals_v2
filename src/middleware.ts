@@ -3,7 +3,7 @@ import { withAuth } from 'next-auth/middleware'
 
 export default withAuth(
   function middleware(req) {
-    if (req.nextUrl.pathname.startsWith('/s_admin') && req.nextauth.token?.role !== 'S_ADMIN') {
+    if (req.nextUrl.pathname.startsWith('/admin') && req.nextauth.token?.role !== 'S_ADMIN') {
       req.nextUrl.pathname = '/auth/login'
 
       return NextResponse.redirect(req.nextUrl)
@@ -21,4 +21,4 @@ export default withAuth(
   }
 )
 
-export const config = { matcher: ['/s_admin/:path*', '/admin/:path*'] }
+export const config = { matcher: ['/admin/:path*', '/admin/:path*'] }

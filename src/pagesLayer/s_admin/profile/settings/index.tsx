@@ -1,3 +1,1 @@
-export const SettingsPage = () => {
-  return <>FormSetting</>
-}
+export { ChangeSAdminPage } from './ui/changeSAdminPage'

@@ -2,6 +2,7 @@ import { Unstable_Grid2 as Grid, Stack } from '@mui/material'
 import { FC, memo } from 'react'
 import { useTranslation } from 'react-i18next'
 
+import { ClassesTable } from '@/features'
 import { ContentHeader, InfoNoData, MainContainerPage, Meta, navModel } from '@/shared'
 import { AddClass } from '@/widgets'
 
@@ -24,7 +25,9 @@ export const ClassesPage: FC<PropsType> = memo(({ isTeachers }) => {
         <Grid container spacing={3}>
           <Grid xs={12} md={6} lg={8}>
             {isTeachers ? (
-              <></>
+              <>
+                <ClassesTable />
+              </>
             ) : (
               <InfoNoData action={'add_teacher'} link={navModel.ADMIN_ROUTE.data_teachers} />
             )}

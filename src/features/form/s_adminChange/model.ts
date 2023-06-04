@@ -6,29 +6,29 @@ import { useMutation } from 'react-query'
 
 import { noRefetch, swalAlert, useAxiosAuthClient } from '@/shared'
 
-import { AdminChangeSchema } from './config'
-import { AdminChangeFieldType, AdminType } from './types'
+import { S_AdminChangeSchema } from './config'
+import { S_AdminChangeFieldType, S_AdminType } from './types'
 
-export const useAdminChangeForm = (admin: AdminType) => {
-  return useForm<AdminChangeFieldType>({
+export const useS_AdminChangeForm = (admin: S_AdminType) => {
+  return useForm<S_AdminChangeFieldType>({
     defaultValues: {
       fname: admin.fname,
       name: admin.name,
       position: admin.position,
       chat_number: admin.chat_number ?? '',
     },
-    resolver: yupResolver(AdminChangeSchema),
+    resolver: yupResolver(S_AdminChangeSchema),
   })
 }
 
-export const useChangeAdminMutate = (admin_id: number) => {
+export const useChangeS_AdminMutate = (admin_id: number) => {
   const authInstance = useAxiosAuthClient()
   const { t } = useTranslation('admin_setting')
   const { back } = useRouter()
 
   return useMutation({
-    mutationFn: (data: AdminChangeFieldType) =>
-      authInstance.put<AdminType>(`/admin/${admin_id}`, data).then(res => res.data),
+    mutationFn: (data: S_AdminChangeFieldType) =>
+      authInstance.put<S_AdminType>(`/admin/${admin_id}`, data).then(res => res.data),
     ...noRefetch,
     onSuccess: res => {
       swalAlert(

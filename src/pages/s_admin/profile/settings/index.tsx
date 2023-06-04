@@ -2,15 +2,15 @@ import { NextPageWithLayout, DashLayout } from '@/App'
 /* eslint-disable */
 import { authOptions } from '@/pages/api/auth/[...nextauth]'
 import { ChangeSAdminPage } from '@/pagesLayer'
-import { AdminType } from '@/features'
 import { useAxiosAuthServer } from '@/shared'
+import {S_AdminType} from '@/features/form/s_adminChange/types';
 
 export const getServerSideProps = async (context: any) => {
-  const { instanceServer, user } = await useAxiosAuthServer(context, authOptions)
+  const { instanceServer, user: admin } = await useAxiosAuthServer(context, authOptions)
 
-  if (user?.id) {
+  if (admin?.id) {
     const response = await instanceServer
-        .get(`/api/admin/${user.id}`)
+        .get(`/api/admin/${admin.id}`)
         .then(res => res.data)
 
     if (!response) {
@@ -28,7 +28,7 @@ export const getServerSideProps = async (context: any) => {
 }
 
 type PropsType = {
-  admin: AdminType
+  admin: S_AdminType
 }
 const SAdminSettingsPage: NextPageWithLayout<PropsType> = ({ admin }) => {
   return <ChangeSAdminPage admin={admin} />

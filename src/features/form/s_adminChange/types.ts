@@ -1,4 +1,4 @@
-export type AdminType = {
+export type S_AdminType = {
   id: number
   email: string
   role: 'ADMIN'
@@ -8,7 +8,7 @@ export type AdminType = {
   chat_number?: string
 }
 
-export type AdminChangeFieldType = {
+export type S_AdminChangeFieldType = {
   fname?: string
   name?: string
   position?: string

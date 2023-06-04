@@ -1,1 +1,1 @@
-export { ChangeSAdminPage } from './ui/changeSAdminPage'
+export { ChangeSAdminPage } from './changeSAdminPage'

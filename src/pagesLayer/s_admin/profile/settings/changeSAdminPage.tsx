@@ -3,11 +3,11 @@ import Grid from '@mui/system/Unstable_Grid'
 import { FC } from 'react'
 import { useTranslation } from 'react-i18next'
 
-import { AdminType, FormChangeSAdmin } from '@/features'
+import { S_AdminType, FormChangeS_Admin } from '@/features'
 import { ComeBack, ContentHeader, MainContainerPage, Meta } from '@/shared'
 
 type PropsType = {
-  admin: AdminType
+  admin: S_AdminType
 }
 
 export const ChangeSAdminPage: FC<PropsType> = ({ admin }) => {
@@ -23,7 +23,7 @@ export const ChangeSAdminPage: FC<PropsType> = ({ admin }) => {
         </Stack>
         <Grid container spacing={3}>
           <Grid xs={12} md={6} lg={8}>
-            <FormChangeSAdmin admin={admin} />
+            <FormChangeS_Admin admin={admin} />
           </Grid>
         </Grid>
       </MainContainerPage>

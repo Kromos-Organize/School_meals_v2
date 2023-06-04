@@ -4,27 +4,26 @@ import { FC } from 'react'
 import { SubmitHandler } from 'react-hook-form'
 import { useTranslation } from 'react-i18next'
 
-import { AdminType } from '@/features'
-import { InputPhone, InputRegister } from '@/shared'
+import { InputRegister } from '@/shared'
 
-import { useAdminChangeForm, useChangeAdminMutate } from './model'
-import { AdminChangeFieldType } from './types'
+import { useS_AdminChangeForm, useChangeS_AdminMutate } from './model'
+import { S_AdminType, S_AdminChangeFieldType } from './types'
 
 type PropsType = {
-  admin: AdminType
+  admin: S_AdminType
 }
 
-export const FormChangeSAdmin: FC<PropsType> = ({ admin }) => {
+export const FormChangeS_Admin: FC<PropsType> = ({ admin }) => {
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useAdminChangeForm(admin)
+  } = useS_AdminChangeForm(admin)
 
   const { t } = useTranslation('admin_setting')
-  const { mutate: saveChanged } = useChangeAdminMutate(admin.id)
+  const { mutate: saveChanged } = useChangeS_AdminMutate(admin.id)
 
-  const onSubmit: SubmitHandler<AdminChangeFieldType> = data => saveChanged(data)
+  const onSubmit: SubmitHandler<S_AdminChangeFieldType> = data => saveChanged(data)
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
@@ -61,7 +60,7 @@ export const FormChangeSAdmin: FC<PropsType> = ({ admin }) => {
                 />
               </Grid>
               <Grid xs={12} md={6}>
-                <InputPhone
+                <InputRegister
                   label={t('L_chat_number')}
                   register={register('chat_number')}
                   messageError={errors.chat_number && errors.chat_number.message}

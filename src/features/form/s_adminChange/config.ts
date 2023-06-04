@@ -1,6 +1,6 @@
 import * as Yup from 'yup'
 
-export const AdminChangeSchema = Yup.object().shape({
+export const S_AdminChangeSchema = Yup.object().shape({
   fname: Yup.string(),
   name: Yup.string(),
   position: Yup.string(),

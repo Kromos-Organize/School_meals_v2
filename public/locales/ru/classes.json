@@ -8,5 +8,7 @@
   "L_type": "Буква класса",
   "L_add": "Добавить",
   "L_success_save": "Изменения успешно сохранены",
-  "L_class_added": "Класс добавлен"
+  "L_class_added": "Класс добавлен",
+  "L_number_class_info" :"-е классы",
+  "L_responsible_teacher": "Ответственный учитель"
 }

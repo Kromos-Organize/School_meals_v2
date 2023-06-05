@@ -22,8 +22,8 @@ export const ClassesPage: FC<PropsType> = memo(({ isTeachers }) => {
           {isTeachers && <AddClass />}
         </Stack>
 
-        <Grid container spacing={3}>
-          <Grid xs={12} md={6} lg={8}>
+        <Grid container spacing={3} sx={{ width: '100%' }}>
+          <Grid sx={{ width: '100%' }}>
             {isTeachers ? (
               <>
                 <ClassesTable />

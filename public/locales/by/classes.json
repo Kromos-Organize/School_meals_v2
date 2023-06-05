@@ -8,5 +8,7 @@
   "L_type": "Літара класа",
   "L_add": "Дадаць",
   "L_success_save": "Змены паспяхова захаваны",
-  "L_class_added": "Клас дададзены"
+  "L_class_added": "Клас дададзены",
+  "L_number_class_info" :"-я класы",
+  "L_responsible_teacher": "Адказны настаўнік"
 }

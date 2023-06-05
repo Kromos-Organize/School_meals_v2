@@ -5,6 +5,7 @@ import { DashLayout, NextPageWithLayout } from '@/App'
 import { authOptions } from '@/pages/api/auth/[...nextauth]'
 import { ClassesPage } from '@/pagesLayer'
 import { useAxiosAuthServer } from '@/shared'
+import 'react-alice-carousel/lib/alice-carousel.css'
 
 export const getServerSideProps: GetServerSideProps = async context => {
   const { instanceServer, user } = await useAxiosAuthServer(context, authOptions)

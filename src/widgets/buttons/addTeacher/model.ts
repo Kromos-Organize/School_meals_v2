@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next'
 import { useMutation, useQueryClient } from 'react-query'
 
 import { TeacherFieldsType, TeacherType } from '@/features'
@@ -8,6 +9,7 @@ export const useCreateTeacherMutate = (closeModal: () => void) => {
   const authInstance = useAxiosAuthClient()
   const user = useCurrentUser()
   const queryClient = useQueryClient()
+  const { t } = useTranslation('teachers')
 
   return useMutation({
     mutationFn: (data: TeacherFieldsType) =>
@@ -17,7 +19,10 @@ export const useCreateTeacherMutate = (closeModal: () => void) => {
     ...noRefetch,
     onSuccess: res => {
       closeModal()
-      swalAlert({ title: 'Выполнено', html: 'Учитель добавлен', icon: 'success' }, 'noBtn')
+      swalAlert(
+        { title: t('L_success_save'), html: t('L_teacher_added'), icon: 'success' },
+        'noBtn'
+      )
       queryClient.invalidateQueries({ queryKey: ['teachers_list'] })
     },
   })

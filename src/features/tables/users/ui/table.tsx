@@ -3,28 +3,27 @@ import { FC } from 'react'
 
 import { Scrollbar } from '@/shared'
 
-import { UserType } from '../types'
+import {
+  useActivateUserMutate,
+  useBlockUserMutate,
+  useListUsersQuery,
+  useLoginCabinetMutate,
+  useUnlockUserMutate,
+} from '../model'
 
 import { UsersTableBody } from './body'
 import { UsersTableHead } from './head'
 
-type PropsType = {
-  users: UserType[] | undefined
-  isLoading: boolean
-  activated: (data: { user_id: number; isActive: boolean }) => void
-  blockUser: (data: { user_id: number; school_id: number }) => void
-  unlockUser: (data: { id: number }) => void
-  signCabinet: (email: string) => void
-}
+export const UsersTable: FC = () => {
+  const { data: users } = useListUsersQuery()
 
-export const UsersTable: FC<PropsType> = ({
-  users,
-  isLoading,
-  activated,
-  blockUser,
-  unlockUser,
-  signCabinet,
-}) => {
+  const { mutate: activated, isLoading: isActivated } = useActivateUserMutate()
+  const { mutate: blockUser, isLoading: isBlocked } = useBlockUserMutate()
+  const { mutate: unlockUser, isLoading: isUnlocked } = useUnlockUserMutate()
+  const signCabinet = useLoginCabinetMutate()
+
+  const isLoading = isActivated || isBlocked || isUnlocked
+
   return (
     <Card>
       <Scrollbar>

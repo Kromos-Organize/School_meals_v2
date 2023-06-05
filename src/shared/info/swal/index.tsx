@@ -42,3 +42,12 @@ export const swalAlertQuestion = async (data: SwalQuestionType) =>
     cancelButtonText: data.cancelButtonText,
     confirmButtonText: data.confirmButtonText,
   })
+
+export const swalAlertError = async (text: string) =>
+  Swal.fire({
+    // title: data.title ?? '',
+    text,
+    icon: 'error',
+    showConfirmButton: false,
+    timer: 1500,
+  })

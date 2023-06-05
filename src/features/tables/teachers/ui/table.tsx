@@ -3,17 +3,15 @@ import { FC } from 'react'
 
 import { Scrollbar } from '@/shared'
 
-import { TeacherType } from '../types'
+import { useListTeachersQuery, useRemoveTeacherMutate } from '../model'
 
 import { TeachersTableBody } from './body'
 import { TeachersTableHead } from './head'
 
-type PropsType = {
-  teachers: TeacherType[] | undefined
-  remove: (teacher_id: number) => void
-}
+export const TeachersTable: FC = () => {
+  const { data: teachers } = useListTeachersQuery()
+  const { mutate: remove } = useRemoveTeacherMutate()
 
-export const TeachersTable: FC<PropsType> = ({ teachers, remove }) => {
   const isLoading = false
 
   return (

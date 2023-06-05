@@ -6,7 +6,7 @@ import { RegisterWidget } from '@/widgets'
 export const RegistrationPage = memo(() => {
   return (
     <>
-      <Meta title={'Registration'} description={'Страница регистрации личного кабинета'} />
+      <Meta title={'Регистрация'} description={'Страница регистрации личного кабинета'} />
       <RegisterWidget />
     </>
   )

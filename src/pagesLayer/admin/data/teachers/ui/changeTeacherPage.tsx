@@ -15,7 +15,7 @@ export const ChangeTeacherPage: FC<PropsType> = ({ teacher }) => {
 
   return (
     <>
-      <Meta title={'Update Teacher'} />
+      <Meta title={'Обновить учителя'} />
       <MainContainerPage>
         <Stack direction="row" justifyContent="space-between" spacing={4}>
           <ContentHeader title={t('L_title_change')} />

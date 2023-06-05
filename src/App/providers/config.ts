@@ -1,4 +1,3 @@
-import { createTheme } from '@mui/material/styles'
 import type { Ni18nOptions } from 'ni18n'
 
 export const i18nConfig: Ni18nOptions = {
@@ -6,6 +5,7 @@ export const i18nConfig: Ni18nOptions = {
   ns: [
     '404',
     'admin_setting',
+    'classes',
     'confirm',
     'info_no_data',
     'login',

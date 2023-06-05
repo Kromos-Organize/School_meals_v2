@@ -9,7 +9,7 @@ export const LogsPage = memo(() => {
 
   return (
     <>
-      <Meta title="Logs" />
+      <Meta title="Логи" />
       <MainContainerPage>
         <ContentHeader title={t('L_title')} />
         <ShowTableLogs />

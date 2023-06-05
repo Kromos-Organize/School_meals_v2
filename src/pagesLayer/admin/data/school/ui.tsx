@@ -14,7 +14,7 @@ export const SchoolPage: FC<PropsType> = memo(({ school }) => {
 
   return (
     <>
-      <Meta title={'School'} />
+      <Meta title={'Школа'} />
       <MainContainerPage>
         <ContentHeader title={t('L_title')} />
         <Grid container spacing={3}>

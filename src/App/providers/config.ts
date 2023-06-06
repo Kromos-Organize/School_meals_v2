@@ -14,6 +14,7 @@ export const i18nConfig: Ni18nOptions = {
     'providers',
     'register',
     'school',
+    'students',
     'teachers',
     'users',
   ],

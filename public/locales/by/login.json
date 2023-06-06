@@ -1,11 +1,11 @@
 {
-  "L_Login": "Вход",
-  "L_no_account": "У вас нет аккаунта?",
-  "L_registered": "Регистрация",
-  "L_continue": "Продолжить",
-  "L_forgotPass": "Забыли пароль?",
-  "L_enterPass": "Введите пароль",
-  "L_enterEmail": "Введите Email",
-  "L_error_login": "Ошибка входа",
-  "L_helper": "В случае проблем со входом в кабинет"
+  "L_Login": "Уваход",
+  "L_no_account": "У вас няма рахунку?",
+  "L_registered": "Рэгістрацыя",
+  "L_continue": "Працягнуць",
+  "L_forgotPass": "Забыліся пароль?",
+  "L_enterPass": "Увядзіце пароль",
+  "L_enterEmail": "Увядзіце Email",
+  "L_error_login": "Памылка увахода",
+  "L_helper": "У выпадку праблем з уваходам у кабінет"
 }

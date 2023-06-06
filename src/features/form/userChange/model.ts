@@ -9,7 +9,7 @@ import { noRefetch, swalAlert, useAxiosAuthClient } from '@/shared'
 import { TeacherChangeSchema } from './config'
 import { TeacherChangeFieldType, TeacherType } from './types'
 
-export const useTeacherChangeForm = (teacher: TeacherType) => {
+export const useUserChangeForm = (teacher: TeacherType) => {
   return useForm<TeacherChangeFieldType>({
     defaultValues: {
       phone: teacher.phone,
@@ -22,7 +22,7 @@ export const useTeacherChangeForm = (teacher: TeacherType) => {
   })
 }
 
-export const useChangeTeacherMutate = (teacher_id: number) => {
+export const useChangeUserMutate = (teacher_id: number) => {
   const authInstance = useAxiosAuthClient()
   const { t } = useTranslation('teachers')
   const { back } = useRouter()

@@ -1,2 +1,2 @@
 export { TeachersPages } from './ui/teachersPages'
-export { ChangeTeacherPage } from './ui/changeTeacherPage'
+export { ChangeUserPage } from './ui/changeUserPage'

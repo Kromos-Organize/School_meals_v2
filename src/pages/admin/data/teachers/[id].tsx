@@ -7,7 +7,7 @@ import { TeacherType } from '@/features'
 import { authOptions } from '@/pages/api/auth/[...nextauth]'
 import { useAxiosAuthServer } from '@/shared'
 import { GetServerSideProps } from 'next'
-import { ChangeTeacherPage } from '@/pagesLayer'
+import { ChangeUserPage } from '@/pagesLayer'
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const { instanceServer, user } = await useAxiosAuthServer(context, authOptions)
@@ -35,7 +35,7 @@ type PropsType = {
 
 const ChangeTeacher: NextPageWithLayout<PropsType> = ({ teacher }) => {
 
-  return <ChangeTeacherPage teacher={teacher} />
+  return <ChangeUserPage teacher={teacher} />
 }
 
 ChangeTeacher.getLayout = DashLayout

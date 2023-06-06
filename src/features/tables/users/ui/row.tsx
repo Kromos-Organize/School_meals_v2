@@ -8,7 +8,6 @@ import { UserType } from '../types'
 
 import { ActivatedButton } from './buttons/activated'
 import { BlockedButton } from './buttons/blocked'
-import { ButtonsAction } from './buttons/buttonsAction'
 import { SignInCabinet } from './buttons/signInCabinet'
 
 type PropsType = {

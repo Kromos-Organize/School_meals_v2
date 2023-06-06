@@ -1,13 +1,37 @@
-import { DashLayout, NextPageWithLayout } from '@/App'
-import { Meta } from '@/shared'
+import { NextPageWithLayout, DashLayout } from '@/App'
+/* eslint-disable */
+import { authOptions } from '@/pages/api/auth/[...nextauth]'
+import { ChangeUserPage } from '@/pagesLayer'
+import { TeacherType } from '@/features';
+import { useAxiosAuthServer } from '@/shared';
 
-const AdminSettingsPage: NextPageWithLayout = () => {
-  return (
-    <>
-      <Meta title="Admin Setting" description="Hello World" />
-      <div>AdminSettingsPage</div>
-    </>
-  )
+export const getServerSideProps = async (context: any) => {
+  const {instanceServer, user} = await useAxiosAuthServer(context, authOptions)
+
+  if (user?.id) {
+    const response = await instanceServer
+        .get(`/api/user/${user.id}`)
+        .then(res => res.data)
+
+    if (!response) {
+      return {
+        notFound: true,
+      }
+    }
+
+    return {
+      props: {
+        teacher: response,
+      },
+    }
+  }
+}
+
+type PropsType = {
+  teacher: TeacherType
+}
+const AdminSettingsPage:NextPageWithLayout<PropsType> = ({ teacher }) => {
+  return <ChangeUserPage teacher={teacher} />
 }
 
 AdminSettingsPage.getLayout = DashLayout

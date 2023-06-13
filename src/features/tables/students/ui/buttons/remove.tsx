@@ -7,11 +7,11 @@ type PropsType = {
   remove: () => void
 }
 
-export const RemoveTeacher: FC<PropsType> = ({ remove }) => {
-  const { t } = useTranslation('teachers')
+export const RemoveStudent: FC<PropsType> = ({ remove }) => {
+  const { t } = useTranslation('students')
 
   return (
-    <Tooltip key="L_remove_teacher" title={t('L_remove_teacher')}>
+    <Tooltip key="L_remove_student" title={t('L_remove_student')}>
       <Button color={'error'} onClick={remove}>
         <SvgIcon>
           <XCircleIcon />

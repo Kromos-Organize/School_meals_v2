@@ -2,8 +2,9 @@ import { Stack } from '@mui/material'
 import { FC, memo } from 'react'
 import { useTranslation } from 'react-i18next'
 
+import { TeachersTable } from '@/features'
 import { ContentHeader, InfoNoData, MainContainerPage, Meta, navModel } from '@/shared'
-import { AddTeacher, ShowTableTeachers } from '@/widgets'
+import { AddTeacher } from '@/widgets'
 
 type PropsType = {
   isSchoolAdded: boolean
@@ -21,7 +22,7 @@ export const TeachersPages: FC<PropsType> = memo(({ isSchoolAdded }) => {
           {isSchoolAdded && <AddTeacher />}
         </Stack>
         {isSchoolAdded ? (
-          <ShowTableTeachers />
+          <TeachersTable />
         ) : (
           <InfoNoData action={'add_school'} link={navModel.ADMIN_ROUTE.data_school} />
         )}

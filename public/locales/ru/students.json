@@ -8,5 +8,15 @@
   "L_name": "Имя",
   "L_lname": "Отчество",
   "L_success_save": "Изменения успешно сохранены",
-  "L_student_added": "Учащийся добавлен"
+  "L_student_added": "Ученик добавлен",
+  "L_fullName": "ФИО",
+  "L_largeFamilies": "Многодетная семья",
+  "L_actions": "Действия",
+  "L_yes": "Да",
+  "L_no": "Нет",
+  "L_phone_parents": "Телефоны родителей",
+  "L_change_student": "Изменить данные ученика",
+  "L_remove_student": "Удалить ученика",
+  "L_remove_success": "Ученик удален",
+  "L_req_remove": "Вы действительно хотите выполнить удаление?"
 }

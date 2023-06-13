@@ -8,5 +8,15 @@
   "L_name": "Імя",
   "L_lname": "Імя па бацьку",
   "L_success_save": "Змены паспяхова захаваны",
-  "L_student_added": "Навучэнец дададзены"
+  "L_student_added": "Навучэнец дададзены",
+  "L_fullName": "ПІБ",
+  "L_largeFamilies": "Шматдзетная сям'я",
+  "L_actions": "Дзеянні",
+  "L_yes": "Так",
+  "L_no": "Не",
+  "L_phone_parents": "Тэлефоны бацькоў",
+  "L_change_student": "Змяніць дадзеныя вучня",
+  "L_remove_student": "Выдаліць вучня",
+  "L_remove_success": "Вучань выдалены",
+  "L_req_remove": "Вы сапраўды жадаеце выканаць выдаленне?"
 }

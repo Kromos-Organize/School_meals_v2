@@ -6,7 +6,7 @@ export type ClassTeacherType = {
 export type TeacherType = {
   id: number
   school_id: number
-  role: 'EMPLOYEE'
+  role: 'EMPLOYEE' | 'ADMIN'
   email: string
   phone?: string
   fname?: string

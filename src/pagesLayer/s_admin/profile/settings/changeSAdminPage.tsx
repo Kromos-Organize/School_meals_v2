@@ -4,7 +4,7 @@ import { FC } from 'react'
 import { useTranslation } from 'react-i18next'
 
 import { S_AdminType, FormChangeS_Admin } from '@/features'
-import { ComeBack, ContentHeader, MainContainerPage, Meta } from '@/shared'
+import { ContentHeader, MainContainerPage, Meta } from '@/shared'
 
 type PropsType = {
   admin: S_AdminType
@@ -19,7 +19,6 @@ export const ChangeSAdminPage: FC<PropsType> = ({ admin }) => {
       <MainContainerPage>
         <Stack direction="row" justifyContent="space-between" spacing={4}>
           <ContentHeader title={t('L_title_change')} />
-          <ComeBack />
         </Stack>
         <Grid container spacing={3}>
           <Grid xs={12} md={6} lg={8}>

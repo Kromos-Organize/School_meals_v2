@@ -19,7 +19,7 @@ export const ChangeUserPage: FC<PropsType> = ({ teacher }) => {
       <MainContainerPage>
         <Stack direction="row" justifyContent="space-between" spacing={4}>
           <ContentHeader title={t('L_title_change')} />
-          <ComeBack />
+          {teacher.role === 'EMPLOYEE' && <ComeBack />}
         </Stack>
         <Grid container spacing={3}>
           <Grid xs={12} md={6} lg={8}>

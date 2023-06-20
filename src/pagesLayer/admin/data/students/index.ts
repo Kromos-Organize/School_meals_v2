@@ -1,1 +1,2 @@
-export { StudentsPage } from './ui'
+export { StudentsPage } from './ui/studentsPage'
+export { ChangeStudentPage } from './ui/changeStudentPage'

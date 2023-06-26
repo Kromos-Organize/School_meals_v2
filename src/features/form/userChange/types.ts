@@ -16,3 +16,11 @@ export type TeacherType = {
   isActive: boolean
   class: ClassTeacherType | undefined
 }
+
+export type TeacherChangeFieldType = {
+  fname?: string
+  name?: string
+  lname?: string
+  phone?: string
+  birthday: string | null
+}

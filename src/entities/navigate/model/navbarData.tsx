@@ -7,13 +7,11 @@ export const navigationData: NavigationDataType = {
       id: '1',
       icon: <></>,
       title: 'schools',
-      // path: navModel.MAIN_ROUTE.s_admin + navModel.S_ADMIN_ROUTE.schools,
     },
     {
       id: '2',
       icon: <></>,
       title: 'moderation',
-      // path: navModel.MAIN_ROUTE.s_admin + navModel.S_ADMIN_ROUTE.moderation,
     },
     {
       id: '3',

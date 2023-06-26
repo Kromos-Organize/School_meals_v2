@@ -1,10 +1,39 @@
 import { NextPageWithLayout, DashLayout } from '@/App'
-import { SettingsPage } from '@/pagesLayer'
+/* eslint-disable */
+import { authOptions } from '@/pages/api/auth/[...nextauth]'
+import { ChangeSAdminPage } from '@/pagesLayer'
+import { useAxiosAuthServer } from '@/shared'
+import {S_AdminType} from '@/features/form/s_adminChange/types';
 
-const SAdminSettings: NextPageWithLayout = () => {
-  return <SettingsPage />
+export const getServerSideProps = async (context: any) => {
+  const { instanceServer, user: admin } = await useAxiosAuthServer(context, authOptions)
+
+  if (admin?.id) {
+    const response = await instanceServer
+        .get(`/api/admin/${admin.id}`)
+        .then(res => res.data)
+
+    if (!response) {
+      return {
+        notFound: true,
+      }
+    }
+
+    return {
+      props: {
+        admin: response,
+      },
+    }
+  }
 }
 
-SAdminSettings.getLayout = DashLayout
+type PropsType = {
+  admin: S_AdminType
+}
+const SAdminSettingsPage: NextPageWithLayout<PropsType> = ({ admin }) => {
+  return <ChangeSAdminPage admin={admin} />
+}
 
-export default SAdminSettings
+SAdminSettingsPage.getLayout = DashLayout
+
+export default SAdminSettingsPage

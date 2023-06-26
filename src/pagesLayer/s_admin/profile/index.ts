@@ -1,0 +1,1 @@
+export { ChangeSAdminPage } from './settings'

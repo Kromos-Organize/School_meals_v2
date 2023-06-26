@@ -3,7 +3,7 @@ import Grid from '@mui/system/Unstable_Grid'
 import { FC } from 'react'
 import { useTranslation } from 'react-i18next'
 
-import { StudentType } from '@/features'
+import { FormChangeStudent, StudentType } from '@/features'
 import { ComeBack, ContentHeader, MainContainerPage, Meta } from '@/shared'
 
 type PropsType = {
@@ -23,7 +23,7 @@ export const ChangeStudentPage: FC<PropsType> = ({ student }) => {
         </Stack>
         <Grid container spacing={3}>
           <Grid xs={12} md={6} lg={8}>
-            {/* <FormChangeTeacher teacher={teacher} /> */}
+            <FormChangeStudent student={student} />
           </Grid>
         </Grid>
       </MainContainerPage>

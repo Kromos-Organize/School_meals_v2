@@ -12,27 +12,28 @@ import { FC } from 'react'
 import { SubmitHandler } from 'react-hook-form'
 import { useTranslation } from 'react-i18next'
 
-import { InputDates, InputPhone, InputRegister } from '@/shared'
+import { InputDates, InputRegister } from '@/shared'
 
-import { useChangeTeacherMutate, useTeacherChangeForm } from './model'
-import { TeacherChangeFieldType, TeacherType } from './types'
+import { useChangeStudentMutate, useStudentChangeForm } from './model'
+import { StudentChangeFieldsType, StudentType } from './types'
 
 type PropsType = {
-  teacher: TeacherType
+  student: StudentType
 }
 
-export const FormChangeTeacher: FC<PropsType> = ({ teacher }) => {
+export const FormChangeStudent: FC<PropsType> = ({ student }) => {
   const {
     register,
     control,
     handleSubmit,
     formState: { errors, defaultValues },
-  } = useTeacherChangeForm(teacher)
+  } = useStudentChangeForm(student)
 
-  const { t } = useTranslation('teachers')
-  const { mutate: saveChanged } = useChangeTeacherMutate(teacher.id)
+  const { t } = useTranslation('students')
 
-  const onSubmit: SubmitHandler<TeacherChangeFieldType> = data => saveChanged(data)
+  const { mutate: saveChanged } = useChangeStudentMutate(student.student_id)
+
+  const onSubmit: SubmitHandler<StudentChangeFieldsType> = data => saveChanged(data)
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
@@ -40,7 +41,7 @@ export const FormChangeTeacher: FC<PropsType> = ({ teacher }) => {
         <CardHeader
           subheader={
             <Alert severity="info" color="info">
-              {t('L_change_data_teacher')}
+              {t('L_change_data_student')}
             </Alert>
           }
         />
@@ -66,13 +67,6 @@ export const FormChangeTeacher: FC<PropsType> = ({ teacher }) => {
                   label={t('L_lname')}
                   register={register('lname')}
                   messageError={errors.lname && errors.lname.message}
-                />
-              </Grid>
-              <Grid xs={12} md={6}>
-                <InputPhone
-                  label={t('L_phone')}
-                  register={register('phone')}
-                  messageError={errors.phone && errors.phone.message}
                 />
               </Grid>
               <Grid xs={12} md={6}>

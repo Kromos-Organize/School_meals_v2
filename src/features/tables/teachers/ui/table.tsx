@@ -9,10 +9,10 @@ import { TeachersTableBody } from './body'
 import { TeachersTableHead } from './head'
 
 export const TeachersTable: FC = () => {
-  const { data: teachers } = useListTeachersQuery()
-  const { mutate: remove } = useRemoveTeacherMutate()
+  const { data: teachers, isLoading: loadList } = useListTeachersQuery()
+  const { mutate: remove, isLoading: loadRemove } = useRemoveTeacherMutate()
 
-  const isLoading = false
+  const isLoading = loadList || loadRemove
 
   return (
     <Card>

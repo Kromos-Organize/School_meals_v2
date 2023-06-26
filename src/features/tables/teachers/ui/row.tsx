@@ -1,7 +1,9 @@
 import { TableCell, TableRow, Typography } from '@mui/material'
 import { FC, useCallback } from 'react'
 
-import { classToString, glueFullName, reverseBirthday } from '../lib'
+import { glueFullName } from '@/shared'
+
+import { classToString, reverseBirthday } from '../lib'
 import { TeacherType } from '../types'
 
 import { ChangeTeacher } from './buttons/change'
@@ -26,7 +28,7 @@ export const TeacherTableRow: FC<PropsType> = ({ teacher, remove }) => {
         <Typography variant="subtitle2">{teacher.email}</Typography>
       </TableCell>
       <TableCell align="center">
-        <Typography variant="subtitle2">{glueFullName(teacher)}</Typography>
+        <Typography variant="subtitle2">{glueFullName<TeacherType>(teacher)}</Typography>
       </TableCell>
       <TableCell align="center">
         <Typography variant="subtitle2">{reverseBirthday(teacher.birthday)}</Typography>
@@ -36,7 +38,7 @@ export const TeacherTableRow: FC<PropsType> = ({ teacher, remove }) => {
       </TableCell>
       <TableCell align="center">
         <ChangeTeacher teacher_id={teacher.id} />
-        <RemoveTeacher teacher_id={teacher.id} remove={removeTeacher} />
+        <RemoveTeacher remove={removeTeacher} />
       </TableCell>
     </TableRow>
   )

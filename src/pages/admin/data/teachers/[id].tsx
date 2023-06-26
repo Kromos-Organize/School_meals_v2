@@ -1,16 +1,15 @@
-import { useRouter } from 'next/router'
-import { getServerSession } from 'next-auth'
-
 import { DashLayout, NextPageWithLayout } from '@/App'
 import { TeacherType } from '@/features'
 /* eslint-disable */
 import { authOptions } from '@/pages/api/auth/[...nextauth]'
+import { ChangeTeacherPage } from '@/pagesLayer'
 import { useAxiosAuthServer } from '@/shared'
 import { GetServerSideProps } from 'next'
 import { ChangeUserPage } from '@/pagesLayer'
 
+
 export const getServerSideProps: GetServerSideProps = async (context) => {
-  const { instanceServer, user } = await useAxiosAuthServer(context, authOptions)
+  const { instanceServer} = await useAxiosAuthServer(context, authOptions)
 
   const id = context.query.id;
 

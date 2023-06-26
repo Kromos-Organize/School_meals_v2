@@ -1,16 +1,11 @@
+import { sortArrayByKey } from '@/shared'
+
 import { ClassSchoolType, ClassTypeByNumber } from './types'
-
-const sortClasses = (prev: ClassSchoolType, next: ClassSchoolType) => {
-  if (prev.type < next.type) return -1
-  if (prev.type > next.type) return 1
-
-  return 0
-}
 
 export const transformClasses = (classes: ClassSchoolType[]): ClassTypeByNumber => {
   const upgradeClasses: ClassTypeByNumber = {}
 
-  classes.sort(sortClasses)
+  classes.sort(sortArrayByKey<ClassSchoolType>('type'))
 
   classes.forEach(c => {
     if (upgradeClasses[`${c.number}`]) {

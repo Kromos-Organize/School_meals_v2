@@ -5,8 +5,7 @@ import { FormAddClass, useListTeachersQuery } from '@/features'
 import { useBoolean } from '@/hooks'
 import { ButtonAdd, ValueSelectType } from '@/shared'
 
-import { transformTeachers } from '../addTeacher/lib'
-
+import { transformTeachers } from './lib'
 import { useCreateClassMutate } from './model'
 
 export const AddClass = () => {
@@ -16,7 +15,7 @@ export const AddClass = () => {
   const { data } = useListTeachersQuery()
   const { mutate: addClass } = useCreateClassMutate(isOpen.setFalse)
 
-  const teachers: ValueSelectType[] = transformTeachers(data)
+  const teachers = transformTeachers(data)
 
   return (
     <>

@@ -24,7 +24,7 @@ export const useCreateClassMutate = (closeModal: () => void) => {
     },
     onError: res => {
       closeModal()
-      swalAlertError('Учитель может отвечать только за один класс')
+      swalAlertError(t('L_teacher_one_class'))
     },
   })
 }

@@ -4,11 +4,10 @@ import { FC } from 'react'
 import { useTranslation } from 'react-i18next'
 
 type PropsType = {
-  teacher_id: number
   remove: () => void
 }
 
-export const RemoveTeacher: FC<PropsType> = ({ teacher_id, remove }) => {
+export const RemoveTeacher: FC<PropsType> = ({ remove }) => {
   const { t } = useTranslation('teachers')
 
   return (

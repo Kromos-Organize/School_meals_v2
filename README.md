@@ -7,14 +7,13 @@
 - [Axios](https://axios-http.com/ru/docs/intro)
 - [MUI](https://mui.com/material-ui/getting-started/overview/)
 
+## Паттерн Архитектуры
 
-## Паттерн Архитектуры 
 ### [FSD - Feauture Sliced Design](https://feature-sliced.design/docs)
 
 ## Мой конспект
 
 [наброски по паттернам архитектур](https://www.figma.com/file/M8Y98RdKR1cEqUbt20lWXk/front-end-application-architecture-design?node-id=0-1&t=PaAFkV6QrAAhjj5w-0)
-
 
 [макет основной code](https://github.com/devias-io/material-kit-react)
 [макет основной demo](https://mui.com/store/previews/devias-kit/)

@@ -18,7 +18,7 @@ export type PhoneParentsType = {
   f_phone: string | null
 }
 
-export type ClassSchoolType = {
+export type ClassStudentType = {
   class_id: number
   school_id: number
   user_id: number
@@ -29,5 +29,5 @@ export type ClassSchoolType = {
 }
 
 export type ClassTypeById = {
-  [key: string]: ClassSchoolType
+  [key: string]: ClassStudentType
 }

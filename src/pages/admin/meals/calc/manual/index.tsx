@@ -1,9 +1,10 @@
 import { NextPageWithLayout, DashLayout } from '@/App'
+import { ManualCalcPage } from '@/pagesLayer'
 
-const ManualCalcPage: NextPageWithLayout = () => {
-  return <>ManualCalcPage</>
+const ManualCalc: NextPageWithLayout = () => {
+  return <ManualCalcPage />
 }
 
-ManualCalcPage.getLayout = DashLayout
+ManualCalc.getLayout = DashLayout
 
-export default ManualCalcPage
+export default ManualCalc

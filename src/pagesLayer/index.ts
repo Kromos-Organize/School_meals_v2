@@ -8,3 +8,4 @@ export {
   StudentsPage,
   ChangeStudentPage,
 } from './admin'
+export { ManualCalcPage } from './meals'

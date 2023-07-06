@@ -4,13 +4,13 @@ import { LS } from '@/shared'
 
 export type LangVariableType = 'ru' | 'by'
 
-type LocaleTye = {
+type LocaleType = {
   locale: LangVariableType | null
   setLocale: (locale: LangVariableType) => void
   getLocale: () => void
 }
 
-export const useLocale = create<LocaleTye>(set => ({
+export const useLocale = create<LocaleType>(set => ({
   locale: null,
   setLocale: (locale: LangVariableType) =>
     set(() => {

@@ -59,6 +59,12 @@ export const navigationData: NavigationDataType = {
           title: 'history_calc',
           path: navModel.MAIN_ROUTE.admin + navModel.ADMIN_ROUTE.meals_historyCalc,
         },
+        {
+          id: '5',
+          icon: <></>,
+          title: 'type_menu',
+          path: navModel.MAIN_ROUTE.admin + navModel.ADMIN_ROUTE.meals_typeMenu,
+        },
       ],
     },
     {

@@ -7,4 +7,5 @@ export {
   ClassesPage,
   StudentsPage,
   ChangeStudentPage,
+  TypeMenuPage,
 } from './admin'

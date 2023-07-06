@@ -21,6 +21,7 @@ export enum ADMIN_ROUTE {
   meals_autoCalc = '/meals/calc/auto',
   meals_manualCalc = '/meals/calc/manual',
   meals_historyCalc = '/meals/calc/history',
+  meals_typeMenu = '/meals/calc/type-menu',
 
   data_school = '/data/school',
   data_teachers = '/data/teachers',

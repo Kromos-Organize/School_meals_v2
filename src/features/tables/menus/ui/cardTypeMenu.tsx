@@ -9,7 +9,7 @@ type PropsType = {
 }
 
 export const CardTypeMenu: FC<PropsType> = ({ type_menu }) => {
-  const { t } = useTranslation('menus')
+  const { t } = useTranslation('type_menus')
 
   return (
     <div>

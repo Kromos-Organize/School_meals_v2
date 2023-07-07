@@ -17,5 +17,6 @@ export const i18nConfig: Ni18nOptions = {
     'students',
     'teachers',
     'users',
+    'type_menus',
   ],
 }

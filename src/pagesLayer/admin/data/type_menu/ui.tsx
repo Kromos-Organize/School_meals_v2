@@ -1,17 +1,16 @@
 import { Unstable_Grid2 as Grid, Stack } from '@mui/material'
-import { FC, memo } from 'react'
+import { memo } from 'react'
 import { useTranslation } from 'react-i18next'
 
 import { TypeMenusTable } from '@/features'
+import { useCurrentUser } from '@/hooks'
 import { ContentHeader, InfoNoData, MainContainerPage, Meta, navModel } from '@/shared'
 import { AddTypeMenu } from '@/widgets'
 
-type PropsType = {
-  school_id: number
-}
+export const TypeMenuPage = memo(() => {
+  const { t } = useTranslation('type_menus')
 
-export const TypeMenuPage: FC<PropsType> = memo(({ school_id }) => {
-  const { t } = useTranslation('menus')
+  const user = useCurrentUser()
 
   return (
     <>
@@ -19,12 +18,12 @@ export const TypeMenuPage: FC<PropsType> = memo(({ school_id }) => {
       <MainContainerPage>
         <Stack direction="row" justifyContent="space-between" spacing={4}>
           <ContentHeader title={t('L_title')} />
-          {school_id && <AddTypeMenu />}
+          {user?.school_id && <AddTypeMenu />}
         </Stack>
 
         <Grid container spacing={3} sx={{ width: '100%' }}>
           <Grid sx={{ width: '100%' }}>
-            {school_id ? (
+            {user?.school_id ? (
               <>
                 <TypeMenusTable />
               </>

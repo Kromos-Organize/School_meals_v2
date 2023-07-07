@@ -7,7 +7,6 @@ import { MenuTypeFieldsType } from './types'
 export const useMenuTypeForm = () => {
   return useForm<MenuTypeFieldsType>({
     defaultValues: {
-      school_id: 0,
       type_menu: '',
     },
     resolver: yupResolver(MenuTypeDataSchema),

@@ -28,7 +28,7 @@ export const FormAddTypeMenu: FC<PropsType> = ({ addTypeMenu }) => {
     formState: { errors },
   } = useMenuTypeForm()
 
-  const { t } = useTranslation('menus')
+  const { t } = useTranslation('type_menus')
 
   const onSubmit: SubmitHandler<MenuTypeFieldsType> = data => {
     addTypeMenu(data)

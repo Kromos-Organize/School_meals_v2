@@ -8,7 +8,7 @@ import { ButtonAdd } from '@/shared'
 import { useCreateMenuTypeMutate } from './model'
 
 export const AddTypeMenu = () => {
-  const { t } = useTranslation('menus')
+  const { t } = useTranslation('type_menus')
   const isOpen = useBoolean(false)
 
   const { mutate: addTypeMenu, data } = useCreateMenuTypeMutate(isOpen.setFalse)

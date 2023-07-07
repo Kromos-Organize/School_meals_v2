@@ -5,8 +5,8 @@ import { useTranslation } from 'react-i18next'
 import { useListClassesQuery, useListStudentsQuery } from '@/features'
 import { ContentHeader, MainContainerPage, Meta } from '@/shared'
 
-export const ManualCalcPage: FC = memo(() => {
-  const { t } = useTranslation('manual_calc')
+export const CalculationPage: FC = memo(() => {
+  const { t } = useTranslation('calculation')
 
   const { data: classesSchool, isLoading: loadClass } = useListClassesQuery()
   const { data: students, isLoading: loadStudents } = useListStudentsQuery()

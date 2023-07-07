@@ -1,1 +1,0 @@
-export { ManualCalcPage } from './manual'

@@ -7,5 +7,5 @@ export {
   ClassesPage,
   StudentsPage,
   ChangeStudentPage,
+  CalculationPage,
 } from './admin'
-export { ManualCalcPage } from './meals'

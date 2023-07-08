@@ -1,6 +1,5 @@
 import { Card, CardContent, Paper, Stack, Typography, Unstable_Grid2 as Grid } from '@mui/material'
 import { FC } from 'react'
-import { useTranslation } from 'react-i18next'
 
 import { MenuType } from '@/features'
 
@@ -9,8 +8,6 @@ type PropsType = {
 }
 
 export const CardTypeMenu: FC<PropsType> = ({ type_menu }) => {
-  const { t } = useTranslation('type_menus')
-
   return (
     <div>
       <Grid sx={{ width: 350, height: '100%' }}>

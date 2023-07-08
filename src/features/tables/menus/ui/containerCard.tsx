@@ -3,7 +3,7 @@ import { FC } from 'react'
 
 import { MenuType } from '@/features'
 
-import { CardTypeMenu } from '@/features/tables/menus/ui/cardTypeMenu'
+import { CardTypeMenu } from './cardTypeMenu'
 
 type PropsType = {
   menus: MenuType[] | undefined

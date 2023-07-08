@@ -1,22 +1,33 @@
-import { Alert, Unstable_Grid2 as Grid, Stack } from '@mui/material'
-import { FC, memo } from 'react'
+import { Alert, Button, Unstable_Grid2 as Grid, Stack } from '@mui/material'
+import { FC, memo, useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
 
-import { useListClassesQuery, useListStudentsQuery } from '@/features'
+import { StatusSocket, namesEventClient, useSocket } from '@/entities'
 import { ContentHeader, MainContainerPage, Meta } from '@/shared'
 
 export const CalculationPage: FC = memo(() => {
   const { t } = useTranslation('calculation')
 
-  const { data: classesSchool, isLoading: loadClass } = useListClassesQuery()
-  const { data: students, isLoading: loadStudents } = useListStudentsQuery()
+  // const { data: classesSchool, isLoading: loadClass } = useListClassesQuery()
+  // const { data: students, isLoading: loadStudents } = useListStudentsQuery()
 
-  console.log(classesSchool)
-  console.log(students)
+  const { emit, socket, status } = useSocket()
+
+  useEffect(() => {
+    if (socket && status === StatusSocket.CONNECTED) {
+      socket?.on(namesEventClient.msgToClient, (data: any) => {
+        alert(data)
+      })
+    }
+  }, [status, socket])
+
+  const test = () => {
+    emit?.sendTestMessage('hello world')
+  }
 
   return (
     <>
-      <Meta title={'Ручной подсчет'} />
+      <Meta title={'Подсчёт питания'} />
       <MainContainerPage>
         <Stack direction="row" justifyContent="space-between" spacing={4}>
           <ContentHeader title={t('L_title')} />
@@ -27,6 +38,7 @@ export const CalculationPage: FC = memo(() => {
 
         <Grid container spacing={3} sx={{ width: '100%' }}>
           <Grid sx={{ width: '100%' }}>
+            <Button onClick={test}>Test</Button>
             {/* {isTeachers ? (
               <>
                 <ClassesTable />

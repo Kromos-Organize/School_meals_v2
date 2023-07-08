@@ -10,7 +10,7 @@ export const useListTypeMenusQuery = () => {
   const user = useCurrentUser()
 
   return useQuery({
-    queryKey: ['menus_list', authInstance, user?.school_id],
+    queryKey: ['type_menus_list', authInstance, user?.school_id],
     queryFn: () =>
       authInstance.get<MenuType[]>(`/type-menu?school_id=${user?.school_id}`).then(res => res.data),
     enabled: !!authInstance && !!user,

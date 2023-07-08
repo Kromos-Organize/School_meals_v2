@@ -12,7 +12,7 @@ import { FC } from 'react'
 import { SubmitHandler } from 'react-hook-form'
 import { useTranslation } from 'react-i18next'
 
-import { InputRegister, InputSelect, ValueSelectType } from '@/shared'
+import { InputSelect, ValueSelectType } from '@/shared'
 
 import { generateAlphabet, generateNumberClass } from './lib'
 import { useClassForm } from './model'

@@ -1,1 +1,0 @@
-export { navigationData } from './model'

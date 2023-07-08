@@ -20,6 +20,7 @@ export enum S_ADMIN_ROUTE {
 export enum ADMIN_ROUTE {
   meals_calculation = '/meals/calc/calculation',
   meals_historyCalc = '/meals/calc/history',
+  meals_typeMenu = '/meals/calc/type_menu',
 
   data_school = '/data/school',
   data_teachers = '/data/teachers',

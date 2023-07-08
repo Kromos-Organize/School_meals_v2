@@ -1,0 +1,1 @@
+export { TypeMenuPage } from './ui'

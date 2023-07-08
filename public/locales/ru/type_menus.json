@@ -1,0 +1,11 @@
+{
+  "L_title": "Типы меню",
+  "L_add_type_menu": "Добавить тип меню",
+  "L_create_menu_type": "Создание типа меню",
+  "L_create_menu_type_info": "Добавьте тип меню",
+  "L_menu_type": "Тип меню",
+  "L_add": "Добавить",
+  "L_success_save": "Изменения успешно сохранены",
+  "L_menu_type_added": "Тип меню добавлен",
+  "L_menu_type_failed" :"Не удалось добавить тип меню"
+}

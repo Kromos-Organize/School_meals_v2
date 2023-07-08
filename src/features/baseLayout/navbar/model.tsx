@@ -4,7 +4,6 @@ import {
   CalculatorIcon,
   CommandLineIcon,
   ClockIcon,
-  HandRaisedIcon,
   ArchiveBoxIcon,
   BuildingLibraryIcon,
   AcademicCapIcon,
@@ -12,6 +11,7 @@ import {
   WindowIcon,
   Cog8ToothIcon,
   UserCircleIcon,
+  InboxStackIcon,
 } from '@heroicons/react/24/outline'
 import { SvgIcon } from '@mui/material'
 
@@ -95,6 +95,15 @@ export const adminItems: NavItemsType[] = [
         icon: (
           <SvgIcon fontSize="small">
             <ClockIcon />
+          </SvgIcon>
+        ),
+      },
+      {
+        title: 'L_type_menu',
+        path: navModel.MAIN_ROUTE.admin + navModel.ADMIN_ROUTE.meals_typeMenu,
+        icon: (
+          <SvgIcon fontSize="small">
+            <InboxStackIcon />
           </SvgIcon>
         ),
       },

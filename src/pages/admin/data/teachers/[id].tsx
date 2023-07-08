@@ -1,11 +1,10 @@
 import { DashLayout, NextPageWithLayout } from '@/App'
 import { TeacherType } from '@/features'
 /* eslint-disable */
-import { authOptions } from '@/pages/api/auth/[...nextauth]'
-import { ChangeTeacherPage } from '@/pagesLayer'
-import { useAxiosAuthServer } from '@/shared'
-import { GetServerSideProps } from 'next'
-import { ChangeUserPage } from '@/pagesLayer'
+import {authOptions} from '@/pages/api/auth/[...nextauth]'
+import {ChangeUserPage} from '@/pagesLayer'
+import {useAxiosAuthServer} from '@/shared'
+import {GetServerSideProps} from 'next'
 
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
@@ -14,7 +13,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   const id = context.query.id;
 
   const response = await instanceServer.get(`/api/user/${id}`).then(res => res.data)
-  
+
   if(!response) {
     return {
       notFound: true,

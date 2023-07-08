@@ -1,5 +1,6 @@
 import { useMutation, useQuery } from 'react-query'
 
+import { key_required } from '@/entities'
 import { ListLogsType } from '@/features'
 import { noRefetch, useAxiosAuthClient } from '@/shared'
 
@@ -7,7 +8,7 @@ export const useListLogsQuery = () => {
   const authInstance = useAxiosAuthClient()
 
   return useQuery({
-    queryKey: ['logs_list', authInstance],
+    queryKey: [key_required.logs_list, authInstance],
     queryFn: () => authInstance.get<ListLogsType>('/logs').then(res => res.data),
     enabled: !!authInstance,
     ...noRefetch,

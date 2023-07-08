@@ -1,5 +1,6 @@
 import { useQuery } from 'react-query'
 
+import { key_required } from '@/entities'
 import { useCurrentUser } from '@/hooks'
 import { noRefetch, useAxiosAuthClient } from '@/shared'
 
@@ -10,7 +11,7 @@ export const useListClassesQuery = () => {
   const user = useCurrentUser()
 
   return useQuery({
-    queryKey: ['classes_list', authInstance, user?.school_id],
+    queryKey: [key_required.classes_list, authInstance, user?.school_id],
     queryFn: () =>
       authInstance
         .get<ClassSchoolType[]>(`/class?school_id=${user?.school_id}`)

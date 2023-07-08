@@ -1,6 +1,7 @@
 import { useTranslation } from 'react-i18next'
 import { useMutation, useQueryClient } from 'react-query'
 
+import { key_required } from '@/entities'
 import { MenuTypeFieldsType, MenuType } from '@/features'
 import { useCurrentUser } from '@/hooks'
 import { noRefetch, swalAlert, swalAlertError, useAxiosAuthClient } from '@/shared'
@@ -23,7 +24,7 @@ export const useCreateMenuTypeMutate = (closeModal: () => void) => {
         { title: t('L_success_save'), html: t('L_menu_type_added'), icon: 'success' },
         'noBtn'
       )
-      queryClient.invalidateQueries({ queryKey: ['type_menus_list'] })
+      queryClient.invalidateQueries({ queryKey: [key_required.type_menus_list] })
     },
     onError: res => {
       closeModal()

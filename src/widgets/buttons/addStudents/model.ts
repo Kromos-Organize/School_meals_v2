@@ -1,6 +1,7 @@
 import { useTranslation } from 'react-i18next'
 import { useMutation, useQueryClient } from 'react-query'
 
+import { key_required } from '@/entities'
 import { StudentFieldsType } from '@/features'
 import { useCurrentUser } from '@/hooks'
 import { noRefetch, swalAlert, useAxiosAuthClient } from '@/shared'
@@ -21,7 +22,7 @@ export const useCreateStudentMutate = (closeModal: () => void) => {
         { title: t('L_success_save'), html: t('L_student_added'), icon: 'success' },
         'noBtn'
       )
-      queryClient.invalidateQueries({ queryKey: ['students_list'] })
+      queryClient.invalidateQueries({ queryKey: [key_required.students_list] })
     },
   })
 }

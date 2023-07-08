@@ -1,6 +1,7 @@
 import { useTranslation } from 'react-i18next'
 import { useMutation, useQuery, useQueryClient } from 'react-query'
 
+import { key_required } from '@/entities'
 import { useCurrentUser } from '@/hooks'
 import { useConfirm } from '@/hooks/useConfirm'
 import { noRefetch, swalAlert, useAxiosAuthClient } from '@/shared'
@@ -12,7 +13,7 @@ export const useListStudentsQuery = () => {
   const user = useCurrentUser()
 
   return useQuery({
-    queryKey: ['students_list', authInstance, user?.school_id],
+    queryKey: [key_required.students_list, authInstance, user?.school_id],
     queryFn: () =>
       authInstance
         .get<StudentType[]>(`/student/school?school_id=${user?.school_id}`)
@@ -29,7 +30,7 @@ export const useListClassesQuery = () => {
   const user = useCurrentUser()
 
   return useQuery<ClassStudentType[]>({
-    queryKey: ['classes_list', authInstance, user?.school_id],
+    queryKey: [key_required.classes_list, authInstance, user?.school_id],
   })
 }
 
@@ -55,7 +56,7 @@ export const useRemoveStudentMutate = () => {
           html: t('L_remove_success'),
           icon: 'success',
         })
-        queryClient.invalidateQueries({ queryKey: ['students_list'] })
+        queryClient.invalidateQueries({ queryKey: [key_required.students_list] })
       }
     },
   })

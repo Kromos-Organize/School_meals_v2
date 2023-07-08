@@ -1,6 +1,7 @@
 import { useTranslation } from 'react-i18next'
 import { useMutation, useQueryClient } from 'react-query'
 
+import { key_required } from '@/entities'
 import { TeacherFieldsType, TeacherType } from '@/features'
 import { useCurrentUser } from '@/hooks'
 import { noRefetch, swalAlert, useAxiosAuthClient } from '@/shared'
@@ -23,7 +24,7 @@ export const useCreateTeacherMutate = (closeModal: () => void) => {
         { title: t('L_success_save'), html: t('L_teacher_added'), icon: 'success' },
         'noBtn'
       )
-      queryClient.invalidateQueries({ queryKey: ['teachers_list'] })
+      queryClient.invalidateQueries({ queryKey: [key_required.teachers_list] })
     },
   })
 }

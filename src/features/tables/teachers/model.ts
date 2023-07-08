@@ -1,6 +1,7 @@
 import { useTranslation } from 'react-i18next'
 import { useMutation, useQuery, useQueryClient } from 'react-query'
 
+import { key_required } from '@/entities'
 import { TeacherType } from '@/features'
 import { useCurrentUser } from '@/hooks'
 import { useConfirm } from '@/hooks/useConfirm'
@@ -13,7 +14,7 @@ export const useListTeachersQuery = () => {
   const param = `school_id=${user?.school_id}&type_user=EMPLOYEE`
 
   return useQuery({
-    queryKey: ['teachers_list', authInstance, user?.school_id],
+    queryKey: [key_required.teachers_list, authInstance, user?.school_id],
     queryFn: () =>
       authInstance.get<TeacherType[]>(`/user/list_school?${param}`).then(res => res.data),
     enabled: !!authInstance && !!user,
@@ -45,7 +46,7 @@ export const useRemoveTeacherMutate = () => {
           html: t('L_remove_success'),
           icon: 'success',
         })
-        queryClient.invalidateQueries({ queryKey: ['teachers_list'] })
+        queryClient.invalidateQueries({ queryKey: [key_required.teachers_list] })
       }
     },
   })

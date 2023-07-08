@@ -2,6 +2,7 @@ import { useRouter } from 'next/router'
 import { signIn } from 'next-auth/react'
 import { useMutation, useQuery, useQueryClient } from 'react-query'
 
+import { key_required } from '@/entities'
 import { ActivateResType, UserType } from '@/features'
 import { useCurrentUser } from '@/hooks'
 import { navModel, noRefetch, swalAlert, useAxiosAuthClient } from '@/shared'
@@ -10,7 +11,7 @@ export const useListUsersQuery = () => {
   const authInstance = useAxiosAuthClient()
 
   return useQuery({
-    queryKey: ['users_list', authInstance],
+    queryKey: [key_required.users_list, authInstance],
     queryFn: () => authInstance.get<UserType[]>('/user').then(res => res.data),
     enabled: !!authInstance,
     ...noRefetch,
@@ -34,7 +35,7 @@ export const useActivateUserMutate = () => {
     ...noRefetch,
     onSuccess: res => {
       swalAlert({ title: 'Выполнено', html: res.message, icon: 'success' }, 'noBtn')
-      queryClient.invalidateQueries({ queryKey: ['users_list'] })
+      queryClient.invalidateQueries({ queryKey: [key_required.users_list] })
     },
   })
 }
@@ -50,7 +51,7 @@ export const useBlockUserMutate = () => {
     ...noRefetch,
     onSuccess: res => {
       swalAlert({ title: 'Выполнено', html: res.message, icon: 'success' }, 'noBtn')
-      queryClient.invalidateQueries({ queryKey: ['users_list'] })
+      queryClient.invalidateQueries({ queryKey: [key_required.users_list] })
     },
   })
 }
@@ -66,7 +67,7 @@ export const useUnlockUserMutate = () => {
     ...noRefetch,
     onSuccess: res => {
       swalAlert({ title: 'Выполнено', html: res.message, icon: 'success' }, 'noBtn')
-      queryClient.invalidateQueries({ queryKey: ['users_list'] })
+      queryClient.invalidateQueries({ queryKey: [key_required.users_list] })
     },
   })
 }

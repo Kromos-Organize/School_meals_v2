@@ -1,6 +1,6 @@
 import { ClassSchoolType } from '../classes'
 
-import { ClassTypeById, PhoneParentsType, StudentType } from './types'
+import { ClassTypeById, PhoneParentsType } from './types'
 
 export const updateClassesSchool = (classes: ClassSchoolType[] | undefined) => {
   const res: ClassTypeById = {}

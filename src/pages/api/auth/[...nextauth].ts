@@ -3,6 +3,8 @@ import { NextAuthOptions } from 'next-auth'
 import NextAuth from 'next-auth/next'
 import CredentialsProvider from 'next-auth/providers/credentials'
 
+import { getCookie } from '@/shared'
+
 export const authOptions: NextAuthOptions = {
   callbacks: {
     async jwt({ token, user }) {
@@ -42,7 +44,12 @@ export const authOptions: NextAuthOptions = {
               }
             )
             .then(response => {
-              return response.data
+              const refreshToken = getCookie(
+                response.headers?.['set-cookie']?.[0] ?? '',
+                'refreshToken'
+              )
+
+              return { ...response.data, refreshToken }
             })
             .catch(error => {
               console.log(error.response)
@@ -108,7 +115,12 @@ export const authOptions: NextAuthOptions = {
               }
             )
             .then(response => {
-              return response.data
+              const refreshToken = getCookie(
+                response.headers?.['set-cookie']?.[0] ?? '',
+                'refreshToken'
+              )
+
+              return { ...response.data, refreshToken }
             })
             .catch(error => {
               console.log(error.response)

@@ -27,7 +27,7 @@ export const Meta: FC<MetaType> = ({ title, description }) => {
         <link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32x32.png"></link>
         <link rel="icon" type="image/png" sizes="96x96" href="/icons/favicon-96x96.png"></link>
         <link rel="icon" type="image/png" sizes="16x16" href="/icons/favicon-16x16.png"></link>
-        <link rel="manifest" href="/icons/manifest.json"></link>
+        <link rel="manifest" href="/manifest.json"></link>
         <meta name="msapplication-TileColor" content="#ffffff"></meta>
         <meta name="msapplication-TileImage" content="/ms-icon-144x144.png"></meta>
         <meta name="theme-color" content="#ffffff"></meta>

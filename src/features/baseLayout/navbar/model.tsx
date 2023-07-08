@@ -12,7 +12,7 @@ import {
   WindowIcon,
   Cog8ToothIcon,
   UserCircleIcon,
-} from '@heroicons/react/24/solid'
+} from '@heroicons/react/24/outline'
 import { SvgIcon } from '@mui/material'
 
 import { navModel } from '@/shared'
@@ -72,7 +72,7 @@ export const s_adminItems: NavItemsType[] = [
 
 export const adminItems: NavItemsType[] = [
   {
-    title: 'L_calculation',
+    title: 'L_meals',
     path: '',
     icon: (
       <SvgIcon fontSize="small">
@@ -81,20 +81,11 @@ export const adminItems: NavItemsType[] = [
     ),
     children: [
       {
-        title: 'L_auto_calc',
-        path: navModel.MAIN_ROUTE.admin + navModel.ADMIN_ROUTE.meals_autoCalc,
+        title: 'L_calculation',
+        path: navModel.MAIN_ROUTE.admin + navModel.ADMIN_ROUTE.meals_calculation,
         icon: (
           <SvgIcon fontSize="small">
             <CommandLineIcon />
-          </SvgIcon>
-        ),
-      },
-      {
-        title: 'L_manual_calc',
-        path: navModel.MAIN_ROUTE.admin + navModel.ADMIN_ROUTE.meals_manualCalc,
-        icon: (
-          <SvgIcon fontSize="small">
-            <HandRaisedIcon />
           </SvgIcon>
         ),
       },

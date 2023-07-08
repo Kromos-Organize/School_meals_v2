@@ -5,7 +5,7 @@ import { useCurrentUser } from '@/hooks'
 import { useConfirm } from '@/hooks/useConfirm'
 import { noRefetch, swalAlert, useAxiosAuthClient } from '@/shared'
 
-import { ClassSchoolType, StudentType } from './types'
+import { ClassStudentType, StudentType } from './types'
 
 export const useListStudentsQuery = () => {
   const authInstance = useAxiosAuthClient()
@@ -28,7 +28,7 @@ export const useListClassesQuery = () => {
   const authInstance = useAxiosAuthClient()
   const user = useCurrentUser()
 
-  return useQuery<ClassSchoolType[]>({
+  return useQuery<ClassStudentType[]>({
     queryKey: ['classes_list', authInstance, user?.school_id],
   })
 }

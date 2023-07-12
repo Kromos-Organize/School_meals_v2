@@ -50,7 +50,7 @@
     "@types/set-cookie-parser": "^2.4.2",
     "@typescript-eslint/eslint-plugin": "^5.33.1",
     "@typescript-eslint/parser": "^5.33.1",
-    "eslint": "^8.22.0",
+    "eslint": "8.22.0",
     "eslint-config-it-incubator": "^1.0.10",
     "eslint-config-next": "13.3.0",
     "eslint-config-prettier": "^8.5.0",

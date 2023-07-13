@@ -3,7 +3,7 @@ import { FC } from 'react'
 
 import { Scrollbar } from '@/shared'
 
-import { ListLogsType } from '../types'
+import { GetDataLogType, ListLogsType } from '../types'
 
 import { LogsTableBody } from './body'
 import { LogsTableHead } from './head'
@@ -11,7 +11,7 @@ import { LogsTableHead } from './head'
 type PropsType = {
   logs: ListLogsType | undefined
   isLoading: boolean
-  getLog: (date: string) => void
+  getLog: (data: GetDataLogType) => void
 }
 
 export const LogsTable: FC<PropsType> = ({ logs, isLoading, getLog }) => {

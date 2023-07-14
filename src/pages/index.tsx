@@ -14,6 +14,8 @@ const Landing: NextPageWithLayout = () => {
       user.role === 'ADMIN'
         ? push(navModel.MAIN_ROUTE.admin + navModel.ADMIN_ROUTE.settings)
         : push(navModel.MAIN_ROUTE.admin + navModel.S_ADMIN_ROUTE.settings)
+    } else {
+      push(navModel.MAIN_ROUTE.auth + navModel.AUTH_ROUTE.login)
     }
   }
 

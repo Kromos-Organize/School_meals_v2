@@ -2,5 +2,6 @@
   "L_title": "Логи",
   "L_date": "Дата",
   "L_actions": "Действия",
-  "L_get_file": "Получить файл"
+  "L_get_file_query": "Получить файлы Query",
+  "L_get_file_socket": "Получить файлы Socket"
 }

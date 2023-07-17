@@ -10,6 +10,8 @@ import 'react-alice-carousel/lib/alice-carousel.css'
 export const getServerSideProps: GetServerSideProps = async context => {
   const { instanceServer, user } = await useAxiosAuthServer(context, authOptions)
 
+  if (!user?.school_id) return { props: { isSchool: false } }
+
   const response = await instanceServer
     .get(`/api/user/count_teacher/${user?.school_id}`)
     .then(res => res.data)
@@ -22,11 +24,12 @@ export const getServerSideProps: GetServerSideProps = async context => {
 }
 
 type PropsType = {
-  isTeachers: boolean
+  isTeachers?: boolean
+  isSchool?: boolean
 }
 
-const Classes: NextPageWithLayout<PropsType> = ({ isTeachers }) => {
-  return <ClassesPage isTeachers={isTeachers} />
+const Classes: NextPageWithLayout<PropsType> = ({ isTeachers, isSchool }) => {
+  return <ClassesPage isTeachers={!!isTeachers || !!isSchool} />
 }
 
 Classes.getLayout = DashLayout

@@ -9,6 +9,8 @@ import { authOptions } from '@/pages/api/auth/[...nextauth]'
 export const getServerSideProps: GetServerSideProps = async context => {
   const { instanceServer, user } = await useAxiosAuthServer(context, authOptions)
 
+  if (!user?.school_id) return { props: { isSchool: false } }
+
   const response = await instanceServer
     .get(`/api/classes/count/${user?.school_id}`)
     .then(res => res.data)
@@ -21,12 +23,12 @@ export const getServerSideProps: GetServerSideProps = async context => {
 }
 
 type PropsType = {
-  isClasses: boolean
+  isClasses?: boolean
+  isSchool?: boolean
 }
 
-const Students: NextPageWithLayout<PropsType> = ({ isClasses }) => {
-  
-  return <StudentsPage isClasses={isClasses} />
+const Students: NextPageWithLayout<PropsType> = ({ isClasses, isSchool }) => {
+  return <StudentsPage isClasses={!!isClasses || !!isSchool} />
 }
 
 Students.getLayout = DashLayout

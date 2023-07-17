@@ -25,8 +25,9 @@ export const useLogOutMutate = () => {
     mutationFn: logOut,
     ...noRefetch,
     onSuccess: res => {
-      signOut()
-      push(navModel.MAIN_ROUTE.auth + navModel.AUTH_ROUTE.login)
+      signOut().then(() => {
+        push(navModel.MAIN_ROUTE.auth + navModel.AUTH_ROUTE.login)
+      })
     },
   })
 }

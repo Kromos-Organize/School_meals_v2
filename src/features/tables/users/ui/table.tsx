@@ -1,7 +1,5 @@
-import { Box, Card, CircularProgress, LinearProgress, Table } from '@mui/material'
-import { FC } from 'react'
-
-import { Scrollbar } from '@/shared'
+import {Box, Card, CircularProgress, LinearProgress, Table} from '@mui/material'
+import {FC} from 'react'
 
 import {
   useActivateUserMutate,
@@ -11,8 +9,8 @@ import {
   useUnlockUserMutate,
 } from '../model'
 
-import { UsersTableBody } from './body'
-import { UsersTableHead } from './head'
+import {UsersTableBody} from './body'
+import {UsersTableHead} from './head'
 
 export const UsersTable: FC = () => {
   const { data: users } = useListUsersQuery()
@@ -26,7 +24,6 @@ export const UsersTable: FC = () => {
 
   return (
     <Card>
-      <Scrollbar>
         <Box sx={{ minWidth: 800 }}>
           {users?.length ? (
             <>
@@ -52,7 +49,6 @@ export const UsersTable: FC = () => {
             </Box>
           )}
         </Box>
-      </Scrollbar>
     </Card>
   )
 }

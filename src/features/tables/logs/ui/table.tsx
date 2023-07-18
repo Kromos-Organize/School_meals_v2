@@ -1,7 +1,6 @@
 import { Box, Card, CircularProgress, LinearProgress, Table } from '@mui/material'
 import { FC } from 'react'
 
-import { Scrollbar } from '@/shared'
 
 import { GetDataLogType, ListLogsType } from '../types'
 
@@ -17,7 +16,6 @@ type PropsType = {
 export const LogsTable: FC<PropsType> = ({ logs, isLoading, getLog }) => {
   return (
     <Card>
-      <Scrollbar>
         <Box sx={{ minWidth: 800 }}>
           {logs?.length ? (
             <>
@@ -37,7 +35,6 @@ export const LogsTable: FC<PropsType> = ({ logs, isLoading, getLog }) => {
             </Box>
           )}
         </Box>
-      </Scrollbar>
     </Card>
   )
 }

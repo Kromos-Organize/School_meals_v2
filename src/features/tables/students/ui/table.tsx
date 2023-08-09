@@ -1,13 +1,11 @@
-import { Box, Card, CircularProgress, LinearProgress, Table } from '@mui/material'
-import { FC } from 'react'
+import {Box, Card, CircularProgress, LinearProgress, Table} from '@mui/material'
+import {FC} from 'react'
 
-import { Scrollbar } from '@/shared'
+import {updateClassesSchool} from '../lib'
+import {useListClassesQuery, useListStudentsQuery, useRemoveStudentMutate} from '../model'
 
-import { updateClassesSchool } from '../lib'
-import { useListClassesQuery, useListStudentsQuery, useRemoveStudentMutate } from '../model'
-
-import { StudentsTableBody } from './body'
-import { StudentsTableHead } from './head'
+import {StudentsTableBody} from './body'
+import {StudentsTableHead} from './head'
 
 export const StudentsTable: FC = () => {
   const { data: students, isLoading: loadStudents } = useListStudentsQuery()
@@ -19,7 +17,6 @@ export const StudentsTable: FC = () => {
 
   return (
     <Card>
-      <Scrollbar>
         <Box sx={{ minWidth: 800 }}>
           {students?.length ? (
             <>
@@ -43,7 +40,6 @@ export const StudentsTable: FC = () => {
             </Box>
           )}
         </Box>
-      </Scrollbar>
     </Card>
   )
 }

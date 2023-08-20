@@ -1,63 +1,35 @@
-import { EnvelopeIcon, LockClosedIcon } from '@heroicons/react/24/solid'
-import {
-  Alert,
-  Box,
-  Button,
-  Checkbox,
-  CircularProgress,
-  InputAdornment,
-  InputLabel,
-  Link,
-  Stack,
-  SvgIcon,
-} from '@mui/material'
-import { useRouter } from 'next/router'
-import { signIn, useSession } from 'next-auth/react'
-import { useEffect } from 'react'
+import { EnvelopeIcon } from '@heroicons/react/24/solid'
+import { Alert, Box, Button, InputAdornment, Stack, SvgIcon } from '@mui/material'
 import { SubmitHandler } from 'react-hook-form'
 import { useTranslation } from 'react-i18next'
 
-import { HiddenBlock, InputRegister, navModel, swalAlert } from '@/shared'
+import { InputRegister } from '@/shared'
 
-import { useLoginForm } from './model'
-import { LoginFieldsType } from './types'
+import { useForgotPasswordForm, useForgotPasswordFormMutate } from './model'
+import { RecoveryPasswordType } from './types'
 
-export const FormLogin = () => {
+export const FormForgotPassword = () => {
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useLoginForm()
+  } = useForgotPasswordForm()
 
-  const { push } = useRouter()
-  const { t } = useTranslation('login')
+  //const { push } = useRouter()
+  const { t } = useTranslation('forgot_password')
 
-  const { data: session } = useSession()
+  //const { data: session } = useSession()
+  const { mutate: saveChanged } = useForgotPasswordFormMutate()
 
-  useEffect(() => {
-    if (session?.user.role) {
-      const path = `/${session.user.role.toLowerCase()}/profile/settings`
-
-      push(path)
-    }
-  }, [session?.user])
-
-  const onSubmit: SubmitHandler<LoginFieldsType> = async data => {
-    const res = await signIn('auth_login_user', {
-      ...data,
-      redirect: false,
-    })
-
-    if (res?.error) {
-      swalAlert({ title: t('L_error_login'), html: res?.error, icon: 'error' })
-    }
+  const onSubmit: SubmitHandler<RecoveryPasswordType> = data => {
+    saveChanged(data)
   }
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <Stack spacing={3}>
         <InputRegister
-          label={t('L_enterEmail')}
+          label={t('F_forgot_password_email')} //
           register={register('email')}
           messageError={errors.email && errors.email.message}
           fullWidth={true}
@@ -71,54 +43,15 @@ export const FormLogin = () => {
             ),
           }}
         />
-        <InputRegister
-          label={t('L_enterPass')}
-          type={'password'}
-          register={register('password')}
-          fullWidth={true}
-          messageError={errors.password && errors.password.message}
-          InputProps={{
-            endAdornment: (
-              <InputAdornment position={'end'}>
-                <SvgIcon>
-                  <LockClosedIcon />
-                </SvgIcon>
-              </InputAdornment>
-            ),
-          }}
-        />
-      </Stack>
-
-      <Stack
-        spacing={1}
-        direction="row"
-        sx={{ mb: 3, display: 'flex', justifyContent: 'space-between' }}
-      >
-        <HiddenBlock>
-          <InputLabel>
-            <Stack direction="row">
-              <Checkbox {...register('isAdminDev')} />
-              <p tabIndex={-1}>Разработчик</p>
-            </Stack>
-          </InputLabel>
-        </HiddenBlock>
-
-        <Link
-          href={`${navModel.MAIN_ROUTE.auth}${navModel.AUTH_ROUTE.forgotPass}`}
-          underline="hover"
-          variant="subtitle2"
-        >
-          <p>{t('L_forgotPass')}</p>
-        </Link>
       </Stack>
 
       <Box>
         <Button fullWidth size="large" sx={{ mt: 3 }} type="submit" variant="contained">
-          {t('L_continue')}
+          {t('F_forgot_password_continue')}
         </Button>
         <Alert color="info" severity="info" sx={{ mt: 3 }}>
           <div>
-            {t('L_helper')} - <b>krakenHRI@gmail.com</b>
+            {t('F_helper')} - <b>krakenHRI@gmail.com</b>
           </div>
         </Alert>
       </Box>

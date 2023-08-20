@@ -1,7 +1,13 @@
-import { NextPageWithLayout, AuthLayout } from '@/App'
+import { AuthLayout, NextPageWithLayout } from '@/App'
+import { ForgotPasswordPage } from '@/pagesLayer'
 
-const ForgotPasswordPage: NextPageWithLayout = () => {
-  return <>ForgotPasswordPage</>
+const ForgotPassword: NextPageWithLayout = () => {
+  return (
+    <>
+      <ForgotPasswordPage />
+    </>
+  )
 }
 
-export default ForgotPasswordPage
+ForgotPassword.getLayout = AuthLayout
+export default ForgotPassword

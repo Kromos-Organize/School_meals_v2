@@ -1,11 +1,11 @@
 import { Box } from '@mui/material'
 import { useTranslation } from 'react-i18next'
 
-import { FormLogin } from '@/features'
+import { FormForgotPassword } from '@/features'
 import { AuthHeader, navModel } from '@/shared'
 
-export const LoginWidget = () => {
-  const { t } = useTranslation('login')
+export const ForgotPasswordWidget = () => {
+  const { t } = useTranslation('forgot_password')
 
   return (
     <Box
@@ -27,13 +27,13 @@ export const LoginWidget = () => {
       >
         <div>
           <AuthHeader
-            title={t('L_Login')}
-            text={t('L_no_account')}
-            textLink={t('L_registered')}
-            href={navModel.MAIN_ROUTE.auth + navModel.AUTH_ROUTE.registration}
+            title={t('F_forgot_password')}
+            text={t('F_return_to_the_login_page')}
+            textLink={t('F_account_login')}
+            href={navModel.MAIN_ROUTE.auth + navModel.AUTH_ROUTE.login}
           />
 
-          <FormLogin />
+          <FormForgotPassword />
         </div>
       </Box>
     </Box>

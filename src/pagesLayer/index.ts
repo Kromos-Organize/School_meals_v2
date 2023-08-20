@@ -1,4 +1,4 @@
-export { RegistrationPage, LoginPage } from './auth'
+export { RegistrationPage, LoginPage, ForgotPasswordPage, NewPasswordPage } from './auth'
 export { ChangeSAdminPage, UsersPage, LogsPage } from './s_admin'
 export {
   SchoolPage,

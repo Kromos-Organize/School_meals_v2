@@ -1,12 +1,11 @@
 import { yupResolver } from '@hookform/resolvers/yup'
-import { useRouter } from 'next/router'
 import { useForm } from 'react-hook-form'
 import { useTranslation } from 'react-i18next'
 import { useMutation } from 'react-query'
 
 import { noRefetch, swalAlert, useAxiosAuthClient } from '@/shared'
 
-import { ForgotPassword } from './config'
+import { ForgotPasswordSchema } from './config'
 import { RecoveryPasswordType } from './types'
 
 export const useForgotPasswordForm = () => {
@@ -14,10 +13,10 @@ export const useForgotPasswordForm = () => {
     defaultValues: {
       email: '',
     },
-    resolver: yupResolver(ForgotPassword),
+    resolver: yupResolver(ForgotPasswordSchema),
   })
 }
-export const useForgotPasswordFormMutate = () => {
+export const useForgotPasswordMutate = () => {
   const authInstance = useAxiosAuthClient()
   const { t } = useTranslation('forgot_password')
 
@@ -30,7 +29,7 @@ export const useForgotPasswordFormMutate = () => {
     onSuccess: res => {
       swalAlert(
         {
-          title: t('F_forgot_password_save'),
+          title: t('L_send_email'),
           html: '',
           icon: 'success',
         },

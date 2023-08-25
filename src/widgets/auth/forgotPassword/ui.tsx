@@ -27,9 +27,9 @@ export const ForgotPasswordWidget = () => {
       >
         <div>
           <AuthHeader
-            title={t('F_forgot_password')}
-            text={t('F_return_to_the_login_page')}
-            textLink={t('F_account_login')}
+            title={t('L_forgot_password')}
+            text={t('L_return_to_the_login_page')}
+            textLink={t('L_account_login')}
             href={navModel.MAIN_ROUTE.auth + navModel.AUTH_ROUTE.login}
           />
 

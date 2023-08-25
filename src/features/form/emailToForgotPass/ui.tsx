@@ -5,7 +5,7 @@ import { useTranslation } from 'react-i18next'
 
 import { InputRegister } from '@/shared'
 
-import { useForgotPasswordForm, useForgotPasswordFormMutate } from './model'
+import { useForgotPasswordForm, useForgotPasswordMutate } from './model'
 import { RecoveryPasswordType } from './types'
 
 export const FormForgotPassword = () => {
@@ -15,11 +15,9 @@ export const FormForgotPassword = () => {
     formState: { errors },
   } = useForgotPasswordForm()
 
-  //const { push } = useRouter()
   const { t } = useTranslation('forgot_password')
 
-  //const { data: session } = useSession()
-  const { mutate: saveChanged } = useForgotPasswordFormMutate()
+  const { mutate: saveChanged } = useForgotPasswordMutate()
 
   const onSubmit: SubmitHandler<RecoveryPasswordType> = data => {
     saveChanged(data)
@@ -29,7 +27,7 @@ export const FormForgotPassword = () => {
     <form onSubmit={handleSubmit(onSubmit)}>
       <Stack spacing={3}>
         <InputRegister
-          label={t('F_forgot_password_email')} //
+          label={t('L_forgot_password_email')} //
           register={register('email')}
           messageError={errors.email && errors.email.message}
           fullWidth={true}
@@ -47,11 +45,11 @@ export const FormForgotPassword = () => {
 
       <Box>
         <Button fullWidth size="large" sx={{ mt: 3 }} type="submit" variant="contained">
-          {t('F_forgot_password_continue')}
+          {t('L_forgot_password_continue')}
         </Button>
         <Alert color="info" severity="info" sx={{ mt: 3 }}>
           <div>
-            {t('F_helper')} - <b>krakenHRI@gmail.com</b>
+            {t('L_helper')} - <b>krakenHRI@gmail.com</b>
           </div>
         </Alert>
       </Box>

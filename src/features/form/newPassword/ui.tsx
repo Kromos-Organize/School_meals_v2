@@ -6,12 +6,10 @@ import { useTranslation } from 'react-i18next'
 
 import { InputRegister } from '@/shared'
 
-import { useNewPasswordForm, useNewPasswordFormMutate } from './model'
-import { RecoveryNewPasswordType } from './types'
+import { useNewPasswordForm, useNewPasswordMutate } from './model'
+import { NewPasswordType, RecoveryCodeType } from './types'
 
-type PropsType = {
-  recoveryCode: string
-}
+type PropsType = RecoveryCodeType
 export const FormNewPassword: FC<PropsType> = ({ recoveryCode }) => {
   const {
     register,
@@ -21,17 +19,17 @@ export const FormNewPassword: FC<PropsType> = ({ recoveryCode }) => {
 
   const { t } = useTranslation('new_password')
 
-  const { mutate: saveChanged } = useNewPasswordFormMutate()
+  const { mutate: sendNewPassword } = useNewPasswordMutate()
 
-  const onSubmit: SubmitHandler<RecoveryNewPasswordType> = ({ newPassword }) => {
-    saveChanged({ recoveryCode, newPassword })
+  const onSubmit: SubmitHandler<NewPasswordType> = ({ newPassword }) => {
+    sendNewPassword({ recoveryCode, newPassword })
   }
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <Stack spacing={3}>
         <InputRegister
-          label={t('N_pass')}
+          label={t('L_pass')}
           type={'password'}
           register={register('newPassword')}
           messageError={errors.newPassword && errors.newPassword.message}
@@ -47,7 +45,7 @@ export const FormNewPassword: FC<PropsType> = ({ recoveryCode }) => {
           }}
         />
         <InputRegister
-          label={t('N_confPass')}
+          label={t('L_confPass')}
           type={'password'}
           required
           register={register('confirmNewPassword')}
@@ -67,11 +65,11 @@ export const FormNewPassword: FC<PropsType> = ({ recoveryCode }) => {
 
       <Box>
         <Button fullWidth size="large" sx={{ mt: 3 }} type="submit" variant="contained">
-          {t('N_continue')}
+          {t('L_continue')}
         </Button>
         <Alert color="info" severity="info" sx={{ mt: 3 }}>
           <div>
-            {t('N_helper')} - <b>krakenHRI@gmail.com</b>
+            {t('L_helper')} - <b>krakenHRI@gmail.com</b>
           </div>
         </Alert>
       </Box>

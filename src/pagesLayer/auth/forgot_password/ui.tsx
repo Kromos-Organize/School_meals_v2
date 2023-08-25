@@ -6,7 +6,12 @@ import { ForgotPasswordWidget } from '@/widgets'
 export const ForgotPasswordPage = memo(() => {
   return (
     <>
-      <Meta title={'Вход'} description={'Страница восстановления'} />
+      <Meta
+        title={'Восстановления пароля'}
+        description={
+          'На данной странице вы можете восстановить ваш пароль указав email, с помощью которого вы регистрировались в нашем сервисе'
+        }
+      />
       <ForgotPasswordWidget />
     </>
   )

@@ -9,7 +9,12 @@ export const NewPasswordPage = memo(() => {
 
   return (
     <>
-      <Meta title={'Вход'} description={'Страница восстановления'} />
+      <Meta
+        title={'Ввод нового пароля'}
+        description={
+          'Здесь вы вам необходимо ввести и подтвердить новый пароль, что бы создать новый пароль и продолжить пользоваться нашим сервисом'
+        }
+      />
       <NewPasswordWidget recoveryCode={query.recoveryCode as string} />
     </>
   )

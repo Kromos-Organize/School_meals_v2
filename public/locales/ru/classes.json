@@ -10,5 +10,8 @@
   "L_success_save": "Изменения успешно сохранены",
   "L_class_added": "Класс добавлен",
   "L_number_class_info" :"-е классы",
-  "L_responsible_teacher": "Ответственный учитель"
+  "L_responsible_teacher": "Ответственный учитель",
+  "L_actions": "Действия",
+  "L_students_number": "Количество учеников",
+  "L_fill_indicator": "Индикатор заполнения"
 }

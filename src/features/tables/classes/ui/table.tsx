@@ -1,24 +1,38 @@
-import { Box } from '@mui/material'
+import { Box, Card, CircularProgress, LinearProgress, Table } from '@mui/material'
 
-import { generateKey } from '@/shared'
+import { Scrollbar } from '@/shared'
 
-import { transformClasses } from '../lib'
 import { useListClassesQuery } from '../model'
 
-import { ContainerCard } from './containerCard'
+import { ClassesTableBody } from './body'
+import { ClassesTableHead } from './head'
 
 export const ClassesTable = () => {
-  const { data } = useListClassesQuery()
+  const { data: classes, isLoading } = useListClassesQuery()
 
-  const classes = transformClasses(data ? data : [])
-
-  const keyClasses = Object.keys(classes)
-
-  const containersClasses = keyClasses.map(key => {
-    const cl = classes ? classes[key] : []
-
-    return <ContainerCard key={generateKey()} classes={cl} numberClass={key} />
-  })
-
-  return <Box sx={{ marginLeft: 0, marginRight: 0, width: '100%' }}>{containersClasses}</Box>
+  return (
+    <Card>
+      <Scrollbar>
+        <Box sx={{ minWidth: 800 }}>
+          {classes?.length ? (
+            <>
+              {isLoading && (
+                <Box sx={{ width: '100%' }}>
+                  <LinearProgress color="secondary" />
+                </Box>
+              )}
+              <Table>
+                <ClassesTableHead />
+                <ClassesTableBody classes={classes} />
+              </Table>
+            </>
+          ) : (
+            <Box sx={{ display: 'flex', justifyContent: 'center', padding: 20 }}>
+              <CircularProgress />
+            </Box>
+          )}
+        </Box>
+      </Scrollbar>
+    </Card>
+  )
 }

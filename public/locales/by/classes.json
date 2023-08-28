@@ -10,5 +10,8 @@
   "L_success_save": "Змены паспяхова захаваны",
   "L_class_added": "Клас дададзены",
   "L_number_class_info" :"-я класы",
-  "L_responsible_teacher": "Адказны настаўнік"
+  "L_responsible_teacher": "Адказны настаўнік",
+  "L_actions": "Дзеянні",
+  "L_students_number": "Колькасць вучняў",
+  "L_fill_indicator": "Індыкатар запаўнення"
 }

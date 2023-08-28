@@ -3,8 +3,9 @@ import { FC, memo, useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
 
 import { namesEventClient, StatusSocket, useSocket } from '@/entities'
-import { ClassesTable } from '@/features'
 import { ContentHeader, InfoNoData, MainContainerPage, Meta, navModel } from '@/shared'
+
+import { ClassesForMealCalcTable } from '@/features/tables/classesForMealCalc'
 
 type PropsType = {
   isTeachers: boolean
@@ -39,7 +40,7 @@ export const CalculationPage: FC<PropsType> = memo(({ isTeachers }) => {
             <Button onClick={test}>Таблица классов</Button>
             {isTeachers ? (
               <>
-                <ClassesTable />
+                <ClassesForMealCalcTable />
               </>
             ) : (
               <InfoNoData action={'add_teacher'} link={navModel.ADMIN_ROUTE.data_teachers} />

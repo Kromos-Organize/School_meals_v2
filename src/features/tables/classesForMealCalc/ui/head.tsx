@@ -1,7 +1,7 @@
 import { TableCell, TableHead, TableRow } from '@mui/material'
 import { useTranslation } from 'react-i18next'
 
-export const ClassesTableHead = () => {
+export const ClassesForMealCalcTableHead = () => {
   const { t } = useTranslation('classes')
 
   return (

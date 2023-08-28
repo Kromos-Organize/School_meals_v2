@@ -7,7 +7,7 @@ type PropsType = {
   classItem: ClassSchoolType
 }
 
-export const ClassTableRow: FC<PropsType> = ({ classItem }) => {
+export const ClassForMealCalcTableRow: FC<PropsType> = ({ classItem }) => {
   return (
     <TableRow hover>
       <TableCell align="center">

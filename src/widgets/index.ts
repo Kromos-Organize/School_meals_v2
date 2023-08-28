@@ -1,5 +1,7 @@
 export { LoginWidget } from './auth/login'
 export { RegisterWidget } from './auth/register'
+export { ForgotPasswordWidget } from './auth/forgotPassword'
+export { NewPasswordWidget } from './auth/newPassword'
 export { LayoutContent } from './layout/layoutContent'
 export { Header } from './layout/header'
 export { SideBar } from './layout/sidebar'

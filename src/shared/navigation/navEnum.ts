@@ -8,7 +8,8 @@ export enum MAIN_ROUTE {
 export enum AUTH_ROUTE {
   login = '/login',
   registration = '/registration',
-  forgotPass = '/forgotPass',
+  forgotPass = '/forgot_password',
+  newPassword = '/new-password',
 }
 
 export enum S_ADMIN_ROUTE {

@@ -12,12 +12,7 @@ type PropsType = {
 }
 
 export const ClassesForMealCalcTableBody: FC<PropsType> = ({ classes }) => {
-  const sortClasses = classes.sort((a, b) => {
-    if (a.number > b.number) return 1
-    if (a.number < b.number) return -1
-
-    return 0
-  })
+  const sortClasses = classes.sort((a, b) => a.number - b.number)
 
   const rows = sortClasses.map(cl => (
     <ClassForMealCalcTableRow key={generateKey()} classItem={cl} />

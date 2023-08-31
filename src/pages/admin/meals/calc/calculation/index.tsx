@@ -1,8 +1,8 @@
 import { DashLayout, NextPageWithLayout } from '@/App'
 /* eslint-disable */
-import { authOptions } from '@/pages/api/auth/[...nextauth]';
+import { authOptions } from '@/pages/api/auth/[...nextauth]'
 import { CalculationPage } from '@/pagesLayer'
-import { useAxiosAuthServer } from '@/shared';
+import { useAxiosAuthServer } from '@/shared'
 
 export const getServerSideProps = async (context: any) => {
   const { instanceServer, user } = await useAxiosAuthServer(context, authOptions)
@@ -10,8 +10,8 @@ export const getServerSideProps = async (context: any) => {
   if (!user?.school_id) return { props: { isSchool: false } }
 
   const response = await instanceServer
-      .get(`/api/user/count_teacher/${user?.school_id}`)
-      .then(res => res.data)
+    .get(`/user/count_employee/?school_id=${user.school_id}`)
+    .then(res => res.data)
 
   return {
     props: {
@@ -22,11 +22,10 @@ export const getServerSideProps = async (context: any) => {
 
 type PropsType = {
   isTeachers?: boolean
-  isSchool?: boolean
 }
 
-const Calculation: NextPageWithLayout<PropsType> = ({isTeachers, isSchool}) => {
-  return <CalculationPage isTeachers={!!isTeachers || !!isSchool} />
+const Calculation: NextPageWithLayout<PropsType> = ({ isTeachers }) => {
+  return <CalculationPage isTeachers={!!isTeachers} />
 }
 
 Calculation.getLayout = DashLayout

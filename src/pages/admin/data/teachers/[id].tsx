@@ -1,20 +1,19 @@
 import { DashLayout, NextPageWithLayout } from '@/App'
 import { TeacherType } from '@/features'
 /* eslint-disable */
-import {authOptions} from '@/pages/api/auth/[...nextauth]'
-import {ChangeUserPage} from '@/pagesLayer'
-import {useAxiosAuthServer} from '@/shared'
-import {GetServerSideProps} from 'next'
+import { authOptions } from '@/pages/api/auth/[...nextauth]'
+import { ChangeUserPage } from '@/pagesLayer'
+import { useAxiosAuthServer } from '@/shared'
+import { GetServerSideProps } from 'next'
 
+export const getServerSideProps: GetServerSideProps = async context => {
+  const { instanceServer } = await useAxiosAuthServer(context, authOptions)
 
-export const getServerSideProps: GetServerSideProps = async (context) => {
-  const { instanceServer} = await useAxiosAuthServer(context, authOptions)
+  const id = context.query.id
 
-  const id = context.query.id;
+  const response = await instanceServer.get(`/user/${id}`).then(res => res.data)
 
-  const response = await instanceServer.get(`/api/user/${id}`).then(res => res.data)
-
-  if(!response) {
+  if (!response) {
     return {
       notFound: true,
     }
@@ -32,7 +31,6 @@ type PropsType = {
 }
 
 const ChangeTeacher: NextPageWithLayout<PropsType> = ({ teacher }) => {
-
   return <ChangeUserPage teacher={teacher} />
 }
 

@@ -1,5 +1,7 @@
 import axios from 'axios'
 
+const https = require('https')
+
 export type AuthResponse = {
   id: number
   role: 'ADMIN' | 'S_ADMIN'
@@ -9,11 +11,15 @@ export type AuthResponse = {
   accessToken: string
 }
 
+const agent = new https.Agent({ rejectUnauthorized: false })
+
 export const instance = axios.create({
   baseURL: process.env.NEXT_PUBLIC_BASE_URL,
   withCredentials: true,
+  httpAgent: agent,
 })
 
 export const apiInstance = axios.create({
   baseURL: process.env.NEXT_PUBLIC_API,
+  httpAgent: agent,
 })

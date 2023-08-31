@@ -13,7 +13,7 @@ export const getServerSideProps: GetServerSideProps = async context => {
   if (!user?.school_id) return { props: { isSchool: false } }
 
   const response = await instanceServer
-    .get(`/api/user/count_teacher/${user?.school_id}`)
+    .get(`/user/count_employee/?school_id=${user.school_id}`)
     .then(res => res.data)
 
   return {

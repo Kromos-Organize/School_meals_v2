@@ -40,7 +40,7 @@ export const authOptions: NextAuthOptions = {
                 isAdminDev: credentials?.isAdminDev,
               },
               {
-                withCredentials: true,
+                withCredentials: false,
               }
             )
             .then(response => {
@@ -52,7 +52,9 @@ export const authOptions: NextAuthOptions = {
               return { ...response.data, refreshToken }
             })
             .catch(error => {
-              console.log(error.response)
+              if (error.code === 'UNABLE_TO_VERIFY_LEAF_SIGNATURE') {
+                console.warn('Ошибка проверки сертификата игнорируется')
+              }
               throw new Error(error.response.data.message)
             }) || null
         )

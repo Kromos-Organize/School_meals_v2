@@ -32,11 +32,11 @@ export const useAxiosAuthServer = async (context: any, authOptions: NextAuthOpti
 
   const refreshToken = useRefreshToken(user)
 
-  updateRequestIntercept(apiInstance, user)
-  updateResponseIntercept(apiInstance, user, refreshToken)
+  updateRequestIntercept(instance, user)
+  updateResponseIntercept(instance, user, refreshToken)
 
   return {
-    instanceServer: apiInstance,
+    instanceServer: instance,
     user,
   }
 }

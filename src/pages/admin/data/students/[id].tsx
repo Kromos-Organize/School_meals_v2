@@ -6,14 +6,14 @@ import { ChangeStudentPage } from '@/pagesLayer'
 import { useAxiosAuthServer } from '@/shared'
 import { GetServerSideProps } from 'next'
 
-export const getServerSideProps: GetServerSideProps = async (context) => {
+export const getServerSideProps: GetServerSideProps = async context => {
   const { instanceServer } = await useAxiosAuthServer(context, authOptions)
 
-  const id = context.query.id;
+  const id = context.query.id
 
-  const response = await instanceServer.get(`/api/student/${id}`).then(res => res.data)
-  
-  if(!response) {
+  const response = await instanceServer.get(`/student/${id}`).then(res => res.data)
+
+  if (!response) {
     return {
       notFound: true,
     }
@@ -31,7 +31,6 @@ type PropsType = {
 }
 
 const ChangeTeacher: NextPageWithLayout<PropsType> = ({ student }) => {
-
   return <ChangeStudentPage student={student} />
 }
 

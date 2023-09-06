@@ -3,7 +3,7 @@ import { useEffect } from 'react'
 
 import { useCurrentUser } from '@/hooks'
 
-import { apiInstance, instance } from './base'
+import { instance } from './base'
 import { updateRequestIntercept, updateResponseIntercept, useRefreshToken } from './lib'
 import { CurrentUserType } from './types'
 

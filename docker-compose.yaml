@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  client:
+    build:
+      context: .
+      dockerfile: ./conf/dev/dockerFiles/main.Dockerfile
+    env_file:
+      - .dev.env
+    volumes:
+      - .:/var/www/schoolmeals.d
+      - /var/www/schoolmeals.d/node_modules
+    ports:
+      - "3000:3000"
+    command: yarn dev
+    restart: always

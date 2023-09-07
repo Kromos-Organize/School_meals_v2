@@ -3,9 +3,8 @@ import { FC, memo, useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
 
 import { namesEventClient, StatusSocket, useSocket } from '@/entities'
+import { ClassesForMealCalcTable } from '@/features'
 import { ContentHeader, InfoNoData, MainContainerPage, Meta, navModel } from '@/shared'
-
-import { ClassesForMealCalcTable } from '@/features/tables/classesForMealCalc'
 
 type PropsType = {
   isTeachers: boolean

@@ -8,6 +8,8 @@ RUN yarn
 
 COPY . .
 
-COPY ./public ./public
+RUN yarn build
 
-CMD [ "yarn", "dev" ]
+# COPY ./public ./public
+
+CMD [ "yarn", "start" ]

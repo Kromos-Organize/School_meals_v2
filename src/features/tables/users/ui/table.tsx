@@ -1,5 +1,5 @@
-import {Box, Card, CircularProgress, LinearProgress, Table} from '@mui/material'
-import {FC} from 'react'
+import { Box, Card, CircularProgress, LinearProgress, Table } from '@mui/material'
+import { FC } from 'react'
 
 import {
   useActivateUserMutate,
@@ -9,8 +9,8 @@ import {
   useUnlockUserMutate,
 } from '../model'
 
-import {UsersTableBody} from './body'
-import {UsersTableHead} from './head'
+import { UsersTableBody } from './body'
+import { UsersTableHead } from './head'
 
 export const UsersTable: FC = () => {
   const { data: users } = useListUsersQuery()
@@ -24,31 +24,31 @@ export const UsersTable: FC = () => {
 
   return (
     <Card>
-        <Box sx={{ minWidth: 800 }}>
-          {users?.length ? (
-            <>
-              {isLoading && (
-                <Box sx={{ width: '100%' }}>
-                  <LinearProgress color="secondary" />
-                </Box>
-              )}
-              <Table>
-                <UsersTableHead />
-                <UsersTableBody
-                  users={users}
-                  activated={activated}
-                  blockUser={blockUser}
-                  unlockUser={unlockUser}
-                  signCabinet={signCabinet}
-                />
-              </Table>
-            </>
-          ) : (
-            <Box sx={{ display: 'flex', justifyContent: 'center', padding: 20 }}>
-              <CircularProgress />
-            </Box>
-          )}
-        </Box>
+      <Box sx={{ minWidth: 800 }}>
+        {users?.length ? (
+          <>
+            {isLoading && (
+              <Box sx={{ width: '100%' }}>
+                <LinearProgress color="secondary" />
+              </Box>
+            )}
+            <Table>
+              <UsersTableHead />
+              <UsersTableBody
+                users={users}
+                activated={activated}
+                blockUser={blockUser}
+                unlockUser={unlockUser}
+                signCabinet={signCabinet}
+              />
+            </Table>
+          </>
+        ) : (
+          <Box sx={{ display: 'flex', justifyContent: 'center', padding: 20 }}>
+            <CircularProgress />
+          </Box>
+        )}
+      </Box>
     </Card>
   )
 }

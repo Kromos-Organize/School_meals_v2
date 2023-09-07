@@ -11,6 +11,6 @@ services:
       - .:/var/www/schoolmeals.d
       - /var/www/schoolmeals.d/node_modules
     ports:
-      - "3000:3000"
+      - "5002:3000"
     command: yarn dev
     restart: always

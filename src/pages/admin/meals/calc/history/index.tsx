@@ -1,9 +1,10 @@
 import { NextPageWithLayout, DashLayout } from '@/App'
+import { HistoryCalcPage } from '@/pagesLayer'
 
-const HistoryCalcPage: NextPageWithLayout = () => {
-  return <>HistoryCalcPage</>
+const HistoryCalc: NextPageWithLayout = () => {
+  return <HistoryCalcPage />
 }
 
-HistoryCalcPage.getLayout = DashLayout
+HistoryCalc.getLayout = DashLayout
 
-export default HistoryCalcPage
+export default HistoryCalc

@@ -9,4 +9,5 @@ export {
   ChangeStudentPage,
   TypeMenuPage,
   CalculationPage,
+  HistoryCalcPage,
 } from './admin'

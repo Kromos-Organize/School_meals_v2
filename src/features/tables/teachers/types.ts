@@ -3,7 +3,7 @@ export type ClassTeacherType = {
   number: number
 }
 
-export type TeacherType = {
+export type UserEmployeeType = {
   id: number
   school_id: number
   role: 'EMPLOYEE' | 'ADMIN'

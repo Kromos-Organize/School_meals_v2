@@ -2,7 +2,7 @@ import { NextPageWithLayout, DashLayout } from '@/App'
 /* eslint-disable */
 import { authOptions } from '@/pages/api/auth/[...nextauth]'
 import { ChangeUserPage } from '@/pagesLayer'
-import { TeacherType } from '@/features'
+import { UserEmployeeType } from '@/features'
 import { useAxiosAuthServer } from '@/shared'
 
 export const getServerSideProps = async (context: any) => {
@@ -18,17 +18,17 @@ export const getServerSideProps = async (context: any) => {
 
     return {
       props: {
-        teacher: response,
+        user: response,
       },
     }
   }
 }
 
 type PropsType = {
-  teacher: TeacherType
+  user: UserEmployeeType
 }
-const AdminSettingsPage: NextPageWithLayout<PropsType> = ({ teacher }) => {
-  return <ChangeUserPage teacher={teacher} />
+const AdminSettingsPage: NextPageWithLayout<PropsType> = ({ user }) => {
+  return <ChangeUserPage user={user} isGoBack={false} />
 }
 
 AdminSettingsPage.getLayout = DashLayout

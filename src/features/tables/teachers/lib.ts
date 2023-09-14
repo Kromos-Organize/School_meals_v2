@@ -1,6 +1,4 @@
-import { swalAlert, swalAlertQuestion } from '@/shared'
-
-import { TeacherType, ClassTeacherType } from './types'
+import { ClassTeacherType } from './types'
 
 export const classToString = (teacherClass: ClassTeacherType | undefined) => {
   if (!teacherClass) return ''

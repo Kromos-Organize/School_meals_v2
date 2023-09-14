@@ -7,29 +7,29 @@ import { useMutation } from 'react-query'
 import { noRefetch, swalAlert, useAxiosAuthClient } from '@/shared'
 
 import { TeacherChangeSchema } from './config'
-import { TeacherChangeFieldType, TeacherType } from './types'
+import { TeacherChangeFieldType, UserEmployeeType } from './types'
 
-export const useUserChangeForm = (teacher: TeacherType) => {
+export const useUserChangeForm = (user: UserEmployeeType) => {
   return useForm<TeacherChangeFieldType>({
     defaultValues: {
-      phone: teacher.phone,
-      fname: teacher.fname,
-      name: teacher.name,
-      lname: teacher.lname,
-      birthday: teacher.birthday ?? '',
+      phone: user.phone,
+      fname: user.fname,
+      name: user.name,
+      lname: user.lname,
+      birthday: user.birthday ?? '',
     },
     resolver: yupResolver(TeacherChangeSchema),
   })
 }
 
-export const useChangeUserMutate = (teacher_id: number) => {
+export const useChangeUserMutate = (user_id: number, isGoBack: boolean) => {
   const authInstance = useAxiosAuthClient()
   const { t } = useTranslation('teachers')
   const { back } = useRouter()
 
   return useMutation({
     mutationFn: (data: TeacherChangeFieldType) =>
-      authInstance.put<TeacherType>(`/user/${teacher_id}`, data).then(res => res.data),
+      authInstance.put<UserEmployeeType>(`/user/${user_id}`, data).then(res => res.data),
     ...noRefetch,
     onSuccess: res => {
       swalAlert(
@@ -39,7 +39,7 @@ export const useChangeUserMutate = (teacher_id: number) => {
           icon: 'success',
         },
         'noBtn'
-      ).then(res => back())
+      ).then(res => isGoBack && back())
     },
   })
 }

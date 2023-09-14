@@ -7,22 +7,23 @@ import { useTranslation } from 'react-i18next'
 import { InputDates, InputPhone, InputRegister } from '@/shared'
 
 import { useChangeUserMutate, useUserChangeForm } from './model'
-import { TeacherChangeFieldType, TeacherType } from './types'
+import { TeacherChangeFieldType, UserEmployeeType } from './types'
 
 type PropsType = {
-  teacher: TeacherType
+  user: UserEmployeeType
+  isGoBack: boolean
 }
 
-export const FormChangeUser: FC<PropsType> = ({ teacher }) => {
+export const FormChangeUser: FC<PropsType> = ({ user, isGoBack }) => {
   const {
     register,
     control,
     handleSubmit,
     formState: { errors, defaultValues },
-  } = useUserChangeForm(teacher)
+  } = useUserChangeForm(user)
 
   const { t } = useTranslation('teachers')
-  const { mutate: saveChanged } = useChangeUserMutate(teacher.id)
+  const { mutate: saveChanged } = useChangeUserMutate(user.id, isGoBack)
 
   const onSubmit: SubmitHandler<TeacherChangeFieldType> = data => saveChanged(data)
 

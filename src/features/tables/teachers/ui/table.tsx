@@ -1,6 +1,8 @@
-import { Box, Card, CircularProgress, LinearProgress, Table, TablePagination } from '@mui/material'
+import { Box, Card, LinearProgress, Table, TablePagination } from '@mui/material'
 import { useRouter } from 'next/router'
 import React, { FC, useState } from 'react'
+
+import { NoCreateData } from '@/shared'
 
 import { useListTeachersQuery, useRemoveTeacherMutate } from '../model'
 
@@ -12,6 +14,7 @@ export const TeachersTable: FC = () => {
   const { mutate: remove, isLoading: loadRemove } = useRemoveTeacherMutate()
 
   const isLoading = loadList || loadRemove
+
   const [page, setPage] = useState(0)
   const [rowsPerPage, setRowsPerPage] = useState(10)
   const router = useRouter()
@@ -52,9 +55,7 @@ export const TeachersTable: FC = () => {
             />
           </>
         ) : (
-          <Box sx={{ display: 'flex', justifyContent: 'center', padding: 20 }}>
-            <CircularProgress />
-          </Box>
+          <NoCreateData action={'no_add'} />
         )}
       </Box>
     </Card>

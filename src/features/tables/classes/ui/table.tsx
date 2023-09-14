@@ -8,7 +8,7 @@ import { useListClassesQuery } from '../model'
 import { ContainerCard } from './containerCard'
 
 export const ClassesTable = () => {
-  const { data, isLoading } = useListClassesQuery()
+  const { data } = useListClassesQuery()
 
   const classes = transformClasses(data ? data : [])
 

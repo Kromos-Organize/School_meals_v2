@@ -1,4 +1,4 @@
-import { Alert, AlertTitle, Typography } from '@mui/material'
+import { Alert, Typography } from '@mui/material'
 import { FC } from 'react'
 import { useTranslation } from 'react-i18next'
 
@@ -9,5 +9,9 @@ type PropsType = {
 export const NoCreateData: FC<PropsType> = ({ action }) => {
   const { t } = useTranslation('no_create_data')
 
-  return <Typography>{t(`L_${action}`)}</Typography>
+  return (
+    <Alert color={'warning'} severity="warning" sx={{ mt: 10 }}>
+      <Typography>{t(`L_${action}`)}</Typography>
+    </Alert>
+  )
 }

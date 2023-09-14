@@ -31,6 +31,9 @@ jobs:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
         run: |
+          PR_NUMBER=$(echo "${{ github.event.pull_request.url }}" | awk -F'/' '{print $NF}')
+          PR_URL=$(echo "${{ github.event.pull_request.html_url }}")
+          
           curl -X POST \
             -H 'Content-Type: application/json' \
             -d '{
